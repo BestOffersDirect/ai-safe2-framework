@@ -93,11 +93,16 @@ completion, or risk-acceptance authority. See
    findings, document accepted residual risk, and stop when defined acceptance
    gates pass or a decision owner must intervene.
 6. For GitHub changes, complete local pre-push gates, then open a draft pull
-   request. When Greptile is configured, run `check-pr`, address valid findings,
-   rerun affected first-party checks, and use `greploop` for no more than five
-   review cycles before marking the pull request ready. If Greptile is absent,
-   unavailable, or degraded, record that state explicitly; never manufacture a
-   confidence score or treat missing provider output as approval.
+   request. Run `check-pr`, address valid findings, and rerun affected
+   first-party checks. Select independent review according to the development
+   policy and explicit owner instructions. Greptile is advisory and recommended
+   for critical integration points; configuring it does not require invoking it
+   on every PR. Use `greploop` only when the owner explicitly requests it, for
+   no more than five review cycles. Honor owner instructions not to trigger a
+   provider. Record skipped, absent, unavailable, or degraded review explicitly;
+   never manufacture a confidence score or treat missing provider output as
+   approval. Readiness depends on applicable first-party gates and required
+   evidence, not a vendor score.
 
 ### 5. Ship with receipts
 
@@ -146,7 +151,7 @@ required. It must remain understandable without access to an agent's chat log.
 ## Version model
 
 - AI SAFE² Framework: v3.1.0
-- AI SAFE² CLI: v1.0.1 (1.0.0 was a GitHub-only release and never reached PyPI; verify with `safe2 --version`)
+- AI SAFE² CLI: v1.1.0 (1.0.0 was a GitHub-only release and never reached PyPI; verify with `safe2 --version`)
 - NEXUS: v0.6.0
 - Gateway: v3.0
 - MCP primary specification binding: 2026-07-28
