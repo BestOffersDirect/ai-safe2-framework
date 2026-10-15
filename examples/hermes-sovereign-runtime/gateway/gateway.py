@@ -42,6 +42,8 @@ import requests
 import yaml
 from flask import Flask, Response, jsonify, request, stream_with_context
 
+from safe2_log_fields import encode_log_field
+
 # ─── Configuration ───────────────────────────────────────────────────────────
 
 CONFIG_PATH = Path(__file__).parent / "config.yaml"
@@ -92,6 +94,10 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stdout)],
 )
 log = logging.getLogger("hsr.gateway")
+
+
+def _filter_setting(value: Any) -> str:
+    return "enabled" if value is True else "disabled" if value is False else "unknown"
 
 # ─── Audit Chain ─────────────────────────────────────────────────────────────
 
@@ -187,7 +193,7 @@ def activate_kill_switch(reason: str) -> None:
     Path(kill_file).write_text(
         json.dumps({"activated_at": datetime.now(timezone.utc).isoformat(), "reason": reason})
     )
-    log.critical(f"KILL SWITCH ACTIVATED: {reason}")
+    log.critical("KILL SWITCH ACTIVATED: %s", encode_log_field(reason))
     _write_audit({"event": "kill_switch_activated", "reason": reason, "severity": "CRITICAL"})
 
 
@@ -320,9 +326,9 @@ def proxy_messages():
     # Forward to upstream
     try:
         upstream_url = get_upstream_url(request.path)
-    except Exception as e:
-        log.error(f"[{request_id}] Provider routing error: {e}")
-        upstream_url = f"https://api.anthropic.com{request.path}"
+    except (ValueError, TypeError, KeyError):
+        log.error("[%s] Provider routing configuration invalid", request_id)
+        return jsonify({"error": "Provider routing configuration invalid"}), 500
 
     # Build upstream headers
     upstream_headers = {k: v for k, v in request.headers if k.lower() not in
@@ -349,10 +355,11 @@ def proxy_messages():
             json=processed_body,
             stream=streaming,
             timeout=120,
+            allow_redirects=False,
         )
-    except requests.exceptions.RequestException as e:
-        log.error(f"[{request_id}] Upstream error: {e}")
-        return jsonify({"error": "Upstream LLM unreachable", "detail": str(e)}), 502
+    except requests.exceptions.RequestException:
+        log.error("[%s] Upstream request failed", request_id)
+        return jsonify({"error": "Upstream LLM unreachable", "request_id": request_id}), 502
 
     duration_ms = int((time.time() - start_time) * 1000)
 
@@ -368,7 +375,9 @@ def proxy_messages():
         "path": request.path,
     })
 
-    log.info(f"[{request_id}] {request.method} {request.path} → {upstream_resp.status_code} ({duration_ms}ms) findings={len(findings)}")
+    log.info("[%s] %s %s -> %d (%dms) findings=%d", request_id,
+             encode_log_field(request.method), encode_log_field(request.path),
+             upstream_resp.status_code, duration_ms, len(findings))
 
     if streaming:
         def generate():
@@ -465,9 +474,9 @@ if __name__ == "__main__":
     provider = CONFIG.get("provider", {}).get("active", "anthropic")
     log.info(f"Provider: {provider}")
     log.info(f"Audit log: {AUDIT_PATH}")
-    log.info(f"Filters: PII={CONFIG.get('filters',{}).get('block_pii')}, "
-             f"Secrets={CONFIG.get('filters',{}).get('block_secrets')}, "
-             f"Injection={CONFIG.get('filters',{}).get('block_injection_patterns')}")
+    log.info("Filters: PII=%s Secrets=%s Injection=%s",
+             *(_filter_setting(CONFIG.get("filters", {}).get(key)) for key in
+               ("block_pii", "block_secrets", "block_injection_patterns")))
 
     gw = CONFIG.get("gateway", DEFAULT_CONFIG["gateway"])
     app.run(
