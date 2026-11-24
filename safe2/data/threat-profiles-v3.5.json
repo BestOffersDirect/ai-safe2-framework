@@ -9,7 +9,7 @@
         "T2",
         "T10"
       ],
-      "mechanism": "Forged completion, altered grader/monitor, selective omission or misleading process evidence.",
+      "mechanism": "Forged completion, altered grader/monitor, selective omission or misleading process evidence. Include viewer/export substitution, omitted subprocess actions and compromised audit selection.",
       "controls": [
         "CP.13",
         "A2.8",
@@ -25,7 +25,7 @@
         "T6",
         "T10"
       ],
-      "mechanism": "Valid identity and scope with stale conditions, wrong target, repeated commitment or unmet postcondition.",
+      "mechanism": "Valid identity and scope with stale conditions, wrong target, repeated commitment or unmet postcondition. Include task-to-contract mistranslation and drift to newly discovered targets.",
       "controls": [
         "CP.12",
         "F3.7",
@@ -42,7 +42,7 @@
         "T2",
         "T11"
       ],
-      "mechanism": "Manipulation of evidence, framing, consent, apparent consensus or relational trust leading to an unintended approval.",
+      "mechanism": "Manipulation of evidence, framing, consent, apparent consensus or relational trust leading to an unintended approval. Include misleading evidence displays and source framing that expands apparent consent.",
       "controls": [
         "CP.10",
         "CP.13",
@@ -60,5 +60,6 @@
     "effect",
     "enforcement_point",
     "recovery"
-  ]
+  ],
+  "requirements_revision": "2026-11-23"
 }

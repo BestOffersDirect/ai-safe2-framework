@@ -1,0 +1,26 @@
+{
+  "schema_version": "safe2.requirement-assessment.v2",
+  "framework_version": "3.5.0",
+  "requirements_revision": "2026-11-23",
+  "system_id": "synthetic-record-only",
+  "system_revision": "example-unexecuted",
+  "scope": "illustrative framework contract; no runtime assessed",
+  "assessed_at": "2026-11-23T12:00:00Z",
+  "assessment_owner": "example-owner-declaration",
+  "required_clause_ids": [
+    "CP.13.R11"
+  ],
+  "clauses": [
+    {
+      "clause_id": "CP.13.R11",
+      "applicability": "applicable",
+      "applicability_basis": "Illustrative revision identity requirement; not an actual assessment.",
+      "result": "untested",
+      "evidence_refs": [],
+      "evidence_origin": "unknown",
+      "collector_scope": "No collector executed in this example",
+      "observed_at": "2026-11-23T12:00:00Z"
+    }
+  ],
+  "authorization_granted": false
+}

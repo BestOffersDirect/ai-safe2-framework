@@ -12,7 +12,8 @@
     "description": "AI SAFE2 v3.5 normative taxonomy; implementation requires scoped evidence.",
     "license": "CC-BY-SA 4.0 (framework/docs) | MIT (code)",
     "release_status": "current",
-    "baseline_version": "3.1.0"
+    "baseline_version": "3.1.0",
+    "requirements_revision": "2026-11-23"
   },
   "frameworks": {
     "NIST_AI_RMF": {
@@ -1626,7 +1627,7 @@
       "pillar_name": "Audit & Inventory",
       "topic": "Audit",
       "priority": "CRITICAL",
-      "description": "Captures full agent execution trace: reasoning chain, every tool call with parameters, every memory operation — written to an append-only store the agent cannot modify.",
+      "description": "Record observable agent actions, tool calls with parameters, memory operations, available summaries and evidence references in an append-only store outside agent write authority. Declare omissions and collector scope; do not promise access to private reasoning.",
       "builder_problem": "Something broke in production and I have no idea what the agent was reasoning when it happened.",
       "act_minimum": [
         "ACT-2",
@@ -3107,7 +3108,7 @@
       "pillar_name": "Engage & Monitor",
       "topic": "Monitor",
       "priority": "CRITICAL",
-      "description": "Continuously probes deployed agents with adversarial inputs and monitors behavioral responses; attack patterns from red-team repository feed detection rules automatically.",
+      "description": "Probe agent behavior with governed adversarial cases and evaluate monitor coverage by consequence class. Red-team findings may inform proposed detection rules; production promotion requires independent validation, approved change authority, versioning and rollback.",
       "builder_problem": "My monitoring detects anomalies in outputs but misses the attacks that cause them.",
       "act_minimum": [
         "ACT-2",
@@ -3126,7 +3127,32 @@
         "red_team"
       ],
       "version_added": "v3.0",
-      "requirements": [],
+      "requirements": [
+        {
+          "id": "M4.4.R01",
+          "requirement": "Declare the semantic-audit selection policy, mandatory inspection classes, exclusions, resource limits and behavior when evidence or reviewers are unavailable; selection cannot bypass mandatory final-effect authorization.",
+          "disposition": "normative",
+          "review_id": "C56",
+          "research": "research/080_v35_c56.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "M4.4.R02",
+          "requirement": "Measure selector misses, auditor misses, false blocks, unknowns, useful completion and latency separately by consequence class, runtime and backend, using paired and held-out cases.",
+          "disposition": "normative",
+          "review_id": "C56",
+          "research": "research/080_v35_c56.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "M4.4.R03",
+          "requirement": "Evaluate adversarial evasion and overload of the selector; material coverage degradation requires an explicit authority restriction or approved exception and retest.",
+          "disposition": "normative",
+          "review_id": "C56",
+          "research": "research/080_v35_c56.md",
+          "requirements_revision": "2026-11-23"
+        }
+      ],
       "implementation_status": "requires-deployment-evidence"
     },
     {
@@ -4069,7 +4095,32 @@
         "institutional_knowledge"
       ],
       "version_added": "v3.0",
-      "requirements": [],
+      "requirements": [
+        {
+          "id": "E5.4.R01",
+          "requirement": "Record origin, trust, observed consequence, validity and permitted use for generated red-team artifacts and persistent strategy memory; quarantine unverified instructions.",
+          "disposition": "normative",
+          "review_id": "C57",
+          "research": "research/081_v35_c57.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "E5.4.R02",
+          "requirement": "Separate development feedback from held-out assurance; review, version, authorize and support rollback of changes promoted into production monitoring or policy.",
+          "disposition": "normative",
+          "review_id": "C57",
+          "research": "research/081_v35_c57.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "E5.4.R03",
+          "requirement": "Test poisoned strategy memory, benchmark leakage, malicious rule proposals and restoration; an artifact or its generating agent cannot authorize its own promotion.",
+          "disposition": "normative",
+          "review_id": "C57",
+          "research": "research/081_v35_c57.md",
+          "requirements_revision": "2026-11-23"
+        }
+      ],
       "implementation_status": "requires-deployment-evidence"
     },
     {
@@ -4189,6 +4240,30 @@
           "disposition": "normative",
           "review_id": "C47",
           "research": "research/071_v35_c47.md"
+        },
+        {
+          "id": "F3.6.R07",
+          "requirement": "Attribute consumption to a verified principal, stable unit of work and declared model/provider/route where applicable. Charge unattributable consumption to the governing envelope; conservatively reserve or hold unknown exposure under an explicit reconciliation policy rather than treating it as zero.",
+          "disposition": "normative",
+          "review_id": "C62",
+          "research": "research/086_v35_c62.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "F3.6.R08",
+          "requirement": "Bind ceiling creation and increases to authority outside the governed agent, with exact scope, units, reason, expiry and recorded approval. For ACT-3/ACT-4, treat a mid-task ceiling increase as a Class-H action under CP.10; the agent cannot grant or enlarge its own consumption authority.",
+          "disposition": "normative",
+          "review_id": "C62",
+          "research": "research/086_v35_c62.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "F3.6.R09",
+          "requirement": "On a ceiling breach, halt or revoke affected consumption authority at the task and applicable descendant scope, preserve reconstructable evidence and recoverable state, and verify cessation and residual effects rather than issuing only an advisory warning.",
+          "disposition": "normative",
+          "review_id": "C62",
+          "research": "research/086_v35_c62.md",
+          "requirements_revision": "2026-11-23"
         }
       ],
       "version_updated": "v3.5",
@@ -5444,6 +5519,30 @@
           "disposition": "normative",
           "review_id": "C11",
           "research": "research/035_v35_c11.md"
+        },
+        {
+          "id": "CP.12.R07",
+          "requirement": "Preserve the trusted task scope, capability-registry revision, compiler/policy version and authorized effect contract; prohibit untrusted task data from widening that contract.",
+          "disposition": "normative",
+          "review_id": "C54",
+          "research": "research/078_v35_c54.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.12.R08",
+          "requirement": "Independently test required legitimate effects, forbidden effects, ambiguous tasks, omissions and over-broad translations before activating a generated contract; unresolved material scope requires clarification or refusal.",
+          "disposition": "normative",
+          "review_id": "C54",
+          "research": "research/078_v35_c54.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.12.R09",
+          "requirement": "Bind approval and enforcement to the reviewed contract revision; invalidate authority after a material task, capability or compiler-policy change.",
+          "disposition": "normative",
+          "review_id": "C54",
+          "research": "research/078_v35_c54.md",
+          "requirements_revision": "2026-11-23"
         }
       ],
       "version_updated": "v3.5",
@@ -5524,6 +5623,54 @@
           "disposition": "normative",
           "review_id": "C48",
           "research": "research/072_v35_c48.md"
+        },
+        {
+          "id": "CP.13.R08",
+          "requirement": "Treat evidence content as untrusted through display, preview and export; use inert rendering or a demonstrably isolated active-content boundary, constrained links and explicit parser failure handling.",
+          "disposition": "normative",
+          "review_id": "C55",
+          "research": "research/079_v35_c55.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.13.R09",
+          "requirement": "Bind source collection records, retained content and exported artifacts with versioned transformations and completeness indicators; detect suppression, substitution and truncated exports.",
+          "disposition": "normative",
+          "review_id": "C55",
+          "research": "research/079_v35_c55.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.13.R10",
+          "requirement": "Provide an independent verification path and retest after renderer/exporter changes; record disagreement between stored, displayed and exported evidence.",
+          "disposition": "normative",
+          "review_id": "C55",
+          "research": "research/079_v35_c55.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.13.R11",
+          "requirement": "Record framework version, requirements revision, system/deployment revision, scope, applicable clause IDs and applicability rationale with evidence provenance, observation status and accountable owner. Distinguish declarations from independently verified observations.",
+          "disposition": "normative",
+          "review_id": "C63",
+          "research": "research/087_v35_c63.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.13.R12",
+          "requirement": "Preserve the producing requirement/evidence contract for historical results. Reassess new or materially changed applicable clauses; absent, unknown, untested or conflicting evidence shall not be promoted to a pass by relabeling an older control-level assessment.",
+          "disposition": "normative",
+          "review_id": "C63",
+          "research": "research/087_v35_c63.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.13.R13",
+          "requirement": "Maintain traceable source-claim dispositions through owning requirements, research, implementation paths, tests/results, issue ownership and supported release claims. Expose unresolved source locations, incomplete corpus review and missing result links; structural schema or ledger validity alone establishes neither source truth, conformance nor authorization.",
+          "disposition": "normative",
+          "review_id": "C63",
+          "research": "research/087_v35_c63.md",
+          "requirements_revision": "2026-11-23"
         }
       ],
       "version_updated": "v3.5",

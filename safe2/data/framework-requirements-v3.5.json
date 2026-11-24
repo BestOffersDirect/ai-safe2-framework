@@ -193,7 +193,7 @@
     {
       "review_id": "C05",
       "control_id": "F3.6",
-      "title": "Add P3 consumable-authority ceiling candidate",
+      "title": "Aggregate consumable-authority ceiling",
       "rationale": "F3.2 controls depth, F3.5 contains cascades, MCP-8 is profile-scoped and APAY handles payments. Shared reservations across parallel descendants are separately testable. Strong consistency can affect availability.",
       "source": "Evidence waves 01-06; C05 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
       "requirements": [
@@ -201,7 +201,7 @@
         "Declare units, accountable owner, concurrency, retries, expiry and treatment of delayed or unknown consumption.",
         "Reject admission beyond the aggregate envelope, reconcile cancellation and settlement idempotently, and define safe handling of partially committed effects."
       ],
-      "validation": "Aggregate authority and settlement. Compare concurrency, tokens, commitments, retry and delayed usage. Allocate F3.6 only after catalog overlap review.",
+      "validation": "Aggregate authority and settlement. Compare concurrency, tokens, commitments, retry and delayed usage. Verify independently observed accounting, breach handling and recovery within the current F3.6 ownership.",
       "research_path": "research/029_v35_c05.md",
       "status": "normative",
       "version_added": "3.5.0",
@@ -237,7 +237,7 @@
     {
       "review_id": "C06",
       "control_id": "CP.14",
-      "title": "Add cross-pillar organizational AIMS candidate",
+      "title": "Organizational AI management governance",
       "rationale": "CP.4 owns the agent control plane. Leadership, management review, independent audit and corrective action have an organizational owner. Risks duplicating management-system standards if scope is loose.",
       "source": "Evidence waves 01-06; C06 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
       "requirements": [
@@ -317,7 +317,7 @@
     {
       "review_id": "C08",
       "control_id": "CP.4",
-      "title": "Extend CP.4 and P1 for information–authority separation",
+      "title": "Extend CP.4 and P1 for information-authority separation",
       "rationale": "Trusting content and granting authority are separate decisions within existing policy and isolation boundaries. One parent avoids divergent grants across surfaces.",
       "source": "Evidence waves 01-06; C08 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
       "requirements": [
@@ -497,7 +497,7 @@
     {
       "review_id": "C13",
       "control_id": "S1.5",
-      "title": "Extend P1–P3 for memory admission and recovery",
+      "title": "Extend P1-P3 for memory admission and recovery",
       "rationale": "Existing memory governance needs provenance, permitted use, tenancy, expiry, derivative tracking and clean restores. Separate controls for every memory representation fragment the policy.",
       "source": "Evidence waves 01-06; C13 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
       "requirements": [
@@ -2316,6 +2316,422 @@
       ],
       "supporting_observations": [],
       "source_link_interpretation": "Issue #390 supplies a framework proposal. No named service execution, signature verification, legal applicability or production result is inferred."
+    },
+    {
+      "review_id": "C54",
+      "control_id": "CP.12",
+      "title": "Authorization contract fidelity",
+      "research_title": "Authorization contract fidelity",
+      "research_question": "Can task translation grant or omit effects even when the resulting contract is enforced correctly?",
+      "rationale": "A standalone compiler-control family could serve separately operated compilers, but CP.12 already owns authorized effects and CP.11 reapproval. Keep explicit clauses here. Independent task/contract review catches over-grants and legitimate-work blocks. Review effort and conservative interpretation can block useful work.",
+      "alternatives": "A standalone compiler-control family could serve separately operated compilers, but CP.12 already owns authorized effects and CP.11 reapproval. Keep explicit clauses here.",
+      "advantages": "Independent task/contract review catches over-grants and legitimate-work blocks.",
+      "costs": "Review effort and conservative interpretation can block useful work.",
+      "source": "October 3-9 security brief, finding B01; primary source https://arxiv.org/html/2610.06966v1. Retrospective disposition dated November 23, 2026.",
+      "requirements": [
+        "Preserve the trusted task scope, capability-registry revision, compiler/policy version and authorized effect contract; prohibit untrusted task data from widening that contract.",
+        "Independently test required legitimate effects, forbidden effects, ambiguous tasks, omissions and over-broad translations before activating a generated contract; unresolved material scope requires clarification or refusal.",
+        "Bind approval and enforcement to the reviewed contract revision; invalidate authority after a material task, capability or compiler-policy change."
+      ],
+      "validation": "Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.",
+      "research_path": "research/078_v35_c54.md",
+      "status": "normative",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [
+        {
+          "id": "CP.12.R07",
+          "requirement": "Preserve the trusted task scope, capability-registry revision, compiler/policy version and authorized effect contract; prohibit untrusted task data from widening that contract.",
+          "disposition": "normative",
+          "review_id": "C54",
+          "research": "research/078_v35_c54.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.12.R08",
+          "requirement": "Independently test required legitimate effects, forbidden effects, ambiguous tasks, omissions and over-broad translations before activating a generated contract; unresolved material scope requires clarification or refusal.",
+          "disposition": "normative",
+          "review_id": "C54",
+          "research": "research/078_v35_c54.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.12.R09",
+          "requirement": "Bind approval and enforcement to the reviewed contract revision; invalidate authority after a material task, capability or compiler-policy change.",
+          "disposition": "normative",
+          "review_id": "C54",
+          "research": "research/078_v35_c54.md",
+          "requirements_revision": "2026-11-23"
+        }
+      ],
+      "supporting_observations": [
+        "OBS-2026-OCT-01"
+      ],
+      "source_link_interpretation": "Source-specific context and limits; not independent validation of AI SAFE2. Source retention predates this explicit requirements disposition.",
+      "source_finding_id": "B01"
+    },
+    {
+      "review_id": "C55",
+      "control_id": "CP.13",
+      "title": "Evidence presentation and export integrity",
+      "research_title": "Evidence presentation and export integrity",
+      "research_question": "Can evidence remain intact in storage while its display or exported artifact deceives the reviewer?",
+      "rationale": "A dedicated UI control would improve team assignment but split custody from presentation. CP.13 owns the chain; issue #448 assigns consumer owners. One traceable chain detects substitutions and omissions across consumers. Rendering isolation, accessibility and transformation verification require integration work.",
+      "alternatives": "A dedicated UI control would improve team assignment but split custody from presentation. CP.13 owns the chain; issue #448 assigns consumer owners.",
+      "advantages": "One traceable chain detects substitutions and omissions across consumers.",
+      "costs": "Rendering isolation, accessibility and transformation verification require integration work.",
+      "source": "October 3-9 security brief, finding B03; primary source https://metr.org/blog/2026-10-06-ai-systems-could-cover-up-misbehavior/. Retrospective disposition dated November 23, 2026.",
+      "requirements": [
+        "Treat evidence content as untrusted through display, preview and export; use inert rendering or a demonstrably isolated active-content boundary, constrained links and explicit parser failure handling.",
+        "Bind source collection records, retained content and exported artifacts with versioned transformations and completeness indicators; detect suppression, substitution and truncated exports.",
+        "Provide an independent verification path and retest after renderer/exporter changes; record disagreement between stored, displayed and exported evidence."
+      ],
+      "validation": "Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.",
+      "research_path": "research/079_v35_c55.md",
+      "status": "normative",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [
+        {
+          "id": "CP.13.R08",
+          "requirement": "Treat evidence content as untrusted through display, preview and export; use inert rendering or a demonstrably isolated active-content boundary, constrained links and explicit parser failure handling.",
+          "disposition": "normative",
+          "review_id": "C55",
+          "research": "research/079_v35_c55.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.13.R09",
+          "requirement": "Bind source collection records, retained content and exported artifacts with versioned transformations and completeness indicators; detect suppression, substitution and truncated exports.",
+          "disposition": "normative",
+          "review_id": "C55",
+          "research": "research/079_v35_c55.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.13.R10",
+          "requirement": "Provide an independent verification path and retest after renderer/exporter changes; record disagreement between stored, displayed and exported evidence.",
+          "disposition": "normative",
+          "review_id": "C55",
+          "research": "research/079_v35_c55.md",
+          "requirements_revision": "2026-11-23"
+        }
+      ],
+      "supporting_observations": [
+        "OBS-2026-OCT-02"
+      ],
+      "source_link_interpretation": "Source-specific context and limits; not independent validation of AI SAFE2. Source retention predates this explicit requirements disposition.",
+      "source_finding_id": "B03"
+    },
+    {
+      "review_id": "C56",
+      "control_id": "M4.4",
+      "title": "Consequence-aware monitoring coverage",
+      "research_title": "Consequence-aware monitoring coverage",
+      "research_question": "What does an audit selector miss, and can resource savings hide high-consequence omissions?",
+      "rationale": "A separate coverage control increases visibility but duplicates M4.4 and E5.1. Add explicit clauses plus the evaluator work package instead of a new threat category. Explicit selector and auditor metrics expose cost and safety trade-offs. Held-out evaluation and stratification add cost and cannot guarantee unseen-path coverage.",
+      "alternatives": "A separate coverage control increases visibility but duplicates M4.4 and E5.1. Add explicit clauses plus the evaluator work package instead of a new threat category.",
+      "advantages": "Explicit selector and auditor metrics expose cost and safety trade-offs.",
+      "costs": "Held-out evaluation and stratification add cost and cannot guarantee unseen-path coverage.",
+      "source": "October 3-9 security brief, finding B06; primary source https://arxiv.org/html/2610.07256v1. Retrospective disposition dated November 23, 2026.",
+      "requirements": [
+        "Declare the semantic-audit selection policy, mandatory inspection classes, exclusions, resource limits and behavior when evidence or reviewers are unavailable; selection cannot bypass mandatory final-effect authorization.",
+        "Measure selector misses, auditor misses, false blocks, unknowns, useful completion and latency separately by consequence class, runtime and backend, using paired and held-out cases.",
+        "Evaluate adversarial evasion and overload of the selector; material coverage degradation requires an explicit authority restriction or approved exception and retest."
+      ],
+      "validation": "Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.",
+      "research_path": "research/080_v35_c56.md",
+      "status": "normative",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [
+        {
+          "id": "M4.4.R01",
+          "requirement": "Declare the semantic-audit selection policy, mandatory inspection classes, exclusions, resource limits and behavior when evidence or reviewers are unavailable; selection cannot bypass mandatory final-effect authorization.",
+          "disposition": "normative",
+          "review_id": "C56",
+          "research": "research/080_v35_c56.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "M4.4.R02",
+          "requirement": "Measure selector misses, auditor misses, false blocks, unknowns, useful completion and latency separately by consequence class, runtime and backend, using paired and held-out cases.",
+          "disposition": "normative",
+          "review_id": "C56",
+          "research": "research/080_v35_c56.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "M4.4.R03",
+          "requirement": "Evaluate adversarial evasion and overload of the selector; material coverage degradation requires an explicit authority restriction or approved exception and retest.",
+          "disposition": "normative",
+          "review_id": "C56",
+          "research": "research/080_v35_c56.md",
+          "requirements_revision": "2026-11-23"
+        }
+      ],
+      "supporting_observations": [
+        "OBS-2026-OCT-03"
+      ],
+      "source_link_interpretation": "Source-specific context and limits; not independent validation of AI SAFE2. Source retention predates this explicit requirements disposition.",
+      "source_finding_id": "B06"
+    },
+    {
+      "review_id": "C57",
+      "control_id": "E5.4",
+      "title": "Red-team artifact and learning promotion governance",
+      "research_title": "Red-team artifact and learning promotion governance",
+      "research_question": "Can adaptive strategy memory poison the detection or evaluation process it improves?",
+      "rationale": "An independent learning-system control might fit a separately operated service. E5.4 and S1.5 already own artifact/memory lifecycle; deepen them and remove automatic-promotion ambiguity. Preserves reusable discovery while separating hostile findings from authorized production changes. Quarantine, held-out partitions and approvals slow rule promotion.",
+      "alternatives": "An independent learning-system control might fit a separately operated service. E5.4 and S1.5 already own artifact/memory lifecycle; deepen them and remove automatic-promotion ambiguity.",
+      "advantages": "Preserves reusable discovery while separating hostile findings from authorized production changes.",
+      "costs": "Quarantine, held-out partitions and approvals slow rule promotion.",
+      "source": "October 3-9 security brief, finding B05; primary source https://arxiv.org/html/2610.08951v1. Retrospective disposition dated November 23, 2026.",
+      "requirements": [
+        "Record origin, trust, observed consequence, validity and permitted use for generated red-team artifacts and persistent strategy memory; quarantine unverified instructions.",
+        "Separate development feedback from held-out assurance; review, version, authorize and support rollback of changes promoted into production monitoring or policy.",
+        "Test poisoned strategy memory, benchmark leakage, malicious rule proposals and restoration; an artifact or its generating agent cannot authorize its own promotion."
+      ],
+      "validation": "Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.",
+      "research_path": "research/081_v35_c57.md",
+      "status": "normative",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [
+        {
+          "id": "E5.4.R01",
+          "requirement": "Record origin, trust, observed consequence, validity and permitted use for generated red-team artifacts and persistent strategy memory; quarantine unverified instructions.",
+          "disposition": "normative",
+          "review_id": "C57",
+          "research": "research/081_v35_c57.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "E5.4.R02",
+          "requirement": "Separate development feedback from held-out assurance; review, version, authorize and support rollback of changes promoted into production monitoring or policy.",
+          "disposition": "normative",
+          "review_id": "C57",
+          "research": "research/081_v35_c57.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "E5.4.R03",
+          "requirement": "Test poisoned strategy memory, benchmark leakage, malicious rule proposals and restoration; an artifact or its generating agent cannot authorize its own promotion.",
+          "disposition": "normative",
+          "review_id": "C57",
+          "research": "research/081_v35_c57.md",
+          "requirements_revision": "2026-11-23"
+        }
+      ],
+      "supporting_observations": [
+        "OBS-2026-OCT-04"
+      ],
+      "source_link_interpretation": "Source-specific context and limits; not independent validation of AI SAFE2. Source retention predates this explicit requirements disposition.",
+      "source_finding_id": "B05"
+    },
+    {
+      "review_id": "C58",
+      "control_id": "S1.3",
+      "title": "Delayed influence and action provenance",
+      "research_title": "Delayed influence and action provenance",
+      "research_question": "How can an untrusted source influence an operative argument after summarization or handoff?",
+      "rationale": "Existing S1.3/CP.12 clauses already impose provenance and authority boundaries. Add a linked research/validation record, not duplicate normative clauses or mandate one auditor. Connects source spans, task warrant and independent effects without granting authority to the source. Trajectory completeness, privacy and semantic attribution remain uncertain.",
+      "alternatives": "Existing S1.3/CP.12 clauses already impose provenance and authority boundaries. Add a linked research/validation record, not duplicate normative clauses or mandate one auditor.",
+      "advantages": "Connects source spans, task warrant and independent effects without granting authority to the source.",
+      "costs": "Trajectory completeness, privacy and semantic attribution remain uncertain.",
+      "source": "October 3-9 security brief, finding B02; primary source https://arxiv.org/html/2610.05163v1. Retrospective disposition dated November 23, 2026.",
+      "requirements": [],
+      "validation": "Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.",
+      "research_path": "research/082_v35_c58.md",
+      "status": "supporting-analysis",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [],
+      "supporting_observations": [
+        "OBS-2026-OCT-05"
+      ],
+      "source_link_interpretation": "Source-specific context and limits; not independent validation of AI SAFE2. Source retention predates this explicit requirements disposition.",
+      "source_finding_id": "B02"
+    },
+    {
+      "review_id": "C59",
+      "control_id": "CP.13",
+      "title": "External observation and repeated-run variance",
+      "research_title": "External observation and repeated-run variance",
+      "research_question": "Which actions can an agent-reported trace omit, and what varies across repeated executions?",
+      "rationale": "CP.13/A2.5 already own observation and gaps. Extend adapter acceptance and #234 examples instead of a separate observer control. Independent process and sink observations can challenge a correct-looking deliverable. OS-specific collectors, privacy minimization and unseen paths limit completeness.",
+      "alternatives": "CP.13/A2.5 already own observation and gaps. Extend adapter acceptance and #234 examples instead of a separate observer control.",
+      "advantages": "Independent process and sink observations can challenge a correct-looking deliverable.",
+      "costs": "OS-specific collectors, privacy minimization and unseen paths limit completeness.",
+      "source": "October 3-9 security brief, finding B04; primary source https://arxiv.org/html/2610.06001v1. Retrospective disposition dated November 23, 2026.",
+      "requirements": [],
+      "validation": "Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.",
+      "research_path": "research/083_v35_c59.md",
+      "status": "supporting-analysis",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [],
+      "supporting_observations": [
+        "OBS-2026-OCT-06"
+      ],
+      "source_link_interpretation": "Source-specific context and limits; not independent validation of AI SAFE2. Source retention predates this explicit requirements disposition.",
+      "source_finding_id": "B04"
+    },
+    {
+      "review_id": "C60",
+      "control_id": "CP.12",
+      "title": "Target authority in human-led multi-product operations",
+      "research_title": "Target authority in human-led multi-product operations",
+      "research_question": "How is target authority preserved across human, agent, provider, framework and discovered destinations?",
+      "rationale": "CP.12/F3.7 already require exact targets and environments. Add attack-chain acceptance and a scoped profile; no new top-level actor family is justified. An explicit offensive-security profile prevents capability from becoming blanket target permission. Target normalization, changing discovery results and jurisdiction-specific scope need careful ownership.",
+      "alternatives": "CP.12/F3.7 already require exact targets and environments. Add attack-chain acceptance and a scoped profile; no new top-level actor family is justified.",
+      "advantages": "An explicit offensive-security profile prevents capability from becoming blanket target permission.",
+      "costs": "Target normalization, changing discovery results and jurisdiction-specific scope need careful ownership.",
+      "source": "October 3-9 security brief, finding B07; primary source https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/. Retrospective disposition dated November 23, 2026.",
+      "requirements": [],
+      "validation": "Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.",
+      "research_path": "research/084_v35_c60.md",
+      "status": "supporting-analysis",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [],
+      "supporting_observations": [
+        "OBS-2026-OCT-07"
+      ],
+      "source_link_interpretation": "Source-specific context and limits; not independent validation of AI SAFE2. Source retention predates this explicit requirements disposition.",
+      "source_finding_id": "B07"
+    },
+    {
+      "review_id": "C61",
+      "control_id": "CP.4",
+      "title": "Hostile security telemetry and defensive authority",
+      "research_title": "Hostile security telemetry and defensive authority",
+      "research_question": "Can a correctly blocked request later gain authority through a security alert or investigation summary?",
+      "rationale": "CP.4/S1.3 already separate data from authority. Deepen defensive-agent tests and profiles rather than duplicate normative requirements. Separately scoped investigation and containment prevent records from minting grants. Derived summaries and provider integrations expand the test surface.",
+      "alternatives": "CP.4/S1.3 already separate data from authority. Deepen defensive-agent tests and profiles rather than duplicate normative requirements.",
+      "advantages": "Separately scoped investigation and containment prevent records from minting grants.",
+      "costs": "Derived summaries and provider integrations expand the test surface.",
+      "source": "October 3-9 security brief, finding B08; primary source https://cert.gov.ng/index.php/advisories/ghostjacking-an-indirect-prompt-injection-against-ai-agents. Retrospective disposition dated November 23, 2026.",
+      "requirements": [],
+      "validation": "Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.",
+      "research_path": "research/085_v35_c61.md",
+      "status": "supporting-analysis",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [],
+      "supporting_observations": [
+        "OBS-2026-OCT-08"
+      ],
+      "source_link_interpretation": "Source-specific context and limits; not independent validation of AI SAFE2. Source retention predates this explicit requirements disposition.",
+      "source_finding_id": "B08"
+    },
+    {
+      "review_id": "C62",
+      "control_id": "F3.6",
+      "title": "Consumption attribution and protected ceiling changes",
+      "research_title": "Consumption attribution and protected ceiling changes",
+      "research_question": "How are unattributed exposure, ceiling changes and breach revocation handled without relying on hidden limits?",
+      "rationale": "Use the existing aggregate authority owner rather than a second economic-control family. Explicit attribution, change authority and breach behavior preserve source nuance; secrecy of the ceiling is not a defensible general security requirement.",
+      "alternatives": "Use the existing aggregate authority owner rather than a second economic-control family. Explicit attribution, change authority and breach behavior preserve source nuance; secrecy of the ceiling is not a defensible general security requirement.",
+      "advantages": "Closes gaps between consumption accounting, human limit changes and actual revocation.",
+      "costs": "Conservative accounting can hold legitimate work; reconciliation and recoverable state add integration burden.",
+      "source": "Original F3.6 economic-ceiling source, requirements F3.6.1-F3.6.7; explicit source dispositions in docs/FRAMEWORK-SOURCE-UTILIZATION.md.",
+      "requirements": [
+        "Attribute consumption to a verified principal, stable unit of work and declared model/provider/route where applicable. Charge unattributable consumption to the governing envelope; conservatively reserve or hold unknown exposure under an explicit reconciliation policy rather than treating it as zero.",
+        "Bind ceiling creation and increases to authority outside the governed agent, with exact scope, units, reason, expiry and recorded approval. For ACT-3/ACT-4, treat a mid-task ceiling increase as a Class-H action under CP.10; the agent cannot grant or enlarge its own consumption authority.",
+        "On a ceiling breach, halt or revoke affected consumption authority at the task and applicable descendant scope, preserve reconstructable evidence and recoverable state, and verify cessation and residual effects rather than issuing only an advisory warning."
+      ],
+      "validation": "Require positive/negative structural examples and source-disposition integrity. Future component execution remains in #434/#436/#439/#440 and related issues; no new evaluator or runtime enforcement is implemented here. Test unattributed exposure, unauthorized ceiling changes, breach recovery, missing clause/revision and unsupported historical-result promotion at the owning capability boundary.",
+      "research_path": "research/086_v35_c62.md",
+      "status": "normative",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [
+        {
+          "id": "F3.6.R07",
+          "requirement": "Attribute consumption to a verified principal, stable unit of work and declared model/provider/route where applicable. Charge unattributable consumption to the governing envelope; conservatively reserve or hold unknown exposure under an explicit reconciliation policy rather than treating it as zero.",
+          "disposition": "normative",
+          "review_id": "C62",
+          "research": "research/086_v35_c62.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "F3.6.R08",
+          "requirement": "Bind ceiling creation and increases to authority outside the governed agent, with exact scope, units, reason, expiry and recorded approval. For ACT-3/ACT-4, treat a mid-task ceiling increase as a Class-H action under CP.10; the agent cannot grant or enlarge its own consumption authority.",
+          "disposition": "normative",
+          "review_id": "C62",
+          "research": "research/086_v35_c62.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "F3.6.R09",
+          "requirement": "On a ceiling breach, halt or revoke affected consumption authority at the task and applicable descendant scope, preserve reconstructable evidence and recoverable state, and verify cessation and residual effects rather than issuing only an advisory warning.",
+          "disposition": "normative",
+          "review_id": "C62",
+          "research": "research/086_v35_c62.md",
+          "requirements_revision": "2026-11-23"
+        }
+      ],
+      "supporting_observations": [],
+      "source_link_interpretation": "Framework specification and source-disposition analysis. No new incident, runtime result, independent efficacy or legal conclusion is inferred."
+    },
+    {
+      "review_id": "C63",
+      "control_id": "CP.13",
+      "title": "Revision-bound clause evidence and source disposition",
+      "research_title": "Revision-bound clause evidence and source disposition",
+      "research_question": "Can an assessment identify exactly which framework revision and applicable clauses its evidence supports?",
+      "rationale": "CP.13 owns evidence scope and independence; a versioned framework record contract specifies identity without implementing a CLI or deployment evaluator. A separate scoring/control family would fragment the same evidence chain.",
+      "alternatives": "CP.13 owns evidence scope and independence; a versioned framework record contract specifies identity without implementing a CLI or deployment evaluator. A separate scoring/control family would fragment the same evidence chain.",
+      "advantages": "Prevents current requirement coverage being inferred from older evidence and makes unused source nuance discoverable.",
+      "costs": "Clause applicability and provenance review add maintenance burden; an exhaustive raw-corpus ledger still requires source-by-source disposition.",
+      "source": "Original full-update operating process and November 23 retrospective audit; docs/FRAMEWORK-SOURCE-UTILIZATION.md and docs/FRAMEWORK-ASSESSMENT-CONTRACT-V2.md.",
+      "requirements": [
+        "Record framework version, requirements revision, system/deployment revision, scope, applicable clause IDs and applicability rationale with evidence provenance, observation status and accountable owner. Distinguish declarations from independently verified observations.",
+        "Preserve the producing requirement/evidence contract for historical results. Reassess new or materially changed applicable clauses; absent, unknown, untested or conflicting evidence shall not be promoted to a pass by relabeling an older control-level assessment.",
+        "Maintain traceable source-claim dispositions through owning requirements, research, implementation paths, tests/results, issue ownership and supported release claims. Expose unresolved source locations, incomplete corpus review and missing result links; structural schema or ledger validity alone establishes neither source truth, conformance nor authorization."
+      ],
+      "validation": "Require positive/negative structural examples and source-disposition integrity. Future component execution remains in #434/#436/#439/#440 and related issues; no new evaluator or runtime enforcement is implemented here. Test unattributed exposure, unauthorized ceiling changes, breach recovery, missing clause/revision and unsupported historical-result promotion at the owning capability boundary.",
+      "research_path": "research/087_v35_c63.md",
+      "status": "normative",
+      "version_added": "v3.5",
+      "requirements_revision": "2026-11-23",
+      "clauses": [
+        {
+          "id": "CP.13.R11",
+          "requirement": "Record framework version, requirements revision, system/deployment revision, scope, applicable clause IDs and applicability rationale with evidence provenance, observation status and accountable owner. Distinguish declarations from independently verified observations.",
+          "disposition": "normative",
+          "review_id": "C63",
+          "research": "research/087_v35_c63.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.13.R12",
+          "requirement": "Preserve the producing requirement/evidence contract for historical results. Reassess new or materially changed applicable clauses; absent, unknown, untested or conflicting evidence shall not be promoted to a pass by relabeling an older control-level assessment.",
+          "disposition": "normative",
+          "review_id": "C63",
+          "research": "research/087_v35_c63.md",
+          "requirements_revision": "2026-11-23"
+        },
+        {
+          "id": "CP.13.R13",
+          "requirement": "Maintain traceable source-claim dispositions through owning requirements, research, implementation paths, tests/results, issue ownership and supported release claims. Expose unresolved source locations, incomplete corpus review and missing result links; structural schema or ledger validity alone establishes neither source truth, conformance nor authorization.",
+          "disposition": "normative",
+          "review_id": "C63",
+          "research": "research/087_v35_c63.md",
+          "requirements_revision": "2026-11-23"
+        }
+      ],
+      "supporting_observations": [],
+      "source_link_interpretation": "Framework specification and source-disposition analysis. No new incident, runtime result, independent efficacy or legal conclusion is inferred."
     }
-  ]
+  ],
+  "requirements_revision": "2026-11-23",
+  "revision_baseline": {
+    "commit": "78bd1e6c02eb66aa68e73fc16f6c55f2782cc896",
+    "decisions": 53,
+    "child_clauses": 157,
+    "core_controls": 173
+  },
+  "revision_change": "Additive requirements under stable v3.5 control IDs; reassess newly applicable clauses. Historical results retain their original revision."
 }

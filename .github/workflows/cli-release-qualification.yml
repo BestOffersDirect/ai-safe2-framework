@@ -3,15 +3,6 @@ name: CLI Release Qualification
 on:
   pull_request:
     branches: [main]
-    paths:
-      - "safe2/**"
-      - "scanner/**"
-      - "aisafe2_mcp_tools/**"
-      - "gateway/**"
-      - "examples/**"
-      - "scripts/check_release_installation.py"
-      - "pyproject.toml"
-      - ".github/workflows/cli-release-qualification.yml"
   push:
     branches: [main]
 

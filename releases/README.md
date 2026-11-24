@@ -14,3 +14,7 @@ release announcements and verify links in GitHub preview before publication.
 ## Current framework update
 
 [AI SAFE2 v3.5.0](AI-SAFE2-v3.5.0.md) records the v3.5 framework update in PR #433. Component publications are tracked separately.
+
+## Requirements revision 2026-11-23
+
+[Evidence-boundary requirement deltas](AI-SAFE2-v3.5-requirements-2026-11-23.md) retain framework v3.5 and component publication identities.

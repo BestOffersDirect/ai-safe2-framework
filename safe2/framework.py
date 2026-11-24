@@ -32,6 +32,7 @@ def query(control_id: str | None = None, source_id: str | None = None) -> dict:
     if not control_id and not source_id:
         selected = set(catalog)
     return {'framework_version': '3.5.0', 'release_status': 'current',
+            'requirements_revision': data('framework-requirements-v3.5.json')['requirements_revision'],
             'controls': [catalog[c] for c in sorted(selected) if c in catalog],
             'relationships': relationships,
             'interpretation': 'Recorded relationships remain attributed and unreviewed until their exact source and applicability are validated.'}

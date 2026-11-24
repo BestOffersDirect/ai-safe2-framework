@@ -1,6 +1,6 @@
 # AI SAFE2 v3.5 control contracts
 
-AI SAFE2 v3.5 normative requirements. Baseline v3.1 contains 161 controls. This revision retains those IDs and adds twelve controls, yielding 173. Existing component implementations retain their separately evidenced status. A requirement is an obligation on applicable deployments; source availability alone establishes no enforcement result.
+AI SAFE2 v3.5 normative requirements. Baseline v3.1 contains 161 controls. This revision retains those IDs and adds twelve controls, yielding 173. Existing component implementations retain their separately evidenced status. A requirement is an obligation on applicable deployments; source availability alone establishes no enforcement result. Requirements revision 2026-11-23: 175 child clauses and 63 research records. Earlier evidence retains its original revision.
 
 Applicability must be recorded for the deployment, effect, actor and consequence. Each applicable child clause requires an identified enforcement or governance owner, test evidence, failure response and recovery procedure. Research-only clauses document unsettled measurements and do not impose a runtime threshold.
 
@@ -120,7 +120,7 @@ Applicability must be recorded for the deployment, effect, actor and consequence
 | [P4.T2.1_ADV](#p4-t2-1_adv) | Distributed Agent Monitoring | RETAINED |
 | [P4.T2.2_ADV](#p4-t2-2_adv) | NHI Monitoring | RETAINED |
 | [P4.T2.3_ADV](#p4-t2-3_adv) | Memory Poisoning Monitor | RETAINED |
-| [M4.4](#m4-4) | Adversarial Behavior Detection Pipeline | RETAINED |
+| [M4.4](#m4-4) | Adversarial Behavior Detection Pipeline | UPDATED |
 | [M4.5](#m4-5) | Tool-Misuse Detection Controls | RETAINED |
 | [M4.6](#m4-6) | Emergent Behavior Anomaly Detection | RETAINED |
 | [M4.7](#m4-7) | Jailbreak & Injection Telemetry Layer | RETAINED |
@@ -156,7 +156,7 @@ Applicability must be recorded for the deployment, effect, actor and consequence
 | [E5.1](#e5-1) | Continuous Adversarial Evaluation Cadence | UPDATED |
 | [E5.2](#e5-2) | Capability Emergence Review Process | UPDATED |
 | [E5.3](#e5-3) | Evaluation-Safe Pattern Library | RETAINED |
-| [E5.4](#e5-4) | Red-Team Artifact Repository | RETAINED |
+| [E5.4](#e5-4) | Red-Team Artifact Repository | UPDATED |
 | [S1.8](#s1-8) | Pre-Trust Initialization Boundary | NEW |
 | [F3.6](#f3-6) | Aggregate Consumable-Authority Ceiling | NEW |
 | [F3.7](#f3-7) | Environment Binding and Assertion | NEW |
@@ -342,6 +342,19 @@ Message, shared artifact and tool result provenance use common trust rules. A ne
 - **S1.3.R02** (Requirement) Prevent agent-to-agent handoffs and shared-source agreement from silently establishing authorization or independent corroboration.
 
 **Acceptance and failure analysis** Inter-agent artifact governance and synthetic consensus. Compare direct messages, shared state and multiple derivatives of one source.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
+
+### C58 supporting research and acceptance detail
+
+Existing S1.3/CP.12 clauses already impose provenance and authority boundaries. Add a linked research/validation record, not duplicate normative clauses or mandate one auditor. Connects source spans, task warrant and independent effects without granting authority to the source. Trajectory completeness, privacy and semantic attribution remain uncertain.
+
+**Source and research** October 3-9 security brief, finding B02; primary source https://arxiv.org/html/2610.05163v1. Retrospective disposition dated November 23, 2026.
+
+[Research decision](../research/082_v35_c58.md)
+
+
+**Acceptance and failure analysis** Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.
 
 On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
 
@@ -610,7 +623,7 @@ Real-time registry of every deployed agent with owner_of_record, ACT tier, tool 
 
 ## A2.5 Semantic Execution Trace Logging
 
-Captures full agent execution trace: reasoning chain, every tool call with parameters, every memory operation - written to an append-only store the agent cannot modify.
+Record observable agent actions, tool calls with parameters, memory operations, available summaries and evidence references in an append-only store outside agent write authority. Declare omissions and collector scope; do not promise access to private reasoning.
 
 ### C21 inherited requirement detail
 
@@ -1057,7 +1070,23 @@ Monitor RAG source integrity; detect embedding drift toward adversarial regions.
 
 ## M4.4 Adversarial Behavior Detection Pipeline
 
-Continuously probes deployed agents with adversarial inputs and monitors behavioral responses; attack patterns from red-team repository feed detection rules automatically.
+Probe agent behavior with governed adversarial cases and evaluate monitor coverage by consequence class. Red-team findings may inform proposed detection rules; production promotion requires independent validation, approved change authority, versioning and rollback.
+
+### C56 inherited requirement detail
+
+A separate coverage control increases visibility but duplicates M4.4 and E5.1. Add explicit clauses plus the evaluator work package instead of a new threat category. Explicit selector and auditor metrics expose cost and safety trade-offs. Held-out evaluation and stratification add cost and cannot guarantee unseen-path coverage.
+
+**Source and research** October 3-9 security brief, finding B06; primary source https://arxiv.org/html/2610.07256v1. Retrospective disposition dated November 23, 2026.
+
+[Research decision](../research/080_v35_c56.md)
+
+- **M4.4.R01** (Requirement) Declare the semantic-audit selection policy, mandatory inspection classes, exclusions, resource limits and behavior when evidence or reviewers are unavailable; selection cannot bypass mandatory final-effect authorization.
+- **M4.4.R02** (Requirement) Measure selector misses, auditor misses, false blocks, unknowns, useful completion and latency separately by consequence class, runtime and backend, using paired and held-out cases.
+- **M4.4.R03** (Requirement) Evaluate adversarial evasion and overload of the selector; material coverage degradation requires an explicit authority restriction or approved exception and retest.
+
+**Acceptance and failure analysis** Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
 
 <a id="m4-5"></a>
 
@@ -1337,6 +1366,22 @@ Validated reference implementations for all AI SAFE2 controls with platform-spec
 
 Structured schema for all red-team findings; required deliverable from every exercise; integrated into E5.1 evaluation cadence for continuous reuse.
 
+### C57 inherited requirement detail
+
+An independent learning-system control might fit a separately operated service. E5.4 and S1.5 already own artifact/memory lifecycle; deepen them and remove automatic-promotion ambiguity. Preserves reusable discovery while separating hostile findings from authorized production changes. Quarantine, held-out partitions and approvals slow rule promotion.
+
+**Source and research** October 3-9 security brief, finding B05; primary source https://arxiv.org/html/2610.08951v1. Retrospective disposition dated November 23, 2026.
+
+[Research decision](../research/081_v35_c57.md)
+
+- **E5.4.R01** (Requirement) Record origin, trust, observed consequence, validity and permitted use for generated red-team artifacts and persistent strategy memory; quarantine unverified instructions.
+- **E5.4.R02** (Requirement) Separate development feedback from held-out assurance; review, version, authorize and support rollback of changes promoted into production monitoring or policy.
+- **E5.4.R03** (Requirement) Test poisoned strategy memory, benchmark leakage, malicious rule proposals and restoration; an artifact or its generating agent cannot authorize its own promotion.
+
+**Acceptance and failure analysis** Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
+
 <a id="s1-8"></a>
 
 ## S1.8 Pre-Trust Initialization Boundary
@@ -1377,7 +1422,7 @@ F3.2 controls depth, F3.5 contains cascades, MCP-8 is profile-scoped and APAY ha
 - **F3.6.R02** (Requirement) Declare units, accountable owner, concurrency, retries, expiry and treatment of delayed or unknown consumption.
 - **F3.6.R03** (Requirement) Reject admission beyond the aggregate envelope, reconcile cancellation and settlement idempotently, and define safe handling of partially committed effects.
 
-**Acceptance and failure analysis** Aggregate authority and settlement. Compare concurrency, tokens, commitments, retry and delayed usage. Allocate F3.6 only after catalog overlap review.
+**Acceptance and failure analysis** Aggregate authority and settlement. Compare concurrency, tokens, commitments, retry and delayed usage. Verify independently observed accounting, breach handling and recovery within the current F3.6 ownership.
 
 On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
 
@@ -1394,6 +1439,22 @@ Spend alone omits material compute, energy, water and infrastructure constraints
 - **F3.6.R06** (Requirement) Apply justified limits or procurement restrictions and recheck after scaling or model changes.
 
 **Acceptance and failure analysis** Compare measured use and estimates under a synthetic scaling scenario. Avoid turning uncertain estimates into exact environmental benefits.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
+
+### C62 inherited requirement detail
+
+Use the existing aggregate authority owner rather than a second economic-control family. Explicit attribution, change authority and breach behavior preserve source nuance; secrecy of the ceiling is not a defensible general security requirement.
+
+**Source and research** Original F3.6 economic-ceiling source, requirements F3.6.1-F3.6.7; explicit source dispositions in docs/FRAMEWORK-SOURCE-UTILIZATION.md.
+
+[Research decision](../research/086_v35_c62.md)
+
+- **F3.6.R07** (Requirement) Attribute consumption to a verified principal, stable unit of work and declared model/provider/route where applicable. Charge unattributable consumption to the governing envelope; conservatively reserve or hold unknown exposure under an explicit reconciliation policy rather than treating it as zero.
+- **F3.6.R08** (Requirement) Bind ceiling creation and increases to authority outside the governed agent, with exact scope, units, reason, expiry and recorded approval. For ACT-3/ACT-4, treat a mid-task ceiling increase as a Class-H action under CP.10; the agent cannot grant or enlarge its own consumption authority.
+- **F3.6.R09** (Requirement) On a ceiling breach, halt or revoke affected consumption authority at the task and applicable descendant scope, preserve reconstructable evidence and recoverable state, and verify cessation and residual effects rather than issuing only an advisory warning.
+
+**Acceptance and failure analysis** Require positive/negative structural examples and source-disposition integrity. Future component execution remains in #434/#436/#439/#440 and related issues; no new evaluator or runtime enforcement is implemented here. Test unattributed exposure, unauthorized ceiling changes, breach recovery, missing clause/revision and unsupported historical-result promotion at the owning capability boundary.
 
 On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
 
@@ -1614,6 +1675,19 @@ An exception can permanently defeat all otherwise correct controls. Existing own
 - **CP.4.R06** (Requirement) Define a tested emergency path for unavailable approvers with limited consequences.
 
 **Acceptance and failure analysis** Exercise expired exceptions, approver outage and an agent requesting wider rights. Verify revocation and restoration after the emergency.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
+
+### C61 supporting research and acceptance detail
+
+CP.4/S1.3 already separate data from authority. Deepen defensive-agent tests and profiles rather than duplicate normative requirements. Separately scoped investigation and containment prevent records from minting grants. Derived summaries and provider integrations expand the test surface.
+
+**Source and research** October 3-9 security brief, finding B08; primary source https://cert.gov.ng/index.php/advisories/ghostjacking-an-indirect-prompt-injection-against-ai-agents. Retrospective disposition dated November 23, 2026.
+
+[Research decision](../research/085_v35_c61.md)
+
+
+**Acceptance and failure analysis** Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.
 
 On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
 
@@ -1931,6 +2005,35 @@ A separate boundary is useful for publication, communication, account creation a
 
 On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
 
+### C54 inherited requirement detail
+
+A standalone compiler-control family could serve separately operated compilers, but CP.12 already owns authorized effects and CP.11 reapproval. Keep explicit clauses here. Independent task/contract review catches over-grants and legitimate-work blocks. Review effort and conservative interpretation can block useful work.
+
+**Source and research** October 3-9 security brief, finding B01; primary source https://arxiv.org/html/2610.06966v1. Retrospective disposition dated November 23, 2026.
+
+[Research decision](../research/078_v35_c54.md)
+
+- **CP.12.R07** (Requirement) Preserve the trusted task scope, capability-registry revision, compiler/policy version and authorized effect contract; prohibit untrusted task data from widening that contract.
+- **CP.12.R08** (Requirement) Independently test required legitimate effects, forbidden effects, ambiguous tasks, omissions and over-broad translations before activating a generated contract; unresolved material scope requires clarification or refusal.
+- **CP.12.R09** (Requirement) Bind approval and enforcement to the reviewed contract revision; invalidate authority after a material task, capability or compiler-policy change.
+
+**Acceptance and failure analysis** Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
+
+### C60 supporting research and acceptance detail
+
+CP.12/F3.7 already require exact targets and environments. Add attack-chain acceptance and a scoped profile; no new top-level actor family is justified. An explicit offensive-security profile prevents capability from becoming blanket target permission. Target normalization, changing discovery results and jurisdiction-specific scope need careful ownership.
+
+**Source and research** October 3-9 security brief, finding B07; primary source https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/. Retrospective disposition dated November 23, 2026.
+
+[Research decision](../research/084_v35_c60.md)
+
+
+**Acceptance and failure analysis** Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
+
 <a id="cp-13"></a>
 
 ## CP.13 Control Evidence Independence
@@ -1967,6 +2070,51 @@ Independent custody alone cannot establish evaluator competence or representativ
 - **CP.13.R07** (Requirement) Retest after material changes to a benchmark, evaluator or assurance provider.
 
 **Acceptance and failure analysis** Use a flawed grader, conflicted reviewer and contaminated test set. Verify that their verdict cannot silently become independent assurance.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
+
+### C55 inherited requirement detail
+
+A dedicated UI control would improve team assignment but split custody from presentation. CP.13 owns the chain; issue #448 assigns consumer owners. One traceable chain detects substitutions and omissions across consumers. Rendering isolation, accessibility and transformation verification require integration work.
+
+**Source and research** October 3-9 security brief, finding B03; primary source https://metr.org/blog/2026-10-06-ai-systems-could-cover-up-misbehavior/. Retrospective disposition dated November 23, 2026.
+
+[Research decision](../research/079_v35_c55.md)
+
+- **CP.13.R08** (Requirement) Treat evidence content as untrusted through display, preview and export; use inert rendering or a demonstrably isolated active-content boundary, constrained links and explicit parser failure handling.
+- **CP.13.R09** (Requirement) Bind source collection records, retained content and exported artifacts with versioned transformations and completeness indicators; detect suppression, substitution and truncated exports.
+- **CP.13.R10** (Requirement) Provide an independent verification path and retest after renderer/exporter changes; record disagreement between stored, displayed and exported evidence.
+
+**Acceptance and failure analysis** Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
+
+### C59 supporting research and acceptance detail
+
+CP.13/A2.5 already own observation and gaps. Extend adapter acceptance and #234 examples instead of a separate observer control. Independent process and sink observations can challenge a correct-looking deliverable. OS-specific collectors, privacy minimization and unseen paths limit completeness.
+
+**Source and research** October 3-9 security brief, finding B04; primary source https://arxiv.org/html/2610.06001v1. Retrospective disposition dated November 23, 2026.
+
+[Research decision](../research/083_v35_c59.md)
+
+
+**Acceptance and failure analysis** Use the versioned V01-V10 specifications in challenges/003-evidence-boundary/cases.json. Record independent effects, paired legitimate work, unknown observations and recovery. Execution is tracked in #448/#449 and applicable component issues; this record does not claim a passed runtime test.
+
+On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
+
+### C63 inherited requirement detail
+
+CP.13 owns evidence scope and independence; a versioned framework record contract specifies identity without implementing a CLI or deployment evaluator. A separate scoring/control family would fragment the same evidence chain.
+
+**Source and research** Original full-update operating process and November 23 retrospective audit; docs/FRAMEWORK-SOURCE-UTILIZATION.md and docs/FRAMEWORK-ASSESSMENT-CONTRACT-V2.md.
+
+[Research decision](../research/087_v35_c63.md)
+
+- **CP.13.R11** (Requirement) Record framework version, requirements revision, system/deployment revision, scope, applicable clause IDs and applicability rationale with evidence provenance, observation status and accountable owner. Distinguish declarations from independently verified observations.
+- **CP.13.R12** (Requirement) Preserve the producing requirement/evidence contract for historical results. Reassess new or materially changed applicable clauses; absent, unknown, untested or conflicting evidence shall not be promoted to a pass by relabeling an older control-level assessment.
+- **CP.13.R13** (Requirement) Maintain traceable source-claim dispositions through owning requirements, research, implementation paths, tests/results, issue ownership and supported release claims. Expose unresolved source locations, incomplete corpus review and missing result links; structural schema or ledger validity alone establishes neither source truth, conformance nor authorization.
+
+**Acceptance and failure analysis** Require positive/negative structural examples and source-disposition integrity. Future component execution remains in #434/#436/#439/#440 and related issues; no new evaluator or runtime enforcement is implemented here. Test unattributed exposure, unauthorized ceiling changes, breach recovery, missing clause/revision and unsupported historical-result promotion at the owning capability boundary.
 
 On a failed applicable acceptance condition, record failed or unknown coverage, narrow the deployment authority to the demonstrated boundary, and assign corrective action and recovery to the named owner. An assessor must retain contrary results and unresolved effects.
 

@@ -58,6 +58,10 @@
       "kind": "document"
     },
     {
+      "path": ".github/required-checks.json",
+      "kind": "machine-data"
+    },
+    {
       "path": ".gitleaks-baseline.json",
       "kind": "machine-data"
     },
@@ -606,6 +610,14 @@
       "kind": "machine-data"
     },
     {
+      "path": "challenges/003-evidence-boundary/README.md",
+      "kind": "document"
+    },
+    {
+      "path": "challenges/003-evidence-boundary/cases.json",
+      "kind": "machine-data"
+    },
+    {
       "path": "challenges/README.md",
       "kind": "document"
     },
@@ -782,7 +794,15 @@
       "kind": "document"
     },
     {
+      "path": "docs/FRAMEWORK-ASSESSMENT-CONTRACT-V2.md",
+      "kind": "document"
+    },
+    {
       "path": "docs/FRAMEWORK-EVIDENCE-EXPANSION.md",
+      "kind": "document"
+    },
+    {
+      "path": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
       "kind": "document"
     },
     {
@@ -819,6 +839,10 @@
     },
     {
       "path": "docs/V35-ECOSYSTEM-ADOPTION.md",
+      "kind": "document"
+    },
+    {
+      "path": "docs/V35-EVIDENCE-BOUNDARY-FOLLOWTHROUGH.md",
       "kind": "document"
     },
     {
@@ -1142,7 +1166,19 @@
       "kind": "document"
     },
     {
+      "path": "docs/assessments/2026-11-23-evidence-boundary/README.md",
+      "kind": "document"
+    },
+    {
+      "path": "docs/assessments/2026-11-23-evidence-boundary/TECHNOLOGY-CARD.md",
+      "kind": "document"
+    },
+    {
       "path": "docs/data/framework-mapping-recovery-review-2026-11-19.csv",
+      "kind": "machine-data"
+    },
+    {
+      "path": "docs/data/framework-source-dispositions-v35.json",
       "kind": "machine-data"
     },
     {
@@ -1170,8 +1206,16 @@
       "kind": "document"
     },
     {
+      "path": "docs/engineering/REPOSITORY-QUALITY-AND-AGENT-READINESS.md",
+      "kind": "document"
+    },
+    {
       "path": "docs/engineering/REVIEW-AND-SECURITY-STACK.md",
       "kind": "document"
+    },
+    {
+      "path": "docs/examples/requirement-assessment-v2.json",
+      "kind": "machine-data"
     },
     {
       "path": "examples/README.md",
@@ -1874,6 +1918,10 @@
       "kind": "document"
     },
     {
+      "path": "releases/AI-SAFE2-v3.5-requirements-2026-11-23.md",
+      "kind": "document"
+    },
+    {
       "path": "releases/AI-SAFE2-v3.5.0.md",
       "kind": "document"
     },
@@ -2222,6 +2270,46 @@
       "kind": "document"
     },
     {
+      "path": "research/078_v35_c54.md",
+      "kind": "document"
+    },
+    {
+      "path": "research/079_v35_c55.md",
+      "kind": "document"
+    },
+    {
+      "path": "research/080_v35_c56.md",
+      "kind": "document"
+    },
+    {
+      "path": "research/081_v35_c57.md",
+      "kind": "document"
+    },
+    {
+      "path": "research/082_v35_c58.md",
+      "kind": "document"
+    },
+    {
+      "path": "research/083_v35_c59.md",
+      "kind": "document"
+    },
+    {
+      "path": "research/084_v35_c60.md",
+      "kind": "document"
+    },
+    {
+      "path": "research/085_v35_c61.md",
+      "kind": "document"
+    },
+    {
+      "path": "research/086_v35_c62.md",
+      "kind": "document"
+    },
+    {
+      "path": "research/087_v35_c63.md",
+      "kind": "document"
+    },
+    {
       "path": "research/README.md",
       "kind": "document"
     },
@@ -2527,6 +2615,10 @@
     },
     {
       "path": "safe2/data/report-attestation-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "safe2/data/requirement-assessment-v2.schema.json",
       "kind": "machine-data"
     },
     {

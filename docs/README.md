@@ -46,3 +46,13 @@ The canonical ownership registry is
 [Complete repository page map](../PAGE_MAP.md) | [Machine page map](PAGE_MAP.json)
 
 [Dedicated component updates after v3.5](POST-V35-COMPONENT-UPDATES.md) | [Release qualification](assessments/2026-11-20-v35-release/README.md)
+
+## Evidence boundary follow-through
+
+[Requirements revision and work packages](V35-EVIDENCE-BOUNDARY-FOLLOWTHROUGH.md) | [Case specifications](../challenges/003-evidence-boundary/README.md).
+
+[Clause-level evidence contract](FRAMEWORK-ASSESSMENT-CONTRACT-V2.md) | [Source-disposition ledger and original-corpus limits](FRAMEWORK-SOURCE-UTILIZATION.md).
+
+## Quality enforcement
+
+[Repository quality, tests and agent readiness](engineering/REPOSITORY-QUALITY-AND-AGENT-READINESS.md) | [Required merge checks](../.github/required-checks.json).

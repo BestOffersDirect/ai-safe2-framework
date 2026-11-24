@@ -61,6 +61,10 @@ tests/integrations separately from executed or released behavior. -->
 - [ ] Documentation and generated data are synchronized
 - [ ] No new em/en dashes are introduced where repository checks prohibit them
 
+- [ ] Human/agent navigation, module presentation and owning/generated data remain synchronized
+- [ ] Changed layouts/routes were reviewed; material visual or accessibility limits are disclosed
+- [ ] Required merge-check names and triggers remain compatible with the active protection contract
+
 ### Hosted Evidence and CI Status
 
 <!-- Name passing, failing, unavailable, and not-run checks separately. A green wrapper is not a completed semantic review. -->

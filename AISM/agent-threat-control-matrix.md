@@ -284,7 +284,7 @@ This matrix is designed for security engineers, red teams, and governance practi
 | Secret scanning in all AI outputs | P1 Shield | Detect credentials, API keys, and other secrets in agent outputs before they are sent |
 | Data isolation and access boundary enforcement | P1 Shield | Ensure agents can only access data appropriate for their function |
 | User interaction logging with prompt and query capture | P2 Ledger | Maintain audit trail of all data exposures for investigation and compliance |
-| Semantic execution trace logging (A2.5, v3.0) | P2 Ledger | Captures full agent execution trace — reasoning chain, every tool call with parameters, every memory operation — written to an append-only store the agent cannot modify |
+| Semantic execution trace logging (A2.5, v3.0) | P2 Ledger | Records observable actions, tool parameters, memory events and available summaries in protected storage; declares collector gaps and does not promise private reasoning access |
 | Decision traceability and provenance documentation | P2 Ledger | Track information flow from input through agent reasoning to output |
 
 **MITRE ATLAS:** AML.T0057
@@ -357,7 +357,7 @@ This matrix is designed for security engineers, red teams, and governance practi
 
 **What it is:** Attacks that exploit multi-session interaction to gradually modify agent behavior through repeated exposure to crafted inputs. Unlike T1 prompt injection — which attempts a single-turn override — behavioral conditioning operates across many interactions, implanting behavioral patterns that persist across sessions and bypass per-input detection.
 
-**Why it is a distinct threat category:** T1 prompt injection is detectable at the input boundary on a per-message basis. Multi-turn behavioral conditioning is not. It works by changing how an agent interprets future inputs — through few-shot pattern implanting, role confusion across conversations, or systematic bias toward specific responses. Standard injection filters do not detect it because no individual message appears adversarial. Detection requires semantic analysis across multiple sessions and behavioral baseline comparison over time.
+**Why it is a distinct threat category:** T1 prompt injection may be immediate or staged; input-only detection cannot establish complete coverage. Multi-turn behavioral conditioning additionally concerns accumulated or persistent changes. It works by changing how an agent interprets future inputs — through few-shot pattern implanting, role confusion across conversations, or systematic bias toward specific responses. Standard injection filters do not detect it because no individual message appears adversarial. Detection requires semantic analysis across multiple sessions and behavioral baseline comparison over time.
 
 **Why it is especially dangerous for agents:** Agents with persistent memory and cross-session context are uniquely susceptible. The attack surface grows with every session the agent maintains. An agent that has been successfully conditioned will continue to behave anomalously even after the attacker stops interacting with it, because the behavior is now part of the agent's learned context rather than an active injection.
 
@@ -376,7 +376,7 @@ This matrix is designed for security engineers, red teams, and governance practi
 | Per-agent session isolation | P1 Shield | Prevent cross-session contamination of agent context; conditioning in one session cannot influence behavior in another |
 | Memory governance boundary controls (S1.5, v3.0) | P1 Shield | Authorization required for every write to persistent agent memory — prevents conditioning from persisting without audit trail |
 | Behavioral baseline anomaly detection across sessions | P2 Ledger | Alert when agent behavior trends over multiple sessions rather than triggering only on per-input anomalies |
-| Semantic execution trace logging (A2.5, v3.0) | P2 Ledger | Cross-session reasoning chain capture enables retrospective analysis of conditioning progression |
+| Semantic execution trace logging (A2.5, v3.0) | P2 Ledger | Cross-session observable action and memory-event records, with explicit omissions, support retrospective analysis of conditioning progression |
 | RAG corpus diff tracking (A2.6, v3.0) | P2 Ledger | Identifies when conditioning has succeeded in altering retrieved context rather than just immediate outputs |
 | Behavioral drift baseline and rollback (F3.4, v3.0) | P3 Circuit Breaker | Establishes measurable behavioral baselines; automated rollback when drift exceeds configurable thresholds — catches successful conditioning before it becomes entrenched |
 | Context consistency verification | P4 Command Center | Monitor for cross-session context anomalies that may indicate active conditioning campaign |
@@ -391,7 +391,7 @@ This matrix is designed for security engineers, red teams, and governance practi
 
 | Threat Category | P1 Shield | P2 Ledger | P3 Circuit Breaker | P4 Command Center | P5 Learning Engine | CP Governance OS |
 |---|---|---|---|---|---|---|
-| T1: Prompt Injection | Primary | Supporting | None | Supporting | Continuous improvement | CP.7 deception layer |
+| T1: Prompt Injection | Primary | Supporting | Primary (CP.12) | Supporting | Continuous improvement | CP.4 data/authority separation; CP.7 deception layer; CP.12 final-effect authorization |
 | T2: Multi-Agent Exploitation | Primary | Supporting | Primary | Primary | Red team | CP.4 control plane, CP.9 replication governance |
 | T3: Memory Poisoning | Primary | Primary | Primary | Supporting | Research integration | CP.7 RAG canaries |
 | T4: Supply Chain Compromise | Primary | Primary | None | Supporting | Threat intelligence | CP.5 platform profiles |

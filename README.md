@@ -79,9 +79,9 @@ Define the applicable requirements, build them at the real action boundary, and 
 | A2.7-A2.9 | Retries, false completion and uncertain failure attribution need explicit evidence | [Side effects and verified outcomes](02-audit-inventory/README.md) |
 | E5.5 | Success must be declared before the result is graded | [Success criteria](05-evolve-educate/README.md) |
 
-Version 3.5 contains **173 core controls, 157 child clauses and 53 new research notes**. Two child clauses retain research disposition. MCP retains **19 control IDs** and adds **12 child requirements**. Six deployment profiles and three threat profiles add context without inflating the core count.
+Version 3.5 contains **173 core controls, 175 child clauses and 63 research decisions/notes**. Two child clauses retain research disposition. MCP retains **19 control IDs** and adds **12 child requirements**. Six deployment profiles and three threat profiles add context without inflating the core count.
 
-**[Read the release note](releases/AI-SAFE2-v3.5.0.md)** · [Research and placement rationale](research/README.md) · [All 53 dispositions](safe2/data/framework-requirements-v3.5.json) · [Migration](MIGRATION.md)
+**[Read the release note](releases/AI-SAFE2-v3.5.0.md)** · [Research and placement rationale](research/README.md) · [All 63 dispositions](safe2/data/framework-requirements-v3.5.json) · [Migration](MIGRATION.md)
 
 ## The core architecture
 
@@ -243,3 +243,7 @@ Use [CITATION.cff](CITATION.cff) for citation metadata. Cite the exact framework
 [Mapping validation by source family](docs/ROSETTA-SOURCE-INDEX.md) | [Rosetta explorer source](dashboard/rosetta.html)
 
 [Dedicated component updates after v3.5](docs/POST-V35-COMPONENT-UPDATES.md) | [Release qualification](docs/assessments/2026-11-20-v35-release/README.md)
+
+**Requirements revision 2026-11-23:** [Evidence-boundary additions, deltas and work packages](docs/V35-EVIDENCE-BOUNDARY-FOLLOWTHROUGH.md). The original merged v3.5 baseline had 157 clauses and 53 research records; this revision adds eighteen clauses and ten records without adding core controls.
+
+[Framework evidence contract](docs/FRAMEWORK-ASSESSMENT-CONTRACT-V2.md) | [Source utilization and explicit gaps](docs/FRAMEWORK-SOURCE-UTILIZATION.md). This PR adds eighteen clauses and ten research records to the merged v3.5 baseline; capability implementations remain separate.

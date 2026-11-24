@@ -1,0 +1,161 @@
+{
+  "schema_version": "ai-safe2.merge-protection.v1",
+  "repository": "CyberStrategyInstitute/ai-safe2-framework",
+  "ruleset_id": 11699753,
+  "branch": "main",
+  "required_status_checks": [
+    {
+      "context": "AI SAFE2 / Decision evidence",
+      "integration_id": 15368
+    },
+    {
+      "context": "AI SAFE2 MCP knowledge server (install, start, auth)",
+      "integration_id": 15368
+    },
+    {
+      "context": "AI SAFE2 v3.1 / NEXUS Compliance (v0.3 control checks)",
+      "integration_id": 15368
+    },
+    {
+      "context": "Agent Discovery and Manifest Integrity",
+      "integration_id": 15368
+    },
+    {
+      "context": "Clean wheel / macos-latest / Python 3.11",
+      "integration_id": 15368
+    },
+    {
+      "context": "Clean wheel / macos-latest / Python 3.14",
+      "integration_id": 15368
+    },
+    {
+      "context": "Clean wheel / ubuntu-latest / Python 3.11",
+      "integration_id": 15368
+    },
+    {
+      "context": "Clean wheel / ubuntu-latest / Python 3.14",
+      "integration_id": 15368
+    },
+    {
+      "context": "Clean wheel / windows-latest / Python 3.11",
+      "integration_id": 15368
+    },
+    {
+      "context": "Clean wheel / windows-latest / Python 3.14",
+      "integration_id": 15368
+    },
+    {
+      "context": "CodeQL",
+      "integration_id": 57789
+    },
+    {
+      "context": "CodeQL / javascript-typescript",
+      "integration_id": 15368
+    },
+    {
+      "context": "CodeQL / python",
+      "integration_id": 15368
+    },
+    {
+      "context": "Merge Protection Integrity",
+      "integration_id": 15368
+    },
+    {
+      "context": "NEXUS Examples Smoke Test",
+      "integration_id": 15368
+    },
+    {
+      "context": "NEXUS Schema Validation",
+      "integration_id": 15368
+    },
+    {
+      "context": "NEXUS Tests (Python 3.10)",
+      "integration_id": 15368
+    },
+    {
+      "context": "NEXUS Tests (Python 3.11)",
+      "integration_id": 15368
+    },
+    {
+      "context": "NEXUS Tests (Python 3.12)",
+      "integration_id": 15368
+    },
+    {
+      "context": "NEXUS v3.1 Persistence Compatibility",
+      "integration_id": 15368
+    },
+    {
+      "context": "PR description / Decision context",
+      "integration_id": 15368
+    },
+    {
+      "context": "Python Correctness Lint",
+      "integration_id": 15368
+    },
+    {
+      "context": "Repository UX Consistency",
+      "integration_id": 15368
+    },
+    {
+      "context": "SAFE2 CLI / AISM (Python 3.11)",
+      "integration_id": 15368
+    },
+    {
+      "context": "SAFE2 CLI / AISM (Python 3.12)",
+      "integration_id": 15368
+    },
+    {
+      "context": "SAFE2 CLI / AISM (Python 3.13)",
+      "integration_id": 15368
+    },
+    {
+      "context": "SAFE2 CLI / AISM (Python 3.14)",
+      "integration_id": 15368
+    },
+    {
+      "context": "Scanner v3.1 Profile Invariants",
+      "integration_id": 15368
+    },
+    {
+      "context": "Security / Dependency change review",
+      "integration_id": 15368
+    },
+    {
+      "context": "Security / Python dependencies",
+      "integration_id": 15368
+    },
+    {
+      "context": "Security / Repository guardrails",
+      "integration_id": 15368
+    },
+    {
+      "context": "Security / Secret history",
+      "integration_id": 15368
+    },
+    {
+      "context": "Trust Gate Summary",
+      "integration_id": 15368
+    },
+    {
+      "context": "markdown-lint",
+      "integration_id": 15368
+    },
+    {
+      "context": "v3.1 Profile Data Integrity",
+      "integration_id": 15368
+    },
+    {
+      "context": "v3.5 contracts and generated freshness",
+      "integration_id": 15368
+    }
+  ],
+  "strict_required_status_checks_policy": true,
+  "required_review_thread_resolution": true,
+  "dismiss_stale_reviews_on_push": true,
+  "bypass_actors": [],
+  "advisory_contexts": [
+    "Greptile / Advisory status",
+    "PR-Agent / Advisory availability"
+  ],
+  "interpretation": "Required checks must be emitted on every main-targeting PR. Skipped or unavailable advisory review is not independent approval. Do not replace test execution with an unexplained green wrapper."
+}

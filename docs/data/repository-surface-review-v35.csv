@@ -69,6 +69,7 @@ challenges/001-anthropic-multi-agent-turf-war/replication/README.md,readme,histo
 challenges/001-anthropic-multi-agent-turf-war/results/README.md,readme,historical-or-frozen,Retain evidence/component/protocol identity; discover through current indexes.
 challenges/001-anthropic-multi-agent-turf-war/scenarios/README.md,readme,historical-or-frozen,Retain evidence/component/protocol identity; discover through current indexes.
 challenges/002-v35-commit-boundary/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
+challenges/003-evidence-boundary/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
 challenges/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
 dashboard/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
 dashboard/index.html,html,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
@@ -81,6 +82,7 @@ docs/advisories/README.md,readme,current-topic-surface,Current routes and explic
 docs/assessments/2026-10-07-version-consistency/README.md,readme,historical-or-frozen,Retain evidence/component/protocol identity; discover through current indexes.
 docs/assessments/2026-11-19-v35-update/README.md,readme,historical-or-frozen,Retain evidence/component/protocol identity; discover through current indexes.
 docs/assessments/2026-11-20-v35-release/README.md,readme,historical-or-frozen,Retain evidence/component/protocol identity; discover through current indexes.
+docs/assessments/2026-11-23-evidence-boundary/README.md,readme,historical-or-frozen,Retain evidence/component/protocol identity; discover through current indexes.
 examples/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
 examples/aism-decision-card/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
 examples/aism-remediation/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.

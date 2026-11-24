@@ -9,7 +9,8 @@
     "cross_pillar_controls": "CP.1-CP.15",
     "normative_entrypoint": "README.md",
     "cross_pillar_entrypoint": "00-cross-pillar/README.md",
-    "release_status": "current"
+    "release_status": "current",
+    "requirements_revision": "2026-11-23"
   },
   "machine_readable": {
     "core_controls": "skills/mcp/data/ai-safe2-controls-v3.5.json",
@@ -51,7 +52,11 @@
     "ecosystem_adoption": "docs/data/v35-ecosystem-adoption.json",
     "page_map": "docs/PAGE_MAP.json",
     "rosetta_source_index": "docs/ROSETTA-SOURCE-INDEX.md",
-    "repository_surface_review": "docs/data/repository-surface-review-v35.csv"
+    "repository_surface_review": "docs/data/repository-surface-review-v35.csv",
+    "evidence_boundary_cases": "challenges/003-evidence-boundary/cases.json",
+    "requirement_assessment_v2_schema": "safe2/data/requirement-assessment-v2.schema.json",
+    "source_dispositions": "docs/data/framework-source-dispositions-v35.json",
+    "required_merge_checks": ".github/required-checks.json"
   },
   "profiles": {
     "cp5_mcp": {

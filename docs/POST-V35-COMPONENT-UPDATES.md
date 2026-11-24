@@ -20,3 +20,7 @@ Issue #235 owns authenticated approval/webhook integration. #250 and #273 own th
 ## Sovereign runtime series
 
 Begin with shared enforcement copies in OpenClaw and Hermes. Qualify developer-tool paths in Claude Code, Codex, Cursor and Antigravity; orchestration in AutoGen, CrewAI, LangChain and LangGraph; and automation in Langflow, Lovable and Make. Grok and every other maintained example retain individual evidence boundaries. The parent issue requires an inventory and explicit maintained, illustrative or archived disposition for every example. A passing adapter cannot confer a pass on another stack.
+
+## Evidence boundary work packages
+
+[Revision 2026-11-23](V35-EVIDENCE-BOUNDARY-FOLLOWTHROUGH.md) links contract fidelity and all component acceptance. [#448](https://github.com/CyberStrategyInstitute/ai-safe2-framework/issues/448) owns shared evidence rendering/export; [#449](https://github.com/CyberStrategyInstitute/ai-safe2-framework/issues/449) owns Challenge Lab and evaluator coverage. Existing component issues retain implementation ownership and do not close on the framework merge.

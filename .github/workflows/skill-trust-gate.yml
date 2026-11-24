@@ -2,12 +2,7 @@ name: AI SAFE² Skill Trust Gate
 
 on:
   pull_request:
-    paths:
-      - 'skills/**'
-      - 'examples/**/SKILL.md'
-      - 'examples/**/SKILL-CARD.md'
-      - '**/*.skill.md'
-      - '!examples/skill-trust-gate/test-fixtures/**'
+    branches: [main]
   push:
     branches: [main]
     paths:
@@ -59,35 +54,7 @@ jobs:
           DISPATCH_SKILL_PATH: ${{ github.event.inputs.skill_path }}
           BEFORE_SHA: ${{ github.event.before }}
           BASE_REF: ${{ github.base_ref }}
-        run: |
-          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
-            python3 -c 'import json, os; print("paths=" + json.dumps([os.environ["DISPATCH_SKILL_PATH"]]))' >> "$GITHUB_OUTPUT"
-            echo "has_skills=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          ZERO_SHA="0000000000000000000000000000000000000000"
-          if [[ "$EVENT_NAME" == "push" && -n "$BEFORE_SHA" && "$BEFORE_SHA" != "$ZERO_SHA" ]]; then
-            CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" HEAD)
-          elif [[ -n "$BASE_REF" ]]; then
-            CHANGED_FILES=$(git diff --name-only "origin/${BASE_REF}...HEAD")
-          else
-            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || find . -name 'SKILL.md' -not -path './.git/*' | head -20)
-          fi
-
-          SKILL_DIRS=$(echo "$CHANGED_FILES" | \
-            grep -E 'SKILL\.md|SKILL-CARD\.md' | \
-            grep -v 'examples/skill-trust-gate/test-fixtures/' | \
-            xargs -r -I{} dirname {} | sort -u | \
-            python3 -c "import sys,json; paths=[l.strip() for l in sys.stdin if l.strip()]; print(json.dumps(paths))")
-
-          if [[ -z "$SKILL_DIRS" || "$SKILL_DIRS" == "[]" ]]; then
-            echo "has_skills=false" >> "$GITHUB_OUTPUT"
-            echo "paths=[]" >> "$GITHUB_OUTPUT"
-          else
-            echo "has_skills=true" >> "$GITHUB_OUTPUT"
-            echo "paths=$SKILL_DIRS" >> "$GITHUB_OUTPUT"
-          fi
+        run: python3 scripts/discover_changed_skills.py
 
   static-trust-gate:
     name: Static Trust Gate Scan
@@ -223,14 +190,14 @@ jobs:
     name: Trust Gate Summary
     runs-on: ubuntu-latest
     needs: [discover-skills, static-trust-gate]
-    if: always() && needs.discover-skills.outputs.has_skills == 'true'
+    if: always()
     steps:
-      - name: Evaluate gate results
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Evaluate gate results without treating skipped scans as passes
         env:
+          DISCOVERY_RESULT: ${{ needs.discover-skills.result }}
+          HAS_SKILLS: ${{ needs.discover-skills.outputs.has_skills }}
           SCAN_RESULT: ${{ needs.static-trust-gate.result }}
-        run: |
-          if [[ "$SCAN_RESULT" == "failure" ]]; then
-            echo "One or more skills failed or lacked complete trust evidence."
-            exit 1
-          fi
-          echo "All changed skills passed the v3.5 trust gate."
+        run: python3 scripts/check_skill_gate_results.py

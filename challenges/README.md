@@ -171,3 +171,7 @@ AI SAFE² principle: **If governance is not enforced at runtime, it is not gover
 ## v3.5 commit-boundary study
 
 [Challenge 002 prospective preregistration](002-v35-commit-boundary/README.md) defines episode-level exposure and separate safety/utility outcomes. Engineering fixtures do not establish confirmatory study results.
+
+## Evidence boundary specifications
+
+[Ten case families](003-evidence-boundary/README.md), revision 2026-11-23, are NOT_EXECUTED specifications tracked in #449. They do not replace older challenge protocols.

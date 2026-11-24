@@ -1,0 +1,1766 @@
+{
+  "schema_version": "ai-safe2.source-dispositions.v1",
+  "framework_version": "3.5.0",
+  "requirements_revision": "2026-11-23",
+  "scope": "Reviewed decision-to-requirement ledger; not exhaustive atomization of the original raw corpus.",
+  "original_corpus_coverage": "PARTIAL",
+  "unresolved_work": [
+    "Atomize source recommendations beyond the reviewed decisions with exact source locations and retained nuances.",
+    "Link real clause-level implementation/test/result evidence at each owning capability; do not substitute schema tests for conformance.",
+    "Reconcile the original thirteen-entry standards gap register and owner-only decisions before declaring complete campaign coverage."
+  ],
+  "records": [
+    {
+      "claim_id": "DISP-C01",
+      "decision_id": "C01",
+      "source_statement": "Evidence waves 01-06; C01 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUN-05",
+        "OBS-2026-MAY-04",
+        "OBS-2026-JUL-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Discovery, installation, change, use and revocation span CP.4 and CP.5. A shared objective prevents each profile inventing its own state model. It adds ownership and migration cost.",
+      "control_id": "CP.11",
+      "clause_ids": [
+        "CP.11.R01",
+        "CP.11.R02",
+        "CP.11.R03"
+      ],
+      "research_path": "research/025_v35_c01.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C02",
+      "decision_id": "C02",
+      "source_statement": "Evidence waves 01-06; C02 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-APR-03",
+        "OBS-2026-JUN-05"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "The boundary precedes normal task authorization. A generic sandbox control can miss startup behavior. A distinct control introduces a separate platform verification burden.",
+      "control_id": "S1.8",
+      "clause_ids": [
+        "S1.8.R01",
+        "S1.8.R02",
+        "S1.8.R03"
+      ],
+      "research_path": "research/026_v35_c02.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C03",
+      "decision_id": "C03",
+      "source_statement": "Evidence waves 01-06; C03 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-APR-01",
+        "OBS-2026-MAY-02",
+        "OBS-2026-SEP-03"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "The action can become inadmissible after approval even with correct identity and tool permissions. CP.4 remains the supporting control plane. A standalone requirement costs adapter and commit-boundary work.",
+      "control_id": "CP.12",
+      "clause_ids": [
+        "CP.12.R01",
+        "CP.12.R02",
+        "CP.12.R03",
+        "CP.12.R04"
+      ],
+      "research_path": "research/027_v35_c03.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        434,
+        436,
+        437,
+        440
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C04",
+      "decision_id": "C04",
+      "source_statement": "Evidence waves 01-06; C04 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUL-03",
+        "OBS-2026-AUG-01",
+        "OBS-2026-SEP-02"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Logging, receipt generation, grader custody and effect verification have different trust dependencies. Shared rules reduce false assurance. Independence costs integration and may constrain legacy deployments.",
+      "control_id": "CP.13",
+      "clause_ids": [
+        "CP.13.R01",
+        "CP.13.R02",
+        "CP.13.R03"
+      ],
+      "research_path": "research/028_v35_c04.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        439,
+        440,
+        448,
+        449
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C05",
+      "decision_id": "C05",
+      "source_statement": "Evidence waves 01-06; C05 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-APR-01",
+        "OBS-2026-AUG-02"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "F3.2 controls depth, F3.5 contains cascades, MCP-8 is profile-scoped and APAY handles payments. Shared reservations across parallel descendants are separately testable. Strong consistency can affect availability.",
+      "control_id": "F3.6",
+      "clause_ids": [
+        "F3.6.R01",
+        "F3.6.R02",
+        "F3.6.R03"
+      ],
+      "research_path": "research/029_v35_c05.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        434,
+        436
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C06",
+      "decision_id": "C06",
+      "source_statement": "Evidence waves 01-06; C06 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-AUG-06",
+        "OBS-2026-JUN-04"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "CP.4 owns the agent control plane. Leadership, management review, independent audit and corrective action have an organizational owner. Risks duplicating management-system standards if scope is loose.",
+      "control_id": "CP.14",
+      "clause_ids": [
+        "CP.14.R01",
+        "CP.14.R02",
+        "CP.14.R03"
+      ],
+      "research_path": "research/030_v35_c06.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C07",
+      "decision_id": "C07",
+      "source_statement": "Evidence waves 01-06; C07 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-MAY-06",
+        "OBS-2026-JUN-04"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "ACT tiers already determine capability. Add an independent consequence classification so low-autonomy systems with high impact get appropriate review. A separate core control becomes warranted if rights governance needs its own owner and lifecycle.",
+      "control_id": "CP.3",
+      "clause_ids": [
+        "CP.3.R01",
+        "CP.3.R02"
+      ],
+      "research_path": "research/031_v35_c07.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C08",
+      "decision_id": "C08",
+      "source_statement": "Evidence waves 01-06; C08 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUN-01",
+        "OBS-2026-SEP-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Trusting content and granting authority are separate decisions within existing policy and isolation boundaries. One parent avoids divergent grants across surfaces.",
+      "control_id": "CP.4",
+      "clause_ids": [
+        "CP.4.R01",
+        "CP.4.R02"
+      ],
+      "research_path": "research/032_v35_c08.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        434,
+        437
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C09",
+      "decision_id": "C09",
+      "source_statement": "Evidence waves 01-06; C09 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-APR-05",
+        "OBS-2026-SEP-05"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "CP.9 already owns descendant lineage. Add resource-side enforcement of bound purpose, scope, expiry and root task. Independent core IDs would duplicate the lifecycle.",
+      "control_id": "CP.9",
+      "clause_ids": [
+        "CP.9.R01",
+        "CP.9.R02"
+      ],
+      "research_path": "research/033_v35_c09.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C10",
+      "decision_id": "C10",
+      "source_statement": "Evidence waves 01-06; C10 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-AUG-02",
+        "OBS-2026-JUL-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Retain HEAR authority and existing recovery ownership. Require descendant and queued-work observations plus recovery of committed effects. A combined implementation can carry a coordination cost.",
+      "control_id": "CP.10",
+      "clause_ids": [
+        "CP.10.R01",
+        "CP.10.R02"
+      ],
+      "research_path": "research/034_v35_c10.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C11",
+      "decision_id": "C11",
+      "source_statement": "Evidence waves 01-06; C11 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-AUG-02",
+        "OBS-2026-SEP-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "A separate boundary is useful for publication, communication, account creation and external commitments. It reuses final-effect authorization. A public-world control family would duplicate authority requirements.",
+      "control_id": "CP.12",
+      "clause_ids": [
+        "CP.12.R05",
+        "CP.12.R06"
+      ],
+      "research_path": "research/035_v35_c11.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        434,
+        436,
+        437,
+        440
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C12",
+      "decision_id": "C12",
+      "source_statement": "Evidence waves 01-06; C12 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUL-02",
+        "OBS-2026-SEP-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Message, shared artifact and tool result provenance use common trust rules. A new top-level family could obscure cross-agent differences in custody and authority.",
+      "control_id": "S1.3",
+      "clause_ids": [
+        "S1.3.R01",
+        "S1.3.R02"
+      ],
+      "research_path": "research/036_v35_c12.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        437,
+        438
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C13",
+      "decision_id": "C13",
+      "source_statement": "Evidence waves 01-06; C13 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUN-02",
+        "OBS-2026-JUL-02"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Existing memory governance needs provenance, permitted use, tenancy, expiry, derivative tracking and clean restores. Separate controls for every memory representation fragment the policy.",
+      "control_id": "S1.5",
+      "clause_ids": [
+        "S1.5.R01",
+        "S1.5.R02"
+      ],
+      "research_path": "research/037_v35_c13.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        438
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C14",
+      "decision_id": "C14",
+      "source_statement": "Evidence waves 01-06; C14 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUN-01",
+        "OBS-2026-MAY-04"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Several individually allowed operations can produce a prohibited root effect. Existing task policy owns combined intent. Tracking composition adds state and can limit legitimate workflows.",
+      "control_id": "CP.15",
+      "clause_ids": [
+        "CP.15.R01",
+        "CP.15.R02"
+      ],
+      "research_path": "research/038_v35_c14.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C15",
+      "decision_id": "C15",
+      "source_statement": "Evidence waves 01-06; C15 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-SEP-01",
+        "OBS-2026-SEP-04"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "The existing ingestion and destination boundaries apply. Add modality-specific handling and destination validation. A profile is useful only where the deployment requires different rules.",
+      "control_id": "S1.4",
+      "clause_ids": [
+        "S1.4.R01",
+        "S1.4.R02"
+      ],
+      "research_path": "research/039_v35_c15.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C16",
+      "decision_id": "C16",
+      "source_statement": "Evidence waves 01-06; C16 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUL-03",
+        "OBS-2026-AUG-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "C04 owns the assurance rule. P4 and P5 own live observation and validation. Parallel core controls would blur independent evidence and model-justification signals.",
+      "control_id": "E5.1",
+      "clause_ids": [
+        "E5.1.R01",
+        "E5.1.R02"
+      ],
+      "research_path": "research/040_v35_c16.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C17",
+      "decision_id": "C17",
+      "source_statement": "Evidence waves 01-06; C17 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-AUG-03",
+        "OBS-2026-MAY-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Recovery owns fallback and reconstruction. Pin actual routing, preserve policy, and declare degraded capabilities. Wider fallback improves resilience but enlarges the trusted estate.",
+      "control_id": "F3.4",
+      "clause_ids": [
+        "F3.4.R01",
+        "F3.4.R02"
+      ],
+      "research_path": "research/041_v35_c17.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C18",
+      "decision_id": "C18",
+      "source_statement": "Evidence waves 01-06; C18 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-MAY-04",
+        "OBS-2026-SEP-03"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Idempotency, conflict resolution, compensation and unknown outcomes reuse recovery obligations. APAY retains settlement-specific details.",
+      "control_id": "A2.7",
+      "clause_ids": [
+        "A2.7.R01",
+        "A2.7.R02"
+      ],
+      "research_path": "research/042_v35_c18.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C19",
+      "decision_id": "C19",
+      "source_statement": "Evidence waves 01-06; C19 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-AUG-02",
+        "OBS-2026-JUN-04"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Transparency and affected-party intervention belong together, with explicit distinction between operator stop and affected-person redress. A new disclosure standard would need a different audience or authority.",
+      "control_id": "P4.T7.10",
+      "clause_ids": [
+        "P4.T7.10.R01",
+        "P4.T7.10.R02"
+      ],
+      "research_path": "research/043_v35_c19.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C20",
+      "decision_id": "C20",
+      "source_statement": "Evidence waves 01-06; C20 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUL-01",
+        "OBS-2026-AUG-01",
+        "OBS-2026-SEP-08"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Retain feedback-loop ownership. Add applicable clock, role, evidence hold and disposition, with source-pinned obligation profiles. Centralizing legal conclusions in core would reduce portability.",
+      "control_id": "CP.6",
+      "clause_ids": [
+        "CP.6.R01",
+        "CP.6.R02"
+      ],
+      "research_path": "research/044_v35_c20.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C21",
+      "decision_id": "C21",
+      "source_statement": "Evidence waves 01-06; C21 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUN-06",
+        "OBS-2026-JUN-07"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Existing evidence ownership avoids a parallel ledger. Add access, retention, dependency coverage, and explicit suitability assessment. Privacy and completeness can conflict.",
+      "control_id": "A2.5",
+      "clause_ids": [
+        "A2.5.R01",
+        "A2.5.R02"
+      ],
+      "research_path": "research/045_v35_c21.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C22",
+      "decision_id": "C22",
+      "source_statement": "Evidence waves 01-06; C22 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUN-03",
+        "OBS-2026-AUG-03"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Use existing privacy, provenance and evaluation objectives. Profile the extra duties when training or fine-tuning applies. Broad requirements burden deployments that never train.",
+      "control_id": "E5.2",
+      "clause_ids": [
+        "E5.2.R01",
+        "E5.2.R02"
+      ],
+      "research_path": "research/046_v35_c22.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C23",
+      "decision_id": "C23",
+      "source_statement": "Evidence waves 01-06; C23 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUL-02",
+        "OBS-2026-SEP-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Existing abort governance already owns voting. Add correlated evidence and membership tests, while keeping emergency stop independently exercisable. Quorum can harm availability if misapplied.",
+      "control_id": "F3.3",
+      "clause_ids": [
+        "F3.3.R01",
+        "F3.3.R02"
+      ],
+      "research_path": "research/047_v35_c23.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C24",
+      "decision_id": "C24",
+      "source_statement": "Evidence waves 01-06; C24 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUN-04",
+        "OBS-2026-AUG-02"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Keep the machine/human division and add comprehension, time, scope and practical intervention. A new CP.11 would duplicate existing ownership.",
+      "control_id": "CP.10",
+      "clause_ids": [
+        "CP.10.R03",
+        "CP.10.R04"
+      ],
+      "research_path": "research/048_v35_c24.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C25",
+      "decision_id": "C25",
+      "source_statement": "Evidence waves 01-06; C25 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-APR-03",
+        "OBS-2026-JUN-05",
+        "OBS-2026-AUG-04"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "C02 owns the universal pre-trust rule. Coding and IDE profiles need startup, workspace, skill and permission-change checks. A profile improves specificity at the cost of version tracking.",
+      "control_id": "CP.5",
+      "clause_ids": [
+        "CP.5.R01",
+        "CP.5.R02"
+      ],
+      "research_path": "research/049_v35_c25.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C26",
+      "decision_id": "C26",
+      "source_statement": "Evidence waves 01-06; C26 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-MAY-04",
+        "OBS-2026-SEP-05"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Gateways need policy/admin separation, upstream attribution, verified fallback and egress boundaries. Reuse C01, C03, C16 and C17. A separate core would duplicate policy authority.",
+      "control_id": "CP.5",
+      "clause_ids": [
+        "CP.5.R03",
+        "CP.5.R04"
+      ],
+      "research_path": "research/050_v35_c26.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C27",
+      "decision_id": "C27",
+      "source_statement": "Evidence waves 01-06; C27 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUL-01",
+        "OBS-2026-JUL-03",
+        "OBS-2026-AUG-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Evaluation and training environments need dedicated isolation, scope, stopping and evidence custody. Reuse C04 and C16. Profile-specific rules prevent transferring assumptions to ordinary deployments.",
+      "control_id": "CP.5",
+      "clause_ids": [
+        "CP.5.R05",
+        "CP.5.R06"
+      ],
+      "research_path": "research/051_v35_c27.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C28",
+      "decision_id": "C28",
+      "source_statement": "Evidence waves 01-06; C28 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUN-06",
+        "OBS-2026-SEP-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Separate enterprise and personal purpose, account, bystander consent, browser state and offboarding. Core consent and isolation still apply.",
+      "control_id": "CP.5",
+      "clause_ids": [
+        "CP.5.R07",
+        "CP.5.R08"
+      ],
+      "research_path": "research/052_v35_c28.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C29",
+      "decision_id": "C29",
+      "source_statement": "Evidence waves 01-06; C29 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-APR-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Preserve transaction intent, merchant conflicts, cumulative limits and settlement truth. Add a distinct finance profile only for verified institutional duties beyond APAY. Quorum should depend on consequence and applicable policy.",
+      "control_id": "CP.5",
+      "clause_ids": [
+        "CP.5.R09",
+        "CP.5.R10"
+      ],
+      "research_path": "research/053_v35_c29.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C30",
+      "decision_id": "C30",
+      "source_statement": "Evidence waves 01-06; C30 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-APR-04",
+        "OBS-2026-MAY-05",
+        "OBS-2026-SEP-04",
+        "OBS-2026-SEP-05"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Existing MCP-19, MCP-18 and related controls offer a home for discovery, audience, identity, catalog changes and fallback. New IDs require an uncovered objective after exact mapping.",
+      "control_id": "CP.5",
+      "clause_ids": [
+        "CP.5.R11",
+        "CP.5.R12"
+      ],
+      "research_path": "research/054_v35_c30.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C31",
+      "decision_id": "C31",
+      "source_statement": "Evidence waves 01-06; C31 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-APR-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "A local controller, safety envelope and safe degraded state differ materially from ordinary digital tools. Generalize final-effect authorization while keeping physical assurance domain-specific.",
+      "control_id": "CP.5",
+      "clause_ids": [
+        "CP.5.R13",
+        "CP.5.R14"
+      ],
+      "research_path": "research/055_v35_c31.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C32",
+      "decision_id": "C32",
+      "source_statement": "Evidence waves 01-06; C32 disposition in docs/FRAMEWORK-EVIDENCE-EXPANSION.md and docs/FRAMEWORK-UPDATE-ISSUES.md",
+      "source_refs": [
+        "OBS-2026-JUL-03",
+        "OBS-2026-AUG-03"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Preserve the hypotheses and contrary evidence. Keep cognitive scoring out of normative enforcement until validity, privacy and practical benefit are demonstrated.",
+      "control_id": "E5.1",
+      "clause_ids": [
+        "E5.1.R03",
+        "E5.1.R04"
+      ],
+      "research_path": "research/056_v35_c32.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C33",
+      "decision_id": "C33",
+      "source_statement": "Wave 04 Holds, Proposed for v3.2; Wave 02 shared-resource and swarm requirements",
+      "source_refs": [
+        "OBS-2026-JUN-01",
+        "OBS-2026-JUN-03",
+        "OBS-2026-JUL-02"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "C14 handles combined authorization and C23 handles voting. Neither requires roles, ownership or termination to be defined before a workflow starts. Independent design acceptance has its own lifecycle. Extra specification effort can slow prototyping; permit declared exploratory scope with bounded effects.",
+      "control_id": "CP.15",
+      "clause_ids": [
+        "CP.15.R03",
+        "CP.15.R04",
+        "CP.15.R05",
+        "CP.15.R06"
+      ],
+      "research_path": "research/057_v35_c33.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C34",
+      "decision_id": "C34",
+      "source_statement": "Wave 04 Holds, Environment Binding and Assertion; Wave 02 purpose separation",
+      "source_refs": [
+        "OBS-2026-APR-03",
+        "OBS-2026-JUN-05"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Isolation alone does not establish which environment an authorized action targets. A distinct effect gate makes production/development assertions independently testable. Environment identity management and emergency procedures add operational cost.",
+      "control_id": "F3.7",
+      "clause_ids": [
+        "F3.7.R01",
+        "F3.7.R02",
+        "F3.7.R03",
+        "F3.7.R04"
+      ],
+      "research_path": "research/058_v35_c34.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C35",
+      "decision_id": "C35",
+      "source_statement": "Wave 04 Holds, Idempotency and Side-Effect Ledger; Wave 02 ASG-13 and transactions",
+      "source_refs": [
+        "OBS-2026-MAY-04"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "C18 compressed ledger semantics into general transaction safety. Reservation, commitment and unknown outcomes warrant an explicit reusable requirement. P2 records evidence; the P3 mechanism prevents duplicate effects. Central state adds collision and availability risks.",
+      "control_id": "A2.7",
+      "clause_ids": [
+        "A2.7.R03",
+        "A2.7.R04",
+        "A2.7.R05",
+        "A2.7.R06",
+        "A2.7.R07"
+      ],
+      "research_path": "research/059_v35_c35.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C36",
+      "decision_id": "C36",
+      "source_statement": "Wave 04 Holds, Post-Condition Verification; Wave 02 P2-01; merged CI receipt boundary",
+      "source_refs": [
+        "OBS-2026-JUL-03",
+        "OBS-2026-AUG-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "C04 concerns evidence independence across claims. This objective defines completion itself. Existing receipt tooling does not make an external business outcome verified. Additional observations can add latency and expose sensitive state.",
+      "control_id": "A2.8",
+      "clause_ids": [
+        "A2.8.R01",
+        "A2.8.R02",
+        "A2.8.R03",
+        "A2.8.R04",
+        "A2.8.R05"
+      ],
+      "research_path": "research/060_v35_c36.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C37",
+      "decision_id": "C37",
+      "source_statement": "Wave 04 Holds, Declared Success Criteria Gate; Wave 02 G-01 and P5 requirements",
+      "source_refs": [
+        "OBS-2026-APR-01",
+        "OBS-2026-MAY-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Evaluation cadence cannot compensate for a missing task objective. This gate applies at design and acceptance time, while C36 applies after execution. Exploratory and qualitative work need explicit human review criteria instead of fabricated machine precision.",
+      "control_id": "E5.5",
+      "clause_ids": [
+        "E5.5.R01",
+        "E5.5.R02",
+        "E5.5.R03",
+        "E5.5.R04"
+      ],
+      "research_path": "research/061_v35_c37.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C38",
+      "decision_id": "C38",
+      "source_statement": "Wave 04 Holds, Failure Location; Developer Workflow CI execution receipt; Wave 02 outcome evidence",
+      "source_refs": [
+        "OBS-2026-JUN-03",
+        "OBS-2026-AUG-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Observed failure location and causal root cause are different claims. Existing CI phase classification provides a bounded implementation to generalize. A distinct requirement makes repair guidance testable. Evidence collection can be incomplete and causality may remain unresolved.",
+      "control_id": "A2.9",
+      "clause_ids": [
+        "A2.9.R01",
+        "A2.9.R02",
+        "A2.9.R03",
+        "A2.9.R04"
+      ],
+      "research_path": "research/062_v35_c38.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C39",
+      "decision_id": "C39",
+      "source_statement": "Wave 04 Holds, Memory Outcome Annotation; Wave 02 derived-state laundering",
+      "source_refs": [
+        "OBS-2026-JUN-02",
+        "OBS-2026-JUL-02"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Expiry and provenance describe origin and lifetime. They do not establish whether an entry is failed or superseded. Reuse the memory lifecycle while making validity independently queryable. Incorrect corrections can suppress useful knowledge.",
+      "control_id": "S1.5",
+      "clause_ids": [
+        "S1.5.R03",
+        "S1.5.R04",
+        "S1.5.R05",
+        "S1.5.R06"
+      ],
+      "research_path": "research/063_v35_c39.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        438
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C40",
+      "decision_id": "C40",
+      "source_statement": "Wave 04 Holds, CP.5.CUA; Wave 01 Google Home specificity",
+      "source_refs": [
+        "OBS-2026-SEP-01",
+        "OBS-2026-SEP-07"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Browser interfaces and native apps have distinct observation and action semantics. A browser-only profile loses native computer-use evidence. Shared final-effect controls remain inherited. Image and accessibility observations can be incomplete.",
+      "control_id": "CP.5",
+      "clause_ids": [
+        "CP.5.R15",
+        "CP.5.R16",
+        "CP.5.R17",
+        "CP.5.R18",
+        "CP.5.R19"
+      ],
+      "research_path": "research/064_v35_c40.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C41",
+      "decision_id": "C41",
+      "source_statement": "Wave 02 governance/fairness; Wave 06 rubric C13 and source crosswalk",
+      "source_refs": [
+        "OBS-2026-JUN-04"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Security and valid authority can coexist with invalid or unfair decisions. Existing impact and oversight homes need explicit statistical and accessibility requirements. Context-specific metrics and conflicting objectives require recorded choices.",
+      "control_id": "CP.3",
+      "clause_ids": [
+        "CP.3.R03",
+        "CP.3.R04",
+        "CP.3.R05",
+        "CP.3.R06"
+      ],
+      "research_path": "research/065_v35_c41.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C42",
+      "decision_id": "C42",
+      "source_statement": "Wave 02 divergent governance ideas; expanded external inventory",
+      "source_refs": [
+        "OBS-2026-MAY-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Purpose classification does not compare alternatives. A documented suitability decision keeps the framework useful for ordinary organizations. Assessment effort should be proportional to consequence.",
+      "control_id": "CP.14",
+      "clause_ids": [
+        "CP.14.R04",
+        "CP.14.R05",
+        "CP.14.R06"
+      ],
+      "research_path": "research/066_v35_c42.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C43",
+      "decision_id": "C43",
+      "source_statement": "Wave 02 divergent governance ideas; swarm common-mode evidence",
+      "source_refs": [
+        "OBS-2026-JUN-03",
+        "OBS-2026-AUG-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Per-deployment fallback and independent agent identities miss shared providers, models, policies and evaluators. A portfolio assessment extends existing continuity and threshold ownership. Independence can cost money and introduce operational complexity.",
+      "control_id": "CP.8",
+      "clause_ids": [
+        "CP.8.R01",
+        "CP.8.R02",
+        "CP.8.R03",
+        "CP.8.R04"
+      ],
+      "research_path": "research/067_v35_c43.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C44",
+      "decision_id": "C44",
+      "source_statement": "Wave 02 emergency powers, governance-agent authority and policy integrity",
+      "source_refs": [
+        "OBS-2026-AUG-02"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "An exception can permanently defeat all otherwise correct controls. Existing ownership is appropriate if authority, expiry and monitoring become mandatory. Tight emergency rules can impede urgent recovery.",
+      "control_id": "CP.4",
+      "clause_ids": [
+        "CP.4.R03",
+        "CP.4.R04",
+        "CP.4.R05",
+        "CP.4.R06"
+      ],
+      "research_path": "research/068_v35_c44.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        434,
+        437
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C45",
+      "decision_id": "C45",
+      "source_statement": "Wave 02 IP/data rights and conflicting obligations; Wave 05 #390 and C11 redress",
+      "source_refs": [
+        "OBS-2026-JUN-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "A source declaration does not resolve training rights, downstream reuse or a conflict between deletion and evidence retention. Add lifecycle-specific decisions and accountable conflict routing. This needs specialist applicability review.",
+      "control_id": "A2.5",
+      "clause_ids": [
+        "A2.5.R03",
+        "A2.5.R04",
+        "A2.5.R05",
+        "A2.5.R06"
+      ],
+      "research_path": "research/069_v35_c45.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C46",
+      "decision_id": "C46",
+      "source_statement": "Wave 02 worker/public participation; Wave 06 rubric contestability",
+      "source_refs": [
+        "OBS-2026-JUN-04",
+        "OBS-2026-SEP-07"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Operator approval leaves bystanders, workers and affected populations unrepresented. Expand existing impact and remedy requirements with an explicit route for their evidence. Participation can raise privacy and representativeness problems.",
+      "control_id": "P4.T7.10",
+      "clause_ids": [
+        "P4.T7.10.R03",
+        "P4.T7.10.R04",
+        "P4.T7.10.R05",
+        "P4.T7.10.R06"
+      ],
+      "research_path": "research/070_v35_c46.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C47",
+      "decision_id": "C47",
+      "source_statement": "Wave 02 environmental/resource impacts; Wave 04 generalized consumable authority",
+      "source_refs": [
+        "OBS-2026-MAY-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Spend alone omits material compute, energy, water and infrastructure constraints. Add applicability-based measurement and limits. Precise measurement may be unavailable for hosted services.",
+      "control_id": "F3.6",
+      "clause_ids": [
+        "F3.6.R04",
+        "F3.6.R05",
+        "F3.6.R06"
+      ],
+      "research_path": "research/071_v35_c47.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        434,
+        436
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C48",
+      "decision_id": "C48",
+      "source_statement": "Wave 02 assurer independence; Wave 06 rubric disagreement process",
+      "source_refs": [
+        "OBS-2026-JUL-03",
+        "OBS-2026-AUG-01"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Independent custody alone cannot establish evaluator competence or representative tests. The evidence contract needs reviewer capability, conflicts and dispute handling. Independent review adds cost and may remain unavailable.",
+      "control_id": "CP.13",
+      "clause_ids": [
+        "CP.13.R04",
+        "CP.13.R05",
+        "CP.13.R06",
+        "CP.13.R07"
+      ],
+      "research_path": "research/072_v35_c48.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        439,
+        440,
+        448,
+        449
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C49",
+      "decision_id": "C49",
+      "source_statement": "Wave 01 actors and operational developments; Wave 03 timelines and indicators",
+      "source_refs": [
+        "OBS-2026-JUL-01",
+        "OBS-2026-AUG-02",
+        "OBS-2026-SEP-08"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "The plan emphasized mechanisms but did not require an operational intelligence product. Incident learning needs actor behavior, prerequisites and detection opportunities. Public attribution and prevalence can remain uncertain.",
+      "control_id": "CP.6",
+      "clause_ids": [
+        "CP.6.R03",
+        "CP.6.R04",
+        "CP.6.R05",
+        "CP.6.R06",
+        "CP.6.R07"
+      ],
+      "research_path": "research/073_v35_c49.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C50",
+      "decision_id": "C50",
+      "source_statement": "Wave 04 Holds second-order effects and quickstart critique; Wave 02 small-organization profile",
+      "source_refs": [
+        "OBS-2026-MAY-06"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "A control can be technically correct and routinely bypassed because it is unusable. Extend adoption and education with tested implementation paths. Simpler paths must retain consequence-based minimums.",
+      "control_id": "P5.T10.1",
+      "clause_ids": [
+        "P5.T10.1.R01",
+        "P5.T10.1.R02",
+        "P5.T10.1.R03",
+        "P5.T10.1.R04"
+      ],
+      "research_path": "research/074_v35_c50.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C51",
+      "decision_id": "C51",
+      "source_statement": "All four mapping-recovery files; Wave 02 mapping schemas and retrieval contracts",
+      "source_refs": [
+        "OBS-2026-JUN-04",
+        "OBS-2026-JUL-05"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "The recovered 32 labels, 496 tags and 706 cells describe different levels of evidence. Preserve their lineage and deepen relationships. Mapping all controls to every framework creates false equivalence and maintenance cost.",
+      "control_id": "CP.14",
+      "clause_ids": [
+        "CP.14.R07",
+        "CP.14.R08",
+        "CP.14.R09",
+        "CP.14.R10",
+        "CP.14.R11"
+      ],
+      "research_path": "research/075_v35_c51.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C52",
+      "decision_id": "C52",
+      "source_statement": "Wave 02 retrieval interfaces; Wave 04 diagnosis; recovery files",
+      "source_refs": [
+        "OBS-2026-APR-01",
+        "OBS-2026-SEP-02"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Discoverability without precise contracts leaves agents guessing which version and evidence apply. Extend existing CLI/manifest ownership. A new interface must preserve schema compatibility and avoid granting decision authority.",
+      "control_id": "A2.5",
+      "clause_ids": [
+        "A2.5.R07",
+        "A2.5.R08",
+        "A2.5.R09",
+        "A2.5.R10"
+      ],
+      "research_path": "research/076_v35_c52.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C53",
+      "decision_id": "C53",
+      "source_statement": "Repository issue #390, provider-neutral source-rights observation proposal. The named AcqPath service is attributed context, not a required provider or independently verified integration.",
+      "source_refs": [],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Data Source Mapping already owns external-source identity and inventory. Add purpose, declaration, freshness and correction detail here, with CP.14 policy ownership. A new top-level rights control would duplicate source inventory and could imply legal authority. This placement accepts provider-neutral observations while preserving the separate permission decision. More metadata increases collection burden; minimize it and record unknowns.",
+      "control_id": "P2.T4.4",
+      "clause_ids": [
+        "P2.T4.4.R1",
+        "P2.T4.4.R2",
+        "P2.T4.4.R3"
+      ],
+      "research_path": "research/077_v35_c53.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "UNRESOLVED",
+      "capability_issue_ids": [],
+      "capability_issue_ownership": "OWNERSHIP_REVIEW_PENDING"
+    },
+    {
+      "claim_id": "DISP-C54",
+      "decision_id": "C54",
+      "source_statement": "October 3-9 security brief, finding B01; primary source https://arxiv.org/html/2610.06966v1. Retrospective disposition dated November 23, 2026.",
+      "source_refs": [
+        "OBS-2026-OCT-01",
+        "https://arxiv.org/html/2610.06966v1"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "A standalone compiler-control family could serve separately operated compilers, but CP.12 already owns authorized effects and CP.11 reapproval. Keep explicit clauses here. Independent task/contract review catches over-grants and legitimate-work blocks. Review effort and conservative interpretation can block useful work.",
+      "control_id": "CP.12",
+      "clause_ids": [
+        "CP.12.R07",
+        "CP.12.R08",
+        "CP.12.R09"
+      ],
+      "research_path": "research/078_v35_c54.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "challenges/003-evidence-boundary/cases.json",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        434,
+        436,
+        437,
+        440
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C55",
+      "decision_id": "C55",
+      "source_statement": "October 3-9 security brief, finding B03; primary source https://metr.org/blog/2026-10-06-ai-systems-could-cover-up-misbehavior/. Retrospective disposition dated November 23, 2026.",
+      "source_refs": [
+        "OBS-2026-OCT-02",
+        "https://metr.org/blog/2026-10-06-ai-systems-could-cover-up-misbehavior/"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "A dedicated UI control would improve team assignment but split custody from presentation. CP.13 owns the chain; issue #448 assigns consumer owners. One traceable chain detects substitutions and omissions across consumers. Rendering isolation, accessibility and transformation verification require integration work.",
+      "control_id": "CP.13",
+      "clause_ids": [
+        "CP.13.R08",
+        "CP.13.R09",
+        "CP.13.R10"
+      ],
+      "research_path": "research/079_v35_c55.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "challenges/003-evidence-boundary/cases.json",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        439,
+        440,
+        448,
+        449
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C56",
+      "decision_id": "C56",
+      "source_statement": "October 3-9 security brief, finding B06; primary source https://arxiv.org/html/2610.07256v1. Retrospective disposition dated November 23, 2026.",
+      "source_refs": [
+        "OBS-2026-OCT-03",
+        "https://arxiv.org/html/2610.07256v1"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "A separate coverage control increases visibility but duplicates M4.4 and E5.1. Add explicit clauses plus the evaluator work package instead of a new threat category. Explicit selector and auditor metrics expose cost and safety trade-offs. Held-out evaluation and stratification add cost and cannot guarantee unseen-path coverage.",
+      "control_id": "M4.4",
+      "clause_ids": [
+        "M4.4.R01",
+        "M4.4.R02",
+        "M4.4.R03"
+      ],
+      "research_path": "research/080_v35_c56.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "challenges/003-evidence-boundary/cases.json",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        449
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C57",
+      "decision_id": "C57",
+      "source_statement": "October 3-9 security brief, finding B05; primary source https://arxiv.org/html/2610.08951v1. Retrospective disposition dated November 23, 2026.",
+      "source_refs": [
+        "OBS-2026-OCT-04",
+        "https://arxiv.org/html/2610.08951v1"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "An independent learning-system control might fit a separately operated service. E5.4 and S1.5 already own artifact/memory lifecycle; deepen them and remove automatic-promotion ambiguity. Preserves reusable discovery while separating hostile findings from authorized production changes. Quarantine, held-out partitions and approvals slow rule promotion.",
+      "control_id": "E5.4",
+      "clause_ids": [
+        "E5.4.R01",
+        "E5.4.R02",
+        "E5.4.R03"
+      ],
+      "research_path": "research/081_v35_c57.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "challenges/003-evidence-boundary/cases.json",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        449
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C58",
+      "decision_id": "C58",
+      "source_statement": "October 3-9 security brief, finding B02; primary source https://arxiv.org/html/2610.05163v1. Retrospective disposition dated November 23, 2026.",
+      "source_refs": [
+        "OBS-2026-OCT-05",
+        "https://arxiv.org/html/2610.05163v1"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "supporting-analysis-no-new-clause",
+      "rationale": "Existing S1.3/CP.12 clauses already impose provenance and authority boundaries. Add a linked research/validation record, not duplicate normative clauses or mandate one auditor. Connects source spans, task warrant and independent effects without granting authority to the source. Trajectory completeness, privacy and semantic attribution remain uncertain.",
+      "control_id": "S1.3",
+      "clause_ids": [],
+      "research_path": "research/082_v35_c58.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "challenges/003-evidence-boundary/cases.json",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        437,
+        438
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C59",
+      "decision_id": "C59",
+      "source_statement": "October 3-9 security brief, finding B04; primary source https://arxiv.org/html/2610.06001v1. Retrospective disposition dated November 23, 2026.",
+      "source_refs": [
+        "OBS-2026-OCT-06",
+        "https://arxiv.org/html/2610.06001v1"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "supporting-analysis-no-new-clause",
+      "rationale": "CP.13/A2.5 already own observation and gaps. Extend adapter acceptance and #234 examples instead of a separate observer control. Independent process and sink observations can challenge a correct-looking deliverable. OS-specific collectors, privacy minimization and unseen paths limit completeness.",
+      "control_id": "CP.13",
+      "clause_ids": [],
+      "research_path": "research/083_v35_c59.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "challenges/003-evidence-boundary/cases.json",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        439,
+        440,
+        448,
+        449
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C60",
+      "decision_id": "C60",
+      "source_statement": "October 3-9 security brief, finding B07; primary source https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/. Retrospective disposition dated November 23, 2026.",
+      "source_refs": [
+        "OBS-2026-OCT-07",
+        "https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "supporting-analysis-no-new-clause",
+      "rationale": "CP.12/F3.7 already require exact targets and environments. Add attack-chain acceptance and a scoped profile; no new top-level actor family is justified. An explicit offensive-security profile prevents capability from becoming blanket target permission. Target normalization, changing discovery results and jurisdiction-specific scope need careful ownership.",
+      "control_id": "CP.12",
+      "clause_ids": [],
+      "research_path": "research/084_v35_c60.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "challenges/003-evidence-boundary/cases.json",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        434,
+        436,
+        437,
+        440
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C61",
+      "decision_id": "C61",
+      "source_statement": "October 3-9 security brief, finding B08; primary source https://cert.gov.ng/index.php/advisories/ghostjacking-an-indirect-prompt-injection-against-ai-agents. Retrospective disposition dated November 23, 2026.",
+      "source_refs": [
+        "OBS-2026-OCT-08",
+        "https://cert.gov.ng/index.php/advisories/ghostjacking-an-indirect-prompt-injection-against-ai-agents"
+      ],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "supporting-analysis-no-new-clause",
+      "rationale": "CP.4/S1.3 already separate data from authority. Deepen defensive-agent tests and profiles rather than duplicate normative requirements. Separately scoped investigation and containment prevent records from minting grants. Derived summaries and provider integrations expand the test surface.",
+      "control_id": "CP.4",
+      "clause_ids": [],
+      "research_path": "research/085_v35_c61.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "challenges/003-evidence-boundary/cases.json",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "LINKED",
+      "capability_issue_ids": [
+        434,
+        437
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C62",
+      "decision_id": "C62",
+      "source_statement": "Original F3.6 economic-ceiling source, requirements F3.6.1-F3.6.7; explicit source dispositions in docs/FRAMEWORK-SOURCE-UTILIZATION.md.",
+      "source_refs": [],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "Use the existing aggregate authority owner rather than a second economic-control family. Explicit attribution, change authority and breach behavior preserve source nuance; secrecy of the ceiling is not a defensible general security requirement.",
+      "control_id": "F3.6",
+      "clause_ids": [
+        "F3.6.R07",
+        "F3.6.R08",
+        "F3.6.R09"
+      ],
+      "research_path": "research/086_v35_c62.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "UNRESOLVED",
+      "capability_issue_ids": [
+        434,
+        436
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    },
+    {
+      "claim_id": "DISP-C63",
+      "decision_id": "C63",
+      "source_statement": "Original full-update operating process and November 23 retrospective audit; docs/FRAMEWORK-SOURCE-UTILIZATION.md and docs/FRAMEWORK-ASSESSMENT-CONTRACT-V2.md.",
+      "source_refs": [],
+      "source_claim_location_status": "SOURCE_ATOMIZATION_PENDING",
+      "disposition": "adopted-existing-owner",
+      "rationale": "CP.13 owns evidence scope and independence; a versioned framework record contract specifies identity without implementing a CLI or deployment evaluator. A separate scoring/control family would fragment the same evidence chain.",
+      "control_id": "CP.13",
+      "clause_ids": [
+        "CP.13.R11",
+        "CP.13.R12",
+        "CP.13.R13"
+      ],
+      "research_path": "research/087_v35_c63.md",
+      "implementation_boundary": "Separate capability issue; framework data is not enforcement.",
+      "test_specification": "docs/FRAMEWORK-SOURCE-UTILIZATION.md",
+      "result_status": "NOT_LINKED_IN_THIS_LEDGER",
+      "result_refs": [],
+      "release_claim_boundary": "Requirements/source analysis only until a scoped result is linked.",
+      "source_document_status": "UNRESOLVED",
+      "capability_issue_ids": [
+        439,
+        440,
+        448,
+        449
+      ],
+      "capability_issue_ownership": "LINKED_SCOPE"
+    }
+  ]
+}

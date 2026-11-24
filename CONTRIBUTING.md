@@ -72,3 +72,7 @@ If you were submitting a new control for **"RAG Poisoning,"** your issue should 
 3.  **Governance:** All contributions are reviewed by the AI Governance Board.
 
 By contributing, you agree to the [Professional Code of Conduct](CODE_OF_CONDUCT.md) and the [Dual License Agreement](LICENSE).
+
+## Repository quality and merge gates
+
+Follow the [quality and agent-readiness standard](docs/engineering/REPOSITORY-QUALITY-AND-AGENT-READINESS.md). Preserve module presentation and task routes, update human/machine entry points and generated projections together, review changed layouts, and pass the [required checks](.github/required-checks.json) on the final head. Optional review-provider availability cannot replace substantive evidence.

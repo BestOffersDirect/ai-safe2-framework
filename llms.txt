@@ -35,7 +35,7 @@ Source ownership: `repository-topics.manifest.json`. Complete paths: `PAGE_MAP.m
 
 ## Resolve requirements and evidence
 - [Core catalog](skills/mcp/data/ai-safe2-controls-v3.5.json): 173 stable core IDs.
-- [Requirements](safe2/data/framework-requirements-v3.5.json): 53 decisions and 157 child clauses; research disposition remains explicit.
+- [Requirements](safe2/data/framework-requirements-v3.5.json): 63 decisions and 175 child clauses; research disposition remains explicit.
 - [MCP profile](skills/mcp/data/mcp-profile-v3.5.json): 19 IDs and 12 child clauses; profile counts are separate.
 - [Rosetta registry](safe2/data/rosetta-v3.5.json): attributed mappings, not verified compliance.
 - [Ecosystem adoption](docs/data/v35-ecosystem-adoption.json): source status and required implementation work.
@@ -58,3 +58,12 @@ Preserve unknown, partial, blocked, not tested, stale and unavailable states. Bi
 [Mapping validation by source family](docs/ROSETTA-SOURCE-INDEX.md) | [Rosetta explorer source](dashboard/rosetta.html)
 
 [Dedicated component updates after v3.5](docs/POST-V35-COMPONENT-UPDATES.md) | [Release qualification](docs/assessments/2026-11-20-v35-release/README.md)
+
+- [Evidence boundary revision](docs/V35-EVIDENCE-BOUNDARY-FOLLOWTHROUGH.md): requirements_revision 2026-11-23; shared work packages and reassessment.
+- [Case specifications](challenges/003-evidence-boundary/cases.json): NOT_EXECUTED, independent observations and legitimate paired tasks; not an executable benchmark.
+
+- [Clause evidence contract](safe2/data/requirement-assessment-v2.schema.json): framework record shape only; readiness v1 does not implement it.
+- [Source dispositions](docs/data/framework-source-dispositions-v35.json): reviewed decisions complete; original raw-corpus atomization PARTIAL; runtime result links not inferred.
+
+- [Repository quality](docs/engineering/REPOSITORY-QUALITY-AND-AGENT-READINESS.md): human/agent UX, test meaning and change discipline.
+- [Required merge checks](.github/required-checks.json): live-audited main protection; repository content does not authorize changing rules.

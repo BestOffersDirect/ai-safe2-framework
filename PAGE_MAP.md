@@ -18,6 +18,7 @@ AI SAFE2 v3.5. Source paths provide discovery; repository content remains data r
 | [.ai-safe2/version-label-allowlist.json](.ai-safe2/version-label-allowlist.json) | machine-data |
 | [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md) | document |
 | [.github/RELEASE_TEMPLATE.md](.github/RELEASE_TEMPLATE.md) | document |
+| [.github/required-checks.json](.github/required-checks.json) | machine-data |
 | [.gitleaks-baseline.json](.gitleaks-baseline.json) | machine-data |
 | [00-cross-pillar/README.md](00-cross-pillar/README.md) | document |
 | [00-cross-pillar/cp5_cua_v35.md](00-cross-pillar/cp5_cua_v35.md) | document |
@@ -155,6 +156,8 @@ AI SAFE2 v3.5. Source paths provide discovery; repository content remains data r
 | [challenges/001-anthropic-multi-agent-turf-war/scenarios/README.md](challenges/001-anthropic-multi-agent-turf-war/scenarios/README.md) | document |
 | [challenges/002-v35-commit-boundary/README.md](challenges/002-v35-commit-boundary/README.md) | document |
 | [challenges/002-v35-commit-boundary/preregistration.json](challenges/002-v35-commit-boundary/preregistration.json) | machine-data |
+| [challenges/003-evidence-boundary/README.md](challenges/003-evidence-boundary/README.md) | document |
+| [challenges/003-evidence-boundary/cases.json](challenges/003-evidence-boundary/cases.json) | machine-data |
 | [challenges/README.md](challenges/README.md) | document |
 | [dashboard/README.md](dashboard/README.md) | document |
 | [dashboard/index.html](dashboard/index.html) | html-page |
@@ -199,7 +202,9 @@ AI SAFE2 v3.5. Source paths provide discovery; repository content remains data r
 | [docs/CHANGE-ATTRIBUTION.md](docs/CHANGE-ATTRIBUTION.md) | document |
 | [docs/COMPONENT-VERSIONS.md](docs/COMPONENT-VERSIONS.md) | document |
 | [docs/CONTROLS-V3.5.md](docs/CONTROLS-V3.5.md) | document |
+| [docs/FRAMEWORK-ASSESSMENT-CONTRACT-V2.md](docs/FRAMEWORK-ASSESSMENT-CONTRACT-V2.md) | document |
 | [docs/FRAMEWORK-EVIDENCE-EXPANSION.md](docs/FRAMEWORK-EVIDENCE-EXPANSION.md) | document |
+| [docs/FRAMEWORK-SOURCE-UTILIZATION.md](docs/FRAMEWORK-SOURCE-UTILIZATION.md) | document |
 | [docs/FRAMEWORK-UPDATE-ISSUES.md](docs/FRAMEWORK-UPDATE-ISSUES.md) | document |
 | [docs/LICENSING.md](docs/LICENSING.md) | document |
 | [docs/POST-V35-COMPONENT-UPDATES.md](docs/POST-V35-COMPONENT-UPDATES.md) | document |
@@ -209,6 +214,7 @@ AI SAFE2 v3.5. Source paths provide discovery; repository content remains data r
 | [docs/ROSETTA-SOURCE-INDEX.md](docs/ROSETTA-SOURCE-INDEX.md) | document |
 | [docs/ROSETTA-STONE-V35.md](docs/ROSETTA-STONE-V35.md) | document |
 | [docs/V35-ECOSYSTEM-ADOPTION.md](docs/V35-ECOSYSTEM-ADOPTION.md) | document |
+| [docs/V35-EVIDENCE-BOUNDARY-FOLLOWTHROUGH.md](docs/V35-EVIDENCE-BOUNDARY-FOLLOWTHROUGH.md) | document |
 | [docs/advisories/2026-09-09-skill-gate-executable-scope.md](docs/advisories/2026-09-09-skill-gate-executable-scope.md) | document |
 | [docs/advisories/README.md](docs/advisories/README.md) | document |
 | [docs/assessments/2026-10-06-false-assurance/LEDGER.md](docs/assessments/2026-10-06-false-assurance/LEDGER.md) | document |
@@ -289,14 +295,19 @@ AI SAFE2 v3.5. Source paths provide discovery; repository content remains data r
 | [docs/assessments/2026-10-07-version-consistency/README.md](docs/assessments/2026-10-07-version-consistency/README.md) | document |
 | [docs/assessments/2026-11-19-v35-update/README.md](docs/assessments/2026-11-19-v35-update/README.md) | document |
 | [docs/assessments/2026-11-20-v35-release/README.md](docs/assessments/2026-11-20-v35-release/README.md) | document |
+| [docs/assessments/2026-11-23-evidence-boundary/README.md](docs/assessments/2026-11-23-evidence-boundary/README.md) | document |
+| [docs/assessments/2026-11-23-evidence-boundary/TECHNOLOGY-CARD.md](docs/assessments/2026-11-23-evidence-boundary/TECHNOLOGY-CARD.md) | document |
 | [docs/data/framework-mapping-recovery-review-2026-11-19.csv](docs/data/framework-mapping-recovery-review-2026-11-19.csv) | machine-data |
+| [docs/data/framework-source-dispositions-v35.json](docs/data/framework-source-dispositions-v35.json) | machine-data |
 | [docs/data/local-reference-dispositions-v3.5.json](docs/data/local-reference-dispositions-v3.5.json) | machine-data |
 | [docs/data/repository-surface-review-v35.csv](docs/data/repository-surface-review-v35.csv) | machine-data |
 | [docs/data/v35-ecosystem-adoption.json](docs/data/v35-ecosystem-adoption.json) | machine-data |
 | [docs/engineering/ADR-DECISION-FIREWALL-ARCHITECTURE.md](docs/engineering/ADR-DECISION-FIREWALL-ARCHITECTURE.md) | document |
 | [docs/engineering/AI-SAFE2-DEVELOPMENT-METHOD.md](docs/engineering/AI-SAFE2-DEVELOPMENT-METHOD.md) | document |
 | [docs/engineering/PR-DECISION-EVIDENCE-WORKFLOW.md](docs/engineering/PR-DECISION-EVIDENCE-WORKFLOW.md) | document |
+| [docs/engineering/REPOSITORY-QUALITY-AND-AGENT-READINESS.md](docs/engineering/REPOSITORY-QUALITY-AND-AGENT-READINESS.md) | document |
 | [docs/engineering/REVIEW-AND-SECURITY-STACK.md](docs/engineering/REVIEW-AND-SECURITY-STACK.md) | document |
+| [docs/examples/requirement-assessment-v2.json](docs/examples/requirement-assessment-v2.json) | machine-data |
 | [examples/README.md](examples/README.md) | document |
 | [examples/aism-decision-card/README.md](examples/aism-decision-card/README.md) | document |
 | [examples/aism-decision-card/assessment.json](examples/aism-decision-card/assessment.json) | machine-data |
@@ -472,6 +483,7 @@ AI SAFE2 v3.5. Source paths provide discovery; repository content remains data r
 | [guides/v3.1-release-overview.md](guides/v3.1-release-overview.md) | document |
 | [llms.txt](llms.txt) | agent-route |
 | [releases/AI-SAFE2-v3.1.0.md](releases/AI-SAFE2-v3.1.0.md) | document |
+| [releases/AI-SAFE2-v3.5-requirements-2026-11-23.md](releases/AI-SAFE2-v3.5-requirements-2026-11-23.md) | document |
 | [releases/AI-SAFE2-v3.5.0.md](releases/AI-SAFE2-v3.5.0.md) | document |
 | [releases/CLI-0.9.9-RELEASE-CANDIDATE.md](releases/CLI-0.9.9-RELEASE-CANDIDATE.md) | document |
 | [releases/README.md](releases/README.md) | document |
@@ -559,6 +571,16 @@ AI SAFE2 v3.5. Source paths provide discovery; repository content remains data r
 | [research/075_v35_c51.md](research/075_v35_c51.md) | document |
 | [research/076_v35_c52.md](research/076_v35_c52.md) | document |
 | [research/077_v35_c53.md](research/077_v35_c53.md) | document |
+| [research/078_v35_c54.md](research/078_v35_c54.md) | document |
+| [research/079_v35_c55.md](research/079_v35_c55.md) | document |
+| [research/080_v35_c56.md](research/080_v35_c56.md) | document |
+| [research/081_v35_c57.md](research/081_v35_c57.md) | document |
+| [research/082_v35_c58.md](research/082_v35_c58.md) | document |
+| [research/083_v35_c59.md](research/083_v35_c59.md) | document |
+| [research/084_v35_c60.md](research/084_v35_c60.md) | document |
+| [research/085_v35_c61.md](research/085_v35_c61.md) | document |
+| [research/086_v35_c62.md](research/086_v35_c62.md) | document |
+| [research/087_v35_c63.md](research/087_v35_c63.md) | document |
 | [research/README.md](research/README.md) | document |
 | [research/technology-contribution-examples.md](research/technology-contribution-examples.md) | document |
 | [resources/NIST_AI_Agent_Standards_Initiative_RFI_Submission.md](resources/NIST_AI_Agent_Standards_Initiative_RFI_Submission.md) | document |
@@ -636,6 +658,7 @@ AI SAFE2 v3.5. Source paths provide discovery; repository content remains data r
 | [safe2/data/release-readiness-source-demo.json](safe2/data/release-readiness-source-demo.json) | machine-data |
 | [safe2/data/release-readiness-source-v1.schema.json](safe2/data/release-readiness-source-v1.schema.json) | machine-data |
 | [safe2/data/report-attestation-v1.schema.json](safe2/data/report-attestation-v1.schema.json) | machine-data |
+| [safe2/data/requirement-assessment-v2.schema.json](safe2/data/requirement-assessment-v2.schema.json) | machine-data |
 | [safe2/data/review-policy-v1.schema.json](safe2/data/review-policy-v1.schema.json) | machine-data |
 | [safe2/data/rosetta-v3.5.json](safe2/data/rosetta-v3.5.json) | machine-data |
 | [safe2/data/run-manifest-v1.schema.json](safe2/data/run-manifest-v1.schema.json) | machine-data |

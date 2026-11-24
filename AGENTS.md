@@ -264,3 +264,11 @@ When a machine-readable field and prose appear to conflict, do not silently gues
 ## v3.5 machine contracts
 
 The manifest selects the 173-control catalog. Use `safe2 framework query`, `safe2 framework audit`, and `safe2 framework readiness` for versioned requirements, attributed mapping records and scoped evidence review. Read docs/CONTROLS-V3.5.md for applicable child requirements. Prior versioned catalogs remain compatibility artifacts. Research status, implementation and independent verification remain distinct.
+
+## Evidence boundary requirements revision
+
+Resolve framework version and requirements_revision together. Revision 2026-11-23 deepens contract fidelity, evidence rendering/export, consequence-aware audit selection and governed red-team promotion. The ten cases under challenges/003-evidence-boundary are specifications marked NOT_EXECUTED, not successful runtime tests. Read docs/V35-EVIDENCE-BOUNDARY-FOLLOWTHROUGH.md for source limits, ownership and acceptance.
+
+## Repository quality is a merge requirement
+
+Preserve the v3.5 UX, machine-contract and evidence baseline throughout affected modules, not only the root README. Follow docs/engineering/REPOSITORY-QUALITY-AND-AGENT-READINESS.md and .github/required-checks.json. Keep generated views, schemas, source ownership, agent routes and human navigation synchronized. Required workflow checks must be emitted on every main-targeting PR. Do not treat cancelled/skipped scans, provider availability or schema validation as substantive review or runtime conformance. Ruleset changes need explicit owner authorization and verified before/after evidence.

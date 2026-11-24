@@ -80,8 +80,8 @@ Each new note retains its reviewed rationale, explicit clauses and adversarial a
 - [C02 | Add P1 pre-trust initialization](./026_v35_c02.md)
 - [C03 | Add cross-pillar final-effect authorization](./027_v35_c03.md)
 - [C04 | Add cross-pillar evidence independence](./028_v35_c04.md)
-- [C05 | Add P3 consumable-authority ceiling candidate](./029_v35_c05.md)
-- [C06 | Add cross-pillar organizational AIMS candidate](./030_v35_c06.md)
+- [C05 | Aggregate consumable-authority ceiling](./029_v35_c05.md)
+- [C06 | Organizational AI management governance](./030_v35_c06.md)
 - [C07 | Extend CP.3 for purpose, applicability and affected-party impact](./031_v35_c07.md)
 - [C08 | Extend CP.4 and P1 for information-authority separation](./032_v35_c08.md)
 - [C09 | Extend CP.9 for delegated identity and attenuation](./033_v35_c09.md)
@@ -130,3 +130,21 @@ Each new note retains its reviewed rationale, explicit clauses and adversarial a
 - [C52 | Agent-consumable requirement and repair contracts](./076_v35_c52.md)
 
 - [077: Source-rights observations and policy separation](./077_v35_c53.md) (NEW in v3.5; issue #390).
+
+## Evidence boundary revision 2026-11-23
+
+Twelve clauses and eight records extend the merged v3.5 baseline. Four records are supporting analysis with no new mandatory clauses. All are source-derived analysis; implementation remains separately tested.
+
+- [C54 | Authorization contract fidelity](./078_v35_c54.md) (NEW clauses).
+- [C55 | Evidence presentation and export integrity](./079_v35_c55.md) (NEW clauses).
+- [C56 | Consequence-aware monitoring coverage](./080_v35_c56.md) (NEW clauses).
+- [C57 | Red-team artifact and learning promotion governance](./081_v35_c57.md) (NEW clauses).
+- [C58 | Delayed influence and action provenance](./082_v35_c58.md) (supporting analysis).
+- [C59 | External observation and repeated-run variance](./083_v35_c59.md) (supporting analysis).
+- [C60 | Target authority in human-led multi-product operations](./084_v35_c60.md) (supporting analysis).
+- [C61 | Hostile security telemetry and defensive authority](./085_v35_c61.md) (supporting analysis).
+
+## Framework evidence identity and source fidelity
+
+- [C62 | Consumption attribution and protected ceiling changes](./086_v35_c62.md) (NEW clauses; framework contract, not capability implementation).
+- [C63 | Revision-bound clause evidence and source disposition](./087_v35_c63.md) (NEW clauses; framework contract, not capability implementation).
