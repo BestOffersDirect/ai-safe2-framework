@@ -18,7 +18,11 @@ package nexus.apay
 
 import rego.v1
 
-default decision := {"decision": "deny", "reason_codes": ["FAIL_CLOSED_DEFAULT"]}
+default decision := {
+	"decision": "deny",
+	"evaluation_state": "not_established",
+	"reason_codes": ["FAIL_CLOSED_DEFAULT"],
+}
 
 default allow := false
 
@@ -30,6 +34,7 @@ decision := result if {
 	count(reason_codes) == 0
 	result := {
 		"decision": "allow",
+		"evaluation_state": "established",
 		"reason_codes": [],
 		"policy_id": policy_id,
 		"consequence": consequence_class,
@@ -40,9 +45,73 @@ decision := result if {
 	count(reason_codes) > 0
 	result := {
 		"decision": verdict_kind,
+		"evaluation_state": evaluation_state,
 		"reason_codes": reason_codes,
 		"policy_id": policy_id,
 		"consequence": consequence_class,
+	}
+}
+
+evaluation_state := "indeterminate" if {
+	verdict_kind == "reconcile"
+}
+
+evaluation_state := "indeterminate" if {
+	verdict_kind == "deny"
+	has_indeterminate_reason
+}
+
+evaluation_state := "not_established" if {
+	verdict_kind == "escalate"
+}
+
+evaluation_state := "not_established" if {
+	verdict_kind == "deny"
+	not has_indeterminate_reason
+	some code in reason_codes
+	code in {
+		"NO_PRINCIPAL_BINDING",
+		"NO_OWNER_OF_RECORD",
+		"GRANT_NOT_FOUND",
+		"NO_RUNTIME_MEASUREMENT",
+		"RUNTIME_NOT_ATTESTED",
+		"RUNTIME_MEASUREMENT_STALE",
+		"INTENT_BINDING_MISSING",
+		"NONCE_MISSING",
+		"HUMAN_APPROVAL_UNAVAILABLE",
+		"FAIL_CLOSED_DEFAULT",
+	}
+}
+
+evaluation_state := "denied" if {
+	verdict_kind == "deny"
+	not has_indeterminate_reason
+	not has_not_established_reason
+}
+
+has_indeterminate_reason if {
+	some code in reason_codes
+	code in {
+		"REVOCATION_STATUS_UNAVAILABLE",
+		"SETTLEMENT_AMBIGUOUS",
+		"EXPOSURE_RESERVATION_FAILED",
+		"POLICY_AUTHORITY_UNAVAILABLE",
+	}
+}
+
+has_not_established_reason if {
+	some code in reason_codes
+	code in {
+		"NO_PRINCIPAL_BINDING",
+		"NO_OWNER_OF_RECORD",
+		"GRANT_NOT_FOUND",
+		"NO_RUNTIME_MEASUREMENT",
+		"RUNTIME_NOT_ATTESTED",
+		"RUNTIME_MEASUREMENT_STALE",
+		"INTENT_BINDING_MISSING",
+		"NONCE_MISSING",
+		"HUMAN_APPROVAL_UNAVAILABLE",
+		"FAIL_CLOSED_DEFAULT",
 	}
 }
 

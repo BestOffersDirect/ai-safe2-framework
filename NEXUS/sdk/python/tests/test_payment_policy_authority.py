@@ -11,6 +11,7 @@ from nexus_sdk.payments.objects import (
     AssuranceLevel,
     AuthorityConstraints,
     AuthorityGrant,
+    EvaluationState,
     Money,
     PaymentDecision,
     PaymentRail,
@@ -88,6 +89,7 @@ def test_allow_issues_authenticated_exactly_bound_receipt():
     assert authenticator.verify_policy(result.receipt)
     assert result.receipt.signing_digest == result.canonical.signing_digest()
     assert result.receipt.policy_digest == authority.definition.policy_digest
+    assert result.evaluation_state is EvaluationState.ESTABLISHED
 
 
 def test_same_inputs_and_policy_snapshot_produce_same_decision_id():
@@ -106,6 +108,7 @@ def test_denial_never_contains_signing_authority():
     assert result.canonical is None
     assert result.receipt is None
     assert not result.authorized
+    assert result.evaluation_state is EvaluationState.DENIED
 
 
 def test_missing_runtime_never_contains_signing_authority():
@@ -113,6 +116,7 @@ def test_missing_runtime_never_contains_signing_authority():
     result = authority.evaluate(intent, runtime=None, now=NOW)
     assert result.verdict.decision is PaymentDecision.DENY
     assert result.receipt is None
+    assert result.evaluation_state is EvaluationState.NOT_ESTABLISHED
 
 
 def test_policy_configuration_change_changes_snapshot_digest():

@@ -9,6 +9,13 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased] -- false-assurance hardening (2026-10-06)
 
+### Added
+
+- Implements ETA-5 with the human-readable Execution Authority State contract
+  (`EvaluationState`), preserving established, not-established, denied, and
+  indeterminate outcomes in Python, OPA, and payment receipt evidence. Only an
+  established state can carry execution authority.
+
 ### Documentation
 
 - Corrects payment documentation to distinguish the SafePay Exact shadow-mode
@@ -18,7 +25,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Adds the proposed Execution-Time Authority Internet-Draft source, ETA-1 through
   ETA-20 implementation crosswalk, machine-readable evidence index, mailing-list
   review drafts, standards-body briefs, and a gated submission plan. The package
-  records eight implemented requirements, eight partial requirements, and four
+  records nine implemented requirements, eight partial requirements, and three
   gaps. It does not claim standards adoption, independent evaluation, or
   production conformance.
 

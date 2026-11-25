@@ -32,6 +32,7 @@ from nexus_sdk.payments.objects import (
     AuthorityGrant,
     CanonicalTransaction,
     ConsequenceClass,
+    EvaluationState,
     Money,
     PaymentDecision,
     PaymentRail,
@@ -245,7 +246,7 @@ __all__ = [
     "__profile_version__",
     # objects
     "AssuranceLevel", "AuthorityConstraints", "AuthorityGrant", "CanonicalTransaction",
-    "ConsequenceClass", "Money", "PaymentDecision", "PaymentRail", "PaymentReasonCode",
+    "ConsequenceClass", "EvaluationState", "Money", "PaymentDecision", "PaymentRail", "PaymentReasonCode",
     "PrincipalBinding", "RuntimeMeasurement", "SettlementFinality", "TransactionIntent",
     "canonical_hash",
     # authority

@@ -111,6 +111,11 @@
           "type": "string",
           "enum": ["allow", "deny", "escalate", "reconcile"]
         },
+        "evaluation_state": {
+          "type": "string",
+          "enum": ["established", "not_established", "denied", "indeterminate"],
+          "description": "Deterministic authority-establishment state. Only established may carry execution authority."
+        },
         "reason_codes": {
           "type": "array",
           "items": { "type": "string" },

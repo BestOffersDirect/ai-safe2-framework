@@ -1,7 +1,7 @@
 {
   "format": "nexus-execution-authority-crosswalk",
   "format_version": "1.0.0",
-  "assessment_date": "2026-11-23",
+  "assessment_date": "2026-11-25",
   "target": {
     "component": "NEXUS",
     "source_version": "0.6.0",
@@ -52,11 +52,13 @@
     },
     {
       "id": "ETA-5",
-      "status": "gap",
+      "status": "implemented",
       "evidence": [
-        "sdk/python/nexus_sdk/payments/runtime_verifier.py"
+        "sdk/python/nexus_sdk/payments/runtime_verifier.py",
+        "sdk/python/nexus_sdk/payments/firewall.py",
+        "sdk/python/tests/test_evaluation_state.py"
       ],
-      "gap": "Stale evidence is refused without a distinct not-established evaluation state."
+      "gap": null
     },
     {
       "id": "ETA-6",

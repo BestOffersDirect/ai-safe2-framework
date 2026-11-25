@@ -11,6 +11,7 @@ from nexus_sdk.payments.execution_plane import ComponentAssurance
 from nexus_sdk.payments.key_guardian import RuntimeAuthorizationReceipt
 from nexus_sdk.payments.objects import (
     CanonicalTransaction,
+    EvaluationState,
     RuntimeMeasurement,
     canonical_hash,
     utcnow,
@@ -63,10 +64,15 @@ class RuntimeVerificationDecision:
     result: AttestationResult
     profile_digest: str
     receipt: RuntimeAuthorizationReceipt | None = None
+    evaluation_state: EvaluationState = EvaluationState.NOT_ESTABLISHED
 
     @property
     def authorized(self) -> bool:
-        return self.result.accepted and self.receipt is not None
+        return (
+            self.evaluation_state is EvaluationState.ESTABLISHED
+            and self.result.accepted
+            and self.receipt is not None
+        )
 
 
 class IndependentRuntimeVerifier:
@@ -106,7 +112,11 @@ class IndependentRuntimeVerifier:
             now=verified_at,
         )
         if not result.accepted:
-            return RuntimeVerificationDecision(result, self.profile.profile_digest)
+            return RuntimeVerificationDecision(
+                result,
+                self.profile.profile_digest,
+                evaluation_state=EvaluationState.DENIED,
+            )
         receipt = RuntimeAuthorizationReceipt(
             runtime_measurement_id=measurement.runtime_measurement_id,
             canonical_digest=canonical.canonical_digest,
@@ -121,7 +131,12 @@ class IndependentRuntimeVerifier:
         receipt = replace(receipt, proof=self.receipt_issuer.seal_runtime(receipt))
         if not receipt.proof:
             raise RuntimeError("runtime receipt issuer returned no proof")
-        return RuntimeVerificationDecision(result, self.profile.profile_digest, receipt)
+        return RuntimeVerificationDecision(
+            result,
+            self.profile.profile_digest,
+            receipt,
+            EvaluationState.ESTABLISHED,
+        )
 
     def _preflight(self, canonical: CanonicalTransaction,
                    measurement: RuntimeMeasurement,

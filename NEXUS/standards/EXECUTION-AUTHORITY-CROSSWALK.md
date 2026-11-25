@@ -4,7 +4,7 @@
 
 **Assessment target:** NEXUS source version 0.6.0
 
-**Assessment date:** 23 November 2026
+**Assessment date:** 25 November 2026
 
 **Evidence level:** Repository self-assessment. No independent evaluation or production deployment evidence.
 
@@ -12,9 +12,9 @@
 
 | Status | Count | Meaning |
 | --- | ---: | --- |
-| Implemented | 8 | The stated property exists in the reference implementation and has refusal-path tests |
+| Implemented | 9 | The stated property exists in the reference implementation and has refusal-path tests |
 | Partial | 8 | Some property or test exists, but the full requirement or deployment boundary is not met |
-| Gap | 4 | The requirement is not implemented as stated |
+| Gap | 3 | The requirement is not implemented as stated |
 
 ## Requirement mapping
 
@@ -24,7 +24,7 @@
 | ETA-2 | Fix the binding no later than the decision | Implemented | Coordinator and Key Guardian reject substitutions after policy evaluation |
 | ETA-3 | Keep decision and credential authority outside model reach | Partial | `NullCredentialBroker` refuses by default and Key Guardian exposes no raw-key return; production isolation is a deployment obligation |
 | ETA-4 | Apply a declared posture-freshness bound at use | Implemented | Independent runtime verifier rejects missing, stale, future, or mismatched evidence |
-| ETA-5 | Record unavailable or stale posture as not established | Gap | NEXUS refuses stale evidence but does not yet preserve the distinct evaluation state required by ETA-5 |
+| ETA-5 | Record unavailable or stale posture as not established | Implemented | `EvaluationState` preserves established, not-established, denied, and indeterminate states in runtime, policy, OPA, and receipt evidence; only established decisions carry execution authority |
 | ETA-6 | Tighten freshness as reversibility decreases | Gap | Profiles can set freshness, but no required monotonic relationship to reversibility class is enforced |
 | ETA-7 | Prevent delegated authority from widening | Implemented | Authority graph checks attenuation across scope, duration, counterparties, depth, and consumable quantity |
 | ETA-8 | Charge consumption to every ancestor | Implemented | Subtree exposure and transactional reservations enforce ancestor ceilings |
@@ -45,5 +45,5 @@
 
 The standards contribution is the requirement set. NEXUS supplies running code, refusal-path tests, and documented failures. It does not establish that every ETA requirement is solved, that a deployment is safe, or that another implementation must use NEXUS.
 
-The four gaps identify work that a single-host reference implementation cannot settle: evaluation-state representation, risk-class freshness policy, distributed consumption authority, and SCITT-compatible records.
+The three remaining gaps require risk-class freshness policy, distributed consumption authority, and SCITT-compatible records.
 

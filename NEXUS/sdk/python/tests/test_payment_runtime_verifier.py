@@ -9,6 +9,7 @@ from nexus_sdk.payments.attestation import HMACTestAttestationVerifier
 from nexus_sdk.payments.key_guardian import InProcessHMACReceiptAuthenticator
 from nexus_sdk.payments.objects import (
     CanonicalTransaction,
+    EvaluationState,
     Money,
     PaymentRail,
     RuntimeMeasurement,
@@ -92,6 +93,7 @@ def test_valid_evidence_issues_authenticated_bound_receipt():
     assert authenticator.verify_runtime(result.receipt)
     assert result.receipt.signing_digest == canonical().signing_digest()
     assert result.receipt.verifier_profile_digest == verifier.profile.profile_digest
+    assert result.evaluation_state is EvaluationState.ESTABLISHED
 
 
 def test_runtime_identity_mismatch_never_issues_receipt():
@@ -101,6 +103,7 @@ def test_runtime_identity_mismatch_never_issues_receipt():
     )
     assert not result.authorized
     assert result.receipt is None
+    assert result.evaluation_state is EvaluationState.NOT_ESTABLISHED
 
 
 def test_stale_measurement_never_reaches_authorization():
@@ -111,6 +114,7 @@ def test_stale_measurement_never_reaches_authorization():
     )
     assert not result.authorized
     assert "stale" in result.result.reason
+    assert result.evaluation_state is EvaluationState.NOT_ESTABLISHED
 
 
 def test_future_measurement_is_not_fresh():
@@ -130,6 +134,7 @@ def test_unapproved_attestation_method_is_rejected():
     )
     assert not result.authorized
     assert "not permitted" in result.result.reason
+    assert result.evaluation_state is EvaluationState.NOT_ESTABLISHED
 
 
 def test_attestation_method_substitution_invalidates_evidence():
@@ -145,6 +150,7 @@ def test_attestation_method_substitution_invalidates_evidence():
     )
     assert not result.authorized
     assert "signature invalid" in result.result.reason
+    assert result.evaluation_state is EvaluationState.DENIED
 
 
 def test_unapproved_workload_identity_is_rejected():

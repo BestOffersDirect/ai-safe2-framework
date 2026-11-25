@@ -134,6 +134,19 @@ class PaymentDecision(str, Enum):
     RECONCILE = "reconcile"    # ambiguous state: governed reconciliation, never blind retry
 
 
+class EvaluationState(str, Enum):
+    """Whether deterministic execution authority was established.
+
+    Human name: Execution Authority State.
+    Technical name: ``EvaluationState``.
+    """
+
+    ESTABLISHED = "established"
+    NOT_ESTABLISHED = "not_established"
+    DENIED = "denied"
+    INDETERMINATE = "indeterminate"
+
+
 class PaymentReasonCode(str, Enum):
     """Stable machine codes. Adjudicators and dashboards key on these, not prose."""
     # Identity / principal

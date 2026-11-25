@@ -32,6 +32,7 @@ from nexus_sdk.payments.objects import (
     AssuranceLevel,
     AuthorityGrant,
     ConsequenceClass,
+    EvaluationState,
     Money,
     PaymentDecision,
     PaymentReasonCode,
@@ -73,6 +74,39 @@ class PaymentVerdict:
         return self.decision is PaymentDecision.ALLOW
 
     @property
+    def evaluation_state(self) -> EvaluationState:
+        """Return a deterministic authority state separate from the decision."""
+        if self.decision is PaymentDecision.ALLOW:
+            return EvaluationState.ESTABLISHED
+        if self.decision is PaymentDecision.RECONCILE:
+            return EvaluationState.INDETERMINATE
+        if self.decision is PaymentDecision.ESCALATE:
+            return EvaluationState.NOT_ESTABLISHED
+        indeterminate = {
+            PaymentReasonCode.REVOCATION_STATUS_UNAVAILABLE,
+            PaymentReasonCode.SETTLEMENT_AMBIGUOUS,
+            PaymentReasonCode.EXPOSURE_RESERVATION_FAILED,
+            PaymentReasonCode.POLICY_AUTHORITY_UNAVAILABLE,
+        }
+        if set(self.reason_codes) & indeterminate:
+            return EvaluationState.INDETERMINATE
+        not_established = {
+            PaymentReasonCode.NO_PRINCIPAL_BINDING,
+            PaymentReasonCode.NO_OWNER_OF_RECORD,
+            PaymentReasonCode.GRANT_NOT_FOUND,
+            PaymentReasonCode.NO_RUNTIME_MEASUREMENT,
+            PaymentReasonCode.RUNTIME_NOT_ATTESTED,
+            PaymentReasonCode.RUNTIME_MEASUREMENT_STALE,
+            PaymentReasonCode.INTENT_BINDING_MISSING,
+            PaymentReasonCode.NONCE_MISSING,
+            PaymentReasonCode.HUMAN_APPROVAL_UNAVAILABLE,
+            PaymentReasonCode.FAIL_CLOSED_DEFAULT,
+        }
+        if set(self.reason_codes) & not_established:
+            return EvaluationState.NOT_ESTABLISHED
+        return EvaluationState.DENIED
+
+    @property
     def codes(self) -> list[str]:
         return [c.value for c in self.reason_codes]
 
@@ -80,6 +114,7 @@ class PaymentVerdict:
         return {
             "decision_id": self.decision_id,
             "decision": self.decision.value,
+            "evaluation_state": self.evaluation_state.value,
             "transaction_intent_id": self.transaction_intent_id,
             "reason_codes": self.codes,
             "reasoning": self.reasoning,

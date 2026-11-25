@@ -12,6 +12,7 @@ from nexus_sdk.payments.key_guardian import PolicyAuthorizationReceipt
 from nexus_sdk.payments.objects import (
     CanonicalTransaction,
     ConsequenceClass,
+    EvaluationState,
     PaymentDecision,
     RuntimeMeasurement,
     TransactionIntent,
@@ -79,6 +80,10 @@ class PolicyAuthorityDecision:
             and self.canonical is not None
             and self.receipt is not None
         )
+
+    @property
+    def evaluation_state(self) -> EvaluationState:
+        return self.verdict.evaluation_state
 
 
 class DeterministicPolicyAuthority:
