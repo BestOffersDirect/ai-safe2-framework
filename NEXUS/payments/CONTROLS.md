@@ -332,7 +332,7 @@ AI SAFE² v3.5 already supplies most of the governance primitives this profile n
 
 **Outcome.** Changes to agents, models, prompts, policies, payment adapters, signers or rails trigger relevant security and payment-integrity tests.
 
-**Unimplemented adapters must raise, not return success.** Every rail binding in `adapters.py` raises `NotImplementedError` by design, matching the convention in `NEXUS/adapters/mcp/adapter.py`. An incomplete adapter fails closed; it does not pass traffic. Shipping a stub that returns success would let a deployment believe it has binding it does not have.
+**Unimplemented adapters must raise, not return success.** Every incomplete rail binding in `adapters.py` raises `NotImplementedError` by design, matching the convention in `NEXUS/adapters/mcp/adapter.py`. The exception is SafePay Exact (`X402V2ExactEVMUSDCBinding`), which performs narrow structural checks in shadow mode without live facilitator or chain verification. An incomplete adapter fails closed; it does not pass traffic. Shipping a stub that returns success would let a deployment believe it has binding it does not have.
 
 **No binding claims native runtime assurance.** A test asserts that every rail binding's `max_native_assurance` is strictly below `RUNTIME_BOUND`, which is the structural claim of this whole profile expressed as an executable assertion.
 
@@ -358,3 +358,7 @@ A deployment states its level and publishes its metrics. A level claimed without
 ---
 
 *CP.5.APAY/0.4 draft · NEXUS v0.6.0 · AI SAFE² v3.5*
+
+`CP.5.APAY/0.4 draft` identifies the payment profile. `NEXUS v0.6.0`
+identifies the source package. Neither identifier proves publication,
+deployment qualification, or production conformance.

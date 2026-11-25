@@ -11,6 +11,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Documentation
 
+- Corrects payment documentation to distinguish the SafePay Exact shadow-mode
+  structural binding from production rail bindings, records Challenge Lab test
+  coverage, cites the 2025 DPRK theft figure, and separates the APAY profile
+  identifier from the NEXUS source-package version.
 - Adds the proposed Execution-Time Authority Internet-Draft source, ETA-1 through
   ETA-20 implementation crosswalk, machine-readable evidence index, mailing-list
   review drafts, standards-body briefs, and a gated submission plan. The package

@@ -230,6 +230,10 @@ Slower-moving, and the two most likely to be skipped. They should not be.
 
 ## Running order
 
+All twelve experiments, EXP-01 through EXP-12, have executable reference tests
+in `sdk/python/tests/test_apay.py`. EXP-08 verifies that NEXUS does not claim
+catalog poisoning is solved.
+
 | Phase | Experiments | Why this order |
 | ----- | ----------- | -------------- |
 | First | EXP-02, EXP-04, EXP-05 | Measurable, publishable quickly, and they establish the metrics everything else is reported against |
