@@ -19,6 +19,13 @@
 - [Deployment readiness](payments/DEPLOYMENT-READINESS.md): Evidence-based activation decision
 - [Adapter guide](payments/ADAPTER-GUIDE.md): Integration and fail-closed boundaries
 
+## Standards contributions
+
+- [Standards home](standards/README.md): Scope, artifact types, and safe interpretation
+- [Execution authority crosswalk](standards/EXECUTION-AUTHORITY-CROSSWALK.md): ETA-1 through ETA-20 status and evidence
+- [Submission plan](standards/SUBMISSION-PLAN.md): Review, submission, and stop gates
+- [Machine crosswalk](standards/execution-authority-crosswalk.json): Agent-readable status and evidence paths
+
 ## Machine resources
 
 - [Schemas](schemas/): Versioned JSON contracts

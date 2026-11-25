@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rfc [
+  <!ENTITY nbsp "&#160;">
+]>
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude"
+     category="info"
+     docName="draft-sullivan-wimse-execution-authority-00"
+     ipr="trust200902"
+     submissionType="IETF"
+     consensus="false"
+     tocInclude="true"
+     sortRefs="true"
+     symRefs="true"
+     version="3">
+
+  <front>
+    <title abbrev="Execution-Time Authority">Execution-Time Authority Requirements for AI Agent Actions</title>
+    <seriesInfo name="Internet-Draft" value="draft-sullivan-wimse-execution-authority-00"/>
+    <author fullname="Vincent Sullivan" initials="V." surname="Sullivan">
+      <organization>Cyber Strategy Institute</organization>
+      <address>
+        <email>standards@cyberstrategyinstitute.com</email>
+      </address>
+    </author>
+    <date/>
+    <area>Security</area>
+    <workgroup>Workload Identity in Multi System Environments</workgroup>
+    <keyword>AI agent</keyword>
+    <keyword>authorization</keyword>
+    <keyword>delegation</keyword>
+    <keyword>attestation</keyword>
+    <keyword>revocation</keyword>
+    <abstract>
+      <t>Current work on AI agent identity and authorization establishes which
+      agent is acting and what authority it was granted. It does not establish
+      whether the workload exercising that authority is still in an approved
+      state at the moment it acts, or how much authority a tree of delegated
+      agents has consumed in total. A compromised agent host inherits valid
+      identity, valid credentials, and valid delegations, and every signature
+      it produces verifies.</t>
+      <t>This document states requirements for binding the authority to take a
+      consequential action to the state of the executing workload at the time
+      of use, for containing consumable authority across a delegation tree,
+      and for recording the result so that it can be evaluated later. It
+      defines no protocol and no wire format. It is offered as input to work
+      on agent identity, agent communication, and transparency records.</t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section anchor="intro">
+      <name>Introduction</name>
+      <t>The AI Identity Management System draft <xref target="I-D.ietf-wimse-aims"/>
+      composes workload identity and OAuth mechanisms for AI agents. It ties
+      credential issuance and renewal to an assessment of workload posture and
+      leaves the evidence format and the verifier to deployments. Credentials
+      are short-lived, but an agent can act many times within one credential
+      lifetime, and the posture that justified issuance is not re-examined at
+      each use.</t>
+      <t>The architecture proposed for agent communications
+      <xref target="I-D.manyfolks-agentproto-arch"/> observes in its security
+      considerations that valid credentials do not establish that a platform
+      is uncompromised. The use cases and requirements draft
+      <xref target="I-D.ietf-agentproto-usecases-requirements"/> requires that
+      credential validity be verified at time of use and that revocation
+      propagate through delegation chains, and it places accountability and
+      auditing mechanisms out of scope.</t>
+      <t>These documents leave the same interval open. Between the moment an
+      authority is granted and the moment it is exercised, four things can
+      change: the software and configuration of the agent, the policy that
+      governs it, the standing of anyone in its delegation lineage, and the
+      amount of authority its siblings and descendants have already used. An
+      attacker who controls the agent host after issuance does not need to
+      forge anything.</t>
+      <t>This document states requirements that close that interval. They are
+      written so that existing mechanisms can satisfy them: remote attestation
+      <xref target="RFC9334"/>, workload identity, OAuth token exchange
+      <xref target="RFC8693"/>, and signed transparency statements
+      <xref target="RFC9943"/>. The requirements are derived from an open
+      source implementation described in <xref target="impl"/>.</t>
+      <section anchor="scope">
+        <name>Scope</name>
+        <t>In scope: what a decision point needs to know, and to record, before
+        it permits a consequential action by an agent.</t>
+        <t>Out of scope: agent identifiers and credential formats, discovery,
+        dialog management, policy languages, the behavior of AI models, and
+        any payment protocol. <xref target="example"/> uses a payment as an
+        illustration only.</t>
+      </section>
+    </section>
+
+    <section anchor="terms">
+      <name>Terminology</name>
+      <t>The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
+      "<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>",
+      "<bcp14>SHALL NOT</bcp14>", "<bcp14>SHOULD</bcp14>",
+      "<bcp14>SHOULD NOT</bcp14>", "<bcp14>RECOMMENDED</bcp14>",
+      "<bcp14>NOT RECOMMENDED</bcp14>", "<bcp14>MAY</bcp14>", and
+      "<bcp14>OPTIONAL</bcp14>" in this document are to be interpreted as
+      described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+      when, and only when, they appear in all capitals, as shown here.</t>
+      <dl newline="true">
+        <dt>Consequential action</dt>
+        <dd>An action whose effect persists outside the agent and that the
+        deployment has classified as requiring a decision before execution.
+        Each consequential action has a reversibility class: reversible,
+        reversible with cost, or irreversible.</dd>
+        <dt>Grant</dt>
+        <dd>A statement of authority issued to an agent by a principal or by
+        another agent, in any format.</dd>
+        <dt>Authority tree</dt>
+        <dd>A root grant together with every grant derived from it by
+        delegation.</dd>
+        <dt>Consumable authority</dt>
+        <dd>Authority expressed as a quantity that use depletes, such as
+        monetary value, request count, records exported, or compute.</dd>
+        <dt>Decision point</dt>
+        <dd>The component that permits or refuses a consequential action.</dd>
+        <dt>Posture evidence</dt>
+        <dd>Evidence about the software, configuration, and environment of the
+        workload that will execute the action, in the sense of
+        <xref target="RFC9334"/>.</dd>
+        <dt>Revocation epoch</dt>
+        <dd>A monotonically increasing value associated with an authority tree.
+        Authority issued under an earlier epoch is not valid.</dd>
+        <dt>Accountable authority</dt>
+        <dd>A named person or organizational role that answers for an agent's
+        consequential actions and can stop them.</dd>
+      </dl>
+    </section>
+
+    <section anchor="problem">
+      <name>Problem Statement</name>
+      <t>A decision to permit a consequential action can be checked at four
+      levels.</t>
+      <dl newline="true">
+        <dt>Syntactic</dt>
+        <dd>Signatures, audiences, expiry, and nonces are valid. Existing
+        mechanisms cover this.</dd>
+        <dt>Semantic</dt>
+        <dd>The proposed action falls within a deterministic reading of the
+        grant. Existing mechanisms partly cover this.</dd>
+        <dt>Runtime</dt>
+        <dd>The agent, its tools, the decision point, and the credential
+        holder are in an approved state now.</dd>
+        <dt>Temporal</dt>
+        <dd>The grant, every grant above it, the posture evidence, and the
+        revocation state are all still valid at the instant of execution,
+        and the authority tree has not already consumed what the action
+        would consume.</dd>
+      </dl>
+      <t>Identity and delegation work addresses the first two. The last two
+      are where a compromised but correctly credentialed agent succeeds. The
+      requirements below address them.</t>
+    </section>
+
+    <section anchor="reqs">
+      <name>Requirements</name>
+      <section anchor="reqs-binding">
+        <name>Binding at Decision Time</name>
+        <dl newline="true">
+          <dt>ETA-1</dt>
+          <dd>Before permitting a consequential action, the decision point
+          <bcp14>MUST</bcp14> bind together a digest of the exact action, the
+          grant under which it is requested, the revision of the policy
+          applied, a reference to the posture evidence relied on, and the
+          current revocation epoch of the authority tree.</dd>
+          <dt>ETA-2</dt>
+          <dd>The binding <bcp14>MUST</bcp14> be fixed no later than the
+          decision. A binding assembled afterward from logs does not satisfy
+          this requirement. This matches the decision-time binding requirement
+          in <xref target="I-D.wadkins-agentproto-action-determinability"/>.</dd>
+          <dt>ETA-3</dt>
+          <dd>The decision point and any key used to exercise the authority
+          <bcp14>MUST NOT</bcp14> be readable or invocable by the AI model
+          whose output proposed the action. This extends the rule in
+          <xref target="I-D.ietf-wimse-aims"/> that the model does not hold
+          agent or tool credentials.</dd>
+        </dl>
+      </section>
+      <section anchor="reqs-posture">
+        <name>Posture at Time of Use</name>
+        <dl newline="true">
+          <dt>ETA-4</dt>
+          <dd>For actions in a class the deployment designates, the decision
+          point <bcp14>MUST</bcp14> evaluate posture evidence whose age is
+          within a bound the deployment declares for that class. Evidence
+          gathered at credential issuance satisfies this only if it is within
+          the bound at the time of use.</dd>
+          <dt>ETA-5</dt>
+          <dd>Posture evidence that is absent or older than the bound
+          <bcp14>MUST</bcp14> be recorded as not established, not as a
+          negative result. The decision point <bcp14>MAY</bcp14> refuse on
+          that basis. This preserves the distinction drawn in
+          <xref target="I-D.konda-agentproto-evaluation-state"/>.</dd>
+          <dt>ETA-6</dt>
+          <dd>The bound <bcp14>SHOULD</bcp14> tighten as the reversibility
+          class moves toward irreversible.</dd>
+        </dl>
+      </section>
+      <section anchor="reqs-delegation">
+        <name>Delegation and Aggregate Containment</name>
+        <dl newline="true">
+          <dt>ETA-7</dt>
+          <dd>A grant derived by delegation <bcp14>MUST NOT</bcp14> exceed the
+          grant it derives from in any dimension, including scope, duration,
+          counterparties, and consumable quantity.</dd>
+          <dt>ETA-8</dt>
+          <dd>Consumption of consumable authority <bcp14>MUST</bcp14> be
+          counted against the grant used and against every grant above it in
+          the authority tree. A decision point <bcp14>MUST</bcp14> refuse an
+          action that would cause any ancestor's limit to be exceeded.</dd>
+          <dt>ETA-9</dt>
+          <dd>Where more than one decision point serves an authority tree,
+          they <bcp14>MUST</bcp14> share consumption state or partition the
+          limit among themselves in advance. Independent local counters do
+          not satisfy ETA-8.</dd>
+        </dl>
+        <t>ETA-8 addresses a failure that per-grant limits do not: many
+        descendants each staying within a small limit while the tree as a
+        whole exceeds what the root principal authorized.</t>
+      </section>
+      <section anchor="reqs-revocation">
+        <name>Revocation</name>
+        <dl newline="true">
+          <dt>ETA-10</dt>
+          <dd>Advancing the revocation epoch of a grant <bcp14>MUST</bcp14>
+          invalidate every grant derived from it, without enumerating
+          them.</dd>
+          <dt>ETA-11</dt>
+          <dd>The decision point <bcp14>MUST</bcp14> compare the epoch bound
+          under ETA-1 with the current epoch at the time of execution, not
+          only at the time of the decision, when the two are separated.</dd>
+          <dt>ETA-12</dt>
+          <dd>A deployment <bcp14>MUST</bcp14> declare the interval within
+          which an epoch change reaches every decision point for the tree,
+          and <bcp14>MUST</bcp14> treat a decision point that has not
+          confirmed the current epoch within that interval as unable to
+          permit consequential actions. This document sets no numeric
+          value.</dd>
+        </dl>
+      </section>
+      <section anchor="reqs-accountable">
+        <name>Accountable Authority and Capability Tier</name>
+        <dl newline="true">
+          <dt>ETA-13</dt>
+          <dd>An agent permitted to take irreversible actions
+          <bcp14>MUST</bcp14> be associated, in a record the agent cannot
+          modify, with an accountable authority that is able to advance the
+          revocation epoch of the agent's grants without the cooperation of
+          the agent or of any AI model provider.</dd>
+          <dt>ETA-14</dt>
+          <dd>Where obligations scale with an agent's capability tier, the
+          tier <bcp14>MUST</bcp14> be taken from the registered record and
+          not from a value the agent presents. A missing tier
+          <bcp14>MUST</bcp14> be treated as the most restrictive tier.</dd>
+          <dt>ETA-15</dt>
+          <dd>Confirmation by the accountable authority, when policy requires
+          it, <bcp14>MUST</bcp14> be bound to the action digest of ETA-1 and
+          obtained over a channel the agent does not control.
+          <xref target="I-D.ietf-wimse-aims"/> notes that confirmation during
+          execution needs further design; this requirement states the
+          property that design has to have.</dd>
+        </dl>
+      </section>
+      <section anchor="reqs-outcomes">
+        <name>Outcomes and Records</name>
+        <dl newline="true">
+          <dt>ETA-16</dt>
+          <dd>A decision <bcp14>MUST</bcp14> resolve to one of: permit, deny,
+          escalate to the accountable authority, or unresolved. Unresolved
+          applies when the action may have taken effect and its outcome is
+          not known. An unresolved action <bcp14>MUST NOT</bcp14> be
+          resubmitted until it is reconciled.</dd>
+          <dt>ETA-17</dt>
+          <dd>Every decision, including a denial, <bcp14>MUST</bcp14> produce
+          a signed record containing the binding of ETA-1, the outcome, and
+          for each input whether it was verified by the decision point,
+          asserted by another party, or not established.</dd>
+          <dt>ETA-18</dt>
+          <dd>The record <bcp14>MUST</bcp14> be verifiable without the
+          cooperation of the agent, the original session, or credentials that
+          were valid at the time, consistent with
+          <xref target="I-D.wadkins-agentproto-action-determinability"/>.</dd>
+          <dt>ETA-19</dt>
+          <dd>The record <bcp14>SHOULD</bcp14> be expressible as a Signed
+          Statement <xref target="RFC9943"/> so that it can be registered
+          with a transparency service. This document does not define a new
+          record format; <xref target="I-D.nassar-agentproto-trail"/> and
+          the profiles under discussion in the SCITT working group are
+          candidates.</dd>
+        </dl>
+      </section>
+      <section anchor="reqs-seams">
+        <name>Protocol Boundaries</name>
+        <dl newline="true">
+          <dt>ETA-20</dt>
+          <dd>When an action crosses from one protocol or administrative
+          domain to another, the receiving side <bcp14>MUST NOT</bcp14>
+          accept weaker assurance than the grant requires. A grant that
+          requires posture evidence is not satisfied by a bearer token
+          presented on its behalf.</dd>
+        </dl>
+      </section>
+    </section>
+
+    <section anchor="related">
+      <name>Relationship to Other Work</name>
+      <t>This document adds no mechanism to
+      <xref target="I-D.ietf-wimse-aims"/>. It asks that the posture
+      assessment performed at provisioning be available, with a freshness
+      bound, at the point of use, and that authorization tokens be able to
+      carry or reference the items in ETA-1.</t>
+      <t>ETA-7 restates scope narrowing as required by
+      <xref target="I-D.ietf-agentproto-usecases-requirements"/> for multi-hop
+      delegation. ETA-8 and ETA-9 are additional. ETA-16 is compatible with
+      that draft's statement that an operation whose outcome cannot be
+      determined stays unresolved.</t>
+      <t><xref target="I-D.nassar-agentproto-trail"/> defines signed action
+      records, authorities that can stop an agent, and a rule that an edge
+      passes traffic only while it holds current authority state. ETA-12 is
+      satisfied by that rule. This document does not compete with it.</t>
+      <t>Posture evidence can be conveyed using the architecture in
+      <xref target="RFC9334"/>. This document does not profile it.</t>
+    </section>
+
+    <section anchor="security">
+      <name>Security Considerations</name>
+      <t>The requirements assume the decision point is more trustworthy than
+      the agent. If both run in one compromised environment, ETA-3 is not met
+      and nothing here helps. Deployments need to say where the decision
+      point runs and why the agent cannot reach it.</t>
+      <t>Posture evidence shows that measured software was running. It does
+      not show that the software is free of vulnerabilities, or that an AI
+      model's output is correct or uninfluenced by injected content. An agent
+      in an approved state can still be instructed to take a harmful action
+      that falls within its grant. Aggregate containment limits the damage
+      from that case; it does not prevent it.</t>
+      <t>A counterparty that is authentic and malicious satisfies every
+      requirement in this document.</t>
+      <t>Shared consumption state under ETA-9 is a target. An attacker who can
+      reset or partition it defeats ETA-8. An attacker who can delay epoch
+      propagation extends the window in ETA-12; the fail-closed rule in
+      ETA-12 bounds this at the cost of availability, which makes the
+      propagation path a denial-of-service target.</t>
+      <t>A decision point's signing key can forge records under ETA-17.
+      Registering records with a transparency service limits what a later
+      key compromise can rewrite; it does not help against a key that was
+      compromised when the record was made.</t>
+      <t>ETA-16 forbids resubmission of unresolved actions because retry
+      after an ambiguous failure is a common way for an irreversible action
+      to be executed twice.</t>
+    </section>
+
+    <section anchor="privacy">
+      <name>Privacy Considerations</name>
+      <t>Records under ETA-17 link an action to an agent, a delegation
+      lineage, and an accountable authority. That linkage is the purpose of
+      the record and is also a tracking risk in the sense of
+      <xref target="RFC6973"/>.</t>
+      <t>Records <bcp14>SHOULD</bcp14> carry digests of action parameters and
+      not the parameters. Identifiers for the principal and the accountable
+      authority <bcp14>SHOULD</bcp14> be pairwise or otherwise unlinkable
+      across relying parties, with disclosure to an evaluator on a stated
+      basis. Posture evidence can fingerprint a deployment and
+      <bcp14>SHOULD</bcp14> be referenced by the record and disclosed
+      separately.</t>
+      <t>Aggregate consumption state reveals the activity of an entire
+      authority tree to whoever holds it. Deployments
+      <bcp14>SHOULD</bcp14> keep that state with the party that issued the
+      root grant.</t>
+    </section>
+
+    <section anchor="iana">
+      <name>IANA Considerations</name>
+      <t>This document has no IANA actions.</t>
+    </section>
+
+    <section anchor="impl">
+      <name>Implementation Status</name>
+      <t>This section is to be removed before publication as an RFC. It
+      follows <xref target="RFC7942"/>.</t>
+      <t>The requirements were derived from the NEXUS reference
+      implementation published by the Cyber Strategy Institute under the
+      Apache 2.0 license <xref target="NEXUS"/>. Version 0.6.0 implements
+      the binding of ETA-1, registry-bound capability tiers (ETA-14),
+      monotonic attenuation (ETA-7), aggregate containment (ETA-8),
+      revocation epochs, the four outcomes of ETA-16, and hash-chained
+      decision records with a redacted external form. Each has tests that
+      exercise the refusal path.</t>
+      <t>Limits of that implementation: posture verification is an interface
+      with a test verifier, not an integration with a hardware root of
+      trust, and stale evidence is refused without being recorded separately
+      as not established (ETA-5). The revocation epoch is kept per principal,
+      which is coarser than the per-grant epoch of ETA-10. Consumption state
+      is a single-host reference store, so ETA-9 is not met across hosts.
+      Records are not yet emitted as SCITT Signed Statements.
+      The implementation has not been independently evaluated and has no
+      production deployment evidence. Its bindings to external payment
+      protocols refuse by default and have not been tested against live
+      counterparties.</t>
+    </section>
+  </middle>
+
+  <back>
+    <references>
+      <name>References</name>
+      <references>
+        <name>Normative References</name>
+        <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
+          <front>
+            <title>Key words for use in RFCs to Indicate Requirement Levels</title>
+            <author fullname="S. Bradner" initials="S." surname="Bradner"/>
+            <date month="March" year="1997"/>
+          </front>
+          <seriesInfo name="BCP" value="14"/>
+          <seriesInfo name="RFC" value="2119"/>
+          <seriesInfo name="DOI" value="10.17487/RFC2119"/>
+        </reference>
+        <reference anchor="RFC8174" target="https://www.rfc-editor.org/info/rfc8174">
+          <front>
+            <title>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</title>
+            <author fullname="B. Leiba" initials="B." surname="Leiba"/>
+            <date month="May" year="2017"/>
+          </front>
+          <seriesInfo name="BCP" value="14"/>
+          <seriesInfo name="RFC" value="8174"/>
+          <seriesInfo name="DOI" value="10.17487/RFC8174"/>
+        </reference>
+      </references>
+      <references>
+        <name>Informative References</name>
+        <reference anchor="RFC6973" target="https://www.rfc-editor.org/info/rfc6973">
+          <front>
+            <title>Privacy Considerations for Internet Protocols</title>
+            <author fullname="A. Cooper" initials="A." surname="Cooper"/>
+            <author fullname="H. Tschofenig" initials="H." surname="Tschofenig"/>
+            <author fullname="B. Aboba" initials="B." surname="Aboba"/>
+            <author fullname="J. Peterson" initials="J." surname="Peterson"/>
+            <author fullname="J. Morris" initials="J." surname="Morris"/>
+            <author fullname="M. Hansen" initials="M." surname="Hansen"/>
+            <author fullname="R. Smith" initials="R." surname="Smith"/>
+            <date month="July" year="2013"/>
+          </front>
+          <seriesInfo name="RFC" value="6973"/>
+        </reference>
+        <reference anchor="RFC7942" target="https://www.rfc-editor.org/info/rfc7942">
+          <front>
+            <title>Improving Awareness of Running Code: The Implementation Status Section</title>
+            <author fullname="Y. Sheffer" initials="Y." surname="Sheffer"/>
+            <author fullname="A. Farrel" initials="A." surname="Farrel"/>
+            <date month="July" year="2016"/>
+          </front>
+          <seriesInfo name="BCP" value="205"/>
+          <seriesInfo name="RFC" value="7942"/>
+        </reference>
+        <reference anchor="RFC8693" target="https://www.rfc-editor.org/info/rfc8693">
+          <front>
+            <title>OAuth 2.0 Token Exchange</title>
+            <author fullname="M. Jones" initials="M." surname="Jones"/>
+            <author fullname="A. Nadalin" initials="A." surname="Nadalin"/>
+            <author fullname="B. Campbell" initials="B." role="editor" surname="Campbell"/>
+            <author fullname="J. Bradley" initials="J." surname="Bradley"/>
+            <author fullname="C. Mortimore" initials="C." surname="Mortimore"/>
+            <date month="January" year="2020"/>
+          </front>
+          <seriesInfo name="RFC" value="8693"/>
+        </reference>
+        <reference anchor="RFC9334" target="https://www.rfc-editor.org/info/rfc9334">
+          <front>
+            <title>Remote ATtestation procedureS (RATS) Architecture</title>
+            <author fullname="H. Birkholz" initials="H." surname="Birkholz"/>
+            <author fullname="D. Thaler" initials="D." surname="Thaler"/>
+            <author fullname="M. Richardson" initials="M." surname="Richardson"/>
+            <author fullname="N. Smith" initials="N." surname="Smith"/>
+            <author fullname="W. Pan" initials="W." surname="Pan"/>
+            <date month="January" year="2023"/>
+          </front>
+          <seriesInfo name="RFC" value="9334"/>
+        </reference>
+        <reference anchor="RFC9943" target="https://www.rfc-editor.org/info/rfc9943">
+          <front>
+            <title>An Architecture for Trustworthy and Transparent Digital Supply Chains</title>
+            <author>
+              <organization>IETF SCITT Working Group</organization>
+            </author>
+            <date month="June" year="2026"/>
+          </front>
+          <seriesInfo name="RFC" value="9943"/>
+        </reference>
+        <reference anchor="I-D.ietf-wimse-aims" target="https://datatracker.ietf.org/doc/draft-ietf-wimse-aims/">
+          <front>
+            <title>AI Identity Management System</title>
+            <author fullname="P. Kasselman" initials="P." surname="Kasselman"/>
+            <author fullname="J. Lombardo" initials="J." surname="Lombardo"/>
+            <author fullname="Y. Rosomakho" initials="Y." surname="Rosomakho"/>
+            <author fullname="B. Campbell" initials="B." surname="Campbell"/>
+            <author fullname="N. Steele" initials="N." surname="Steele"/>
+            <author fullname="A. Parecki" initials="A." surname="Parecki"/>
+            <date month="November" year="2026"/>
+          </front>
+          <seriesInfo name="Internet-Draft" value="draft-ietf-wimse-aims-01"/>
+          <refcontent>Work in Progress</refcontent>
+        </reference>
+        <reference anchor="I-D.manyfolks-agentproto-arch" target="https://datatracker.ietf.org/doc/draft-manyfolks-agentproto-arch/">
+          <front>
+            <title>Architecture for AI Agent Communications on the Internet</title>
+            <author fullname="J. Rosenberg" initials="J." surname="Rosenberg"/>
+            <author fullname="Z. Sarker" initials="Z." surname="Sarker"/>
+            <author fullname="T. Reddy.K" initials="T." surname="Reddy.K"/>
+            <author fullname="K. Yao" initials="K." surname="Yao"/>
+            <author fullname="D. Liu" initials="D." surname="Liu"/>
+            <author fullname="S. Krishnan" initials="S." surname="Krishnan"/>
+            <date month="October" year="2026"/>
+          </front>
+          <seriesInfo name="Internet-Draft" value="draft-manyfolks-agentproto-arch-00"/>
+          <refcontent>Work in Progress</refcontent>
+        </reference>
+        <reference anchor="I-D.ietf-agentproto-usecases-requirements" target="https://datatracker.ietf.org/doc/draft-ietf-agentproto-usecases-requirements/">
+          <front>
+            <title>Agentic AI Use Cases and Requirements</title>
+            <author fullname="T. Reddy.K" initials="T." surname="Reddy.K"/>
+            <author fullname="Z. Sarker" initials="Z." surname="Sarker"/>
+            <author fullname="K. Yao" initials="K." surname="Yao"/>
+            <date month="November" year="2026"/>
+          </front>
+          <seriesInfo name="Internet-Draft" value="draft-ietf-agentproto-usecases-requirements-00"/>
+          <refcontent>Work in Progress</refcontent>
+        </reference>
+        <reference anchor="I-D.wadkins-agentproto-action-determinability" target="https://datatracker.ietf.org/doc/draft-wadkins-agentproto-action-determinability/">
+          <front>
+            <title>Independent Determinability of Agent Actions</title>
+            <author fullname="D. Wadkins" initials="D." surname="Wadkins"/>
+            <date month="September" year="2026"/>
+          </front>
+          <seriesInfo name="Internet-Draft" value="draft-wadkins-agentproto-action-determinability-00"/>
+          <refcontent>Work in Progress</refcontent>
+        </reference>
+        <reference anchor="I-D.konda-agentproto-evaluation-state" target="https://datatracker.ietf.org/doc/draft-konda-agentproto-evaluation-state/">
+          <front>
+            <title>Preserving Evaluation State in Agent Protocol Decisions</title>
+            <author fullname="G. Konda" initials="G." surname="Konda"/>
+            <date month="October" year="2026"/>
+          </front>
+          <seriesInfo name="Internet-Draft" value="draft-konda-agentproto-evaluation-state-02"/>
+          <refcontent>Work in Progress</refcontent>
+        </reference>
+        <reference anchor="I-D.nassar-agentproto-trail" target="https://datatracker.ietf.org/doc/draft-nassar-agentproto-trail/">
+          <front>
+            <title>TRAIL: Tamper-evident Records for Agent Interactions and Liveness</title>
+            <author fullname="K. Nassar" initials="K." surname="Nassar"/>
+            <author fullname="S. Nandakumar" initials="S." surname="Nandakumar"/>
+            <author fullname="C. Jennings" initials="C." surname="Jennings"/>
+            <date month="November" year="2026"/>
+          </front>
+          <seriesInfo name="Internet-Draft" value="draft-nassar-agentproto-trail-00"/>
+          <refcontent>Work in Progress</refcontent>
+        </reference>
+        <reference anchor="NEXUS" target="https://github.com/CyberStrategyInstitute/ai-safe2-framework/tree/main/NEXUS">
+          <front>
+            <title>NEXUS reference implementation, version 0.6.0</title>
+            <author>
+              <organization>Cyber Strategy Institute</organization>
+            </author>
+            <date year="2026"/>
+          </front>
+        </reference>
+      </references>
+    </references>
+
+    <section anchor="example">
+      <name>Worked Example: An Irreversible Action</name>
+      <t>This appendix is illustrative. A payment is used because it is a
+      familiar irreversible action. The same sequence applies to any action
+      in the irreversible class.</t>
+      <t>A principal authorizes an agent to spend up to 500 units with a set
+      of merchants over one week. The agent delegates 100 units to each of
+      three sub-agents for separate tasks.</t>
+      <ol>
+        <li>A sub-agent proposes a payment of 80 units. The decision point
+        computes the action digest and collects the sub-agent's grant, the
+        policy revision, a reference to posture evidence for the sub-agent's
+        workload, and the tree's revocation epoch (ETA-1).</li>
+        <li>The posture evidence is 40 seconds old. The deployment's bound
+        for irreversible actions is 60 seconds. The input is established
+        (ETA-4).</li>
+        <li>The sub-agent has consumed 30 of its 100. The tree has consumed
+        410 of 500. Permitting 80 would take the tree to 490. Both limits
+        hold (ETA-8).</li>
+        <li>The decision point permits, signs the record, and releases the
+        action to a credential holder the agent cannot reach (ETA-3,
+        ETA-17).</li>
+        <li>A second sub-agent then proposes 20 units. It is within its own
+        100. The tree would reach 510. The decision point denies and records
+        the denial (ETA-8, ETA-17).</li>
+        <li>The accountable authority learns that the first sub-agent's host
+        was altered and advances the epoch of the root grant. Every derived
+        grant is invalid from that point without being listed (ETA-10,
+        ETA-13).</li>
+        <li>A payment that was permitted before the epoch change but has not
+        yet executed is checked again at execution and refused (ETA-11).</li>
+        <li>A payment whose submission timed out is recorded as unresolved
+        and is not retried until its status is reconciled with the payee
+        (ETA-16).</li>
+      </ol>
+      <t>Step 5 is the case that per-grant limits miss. Steps 6 and 7 are the
+      case that credential expiry alone handles too slowly.</t>
+    </section>
+
+    <section anchor="ack" numbered="false">
+      <name>Acknowledgments</name>
+      <t>The four-level framing in <xref target="problem"/> and the
+      requirements for aggregate containment come from work on the AI SAFE2
+      framework. The author thanks the authors of the drafts cited here,
+      whose statements of open issues shaped the scope of this document.</t>
+      <t>Drafting of this document was assisted by an AI language tool. The
+      author reviewed and is responsible for all content.</t>
+    </section>
+  </back>
+</rfc>
+
+
+
+

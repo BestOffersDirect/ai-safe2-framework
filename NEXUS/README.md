@@ -24,7 +24,7 @@ publication. See [component versions](../docs/COMPONENT-VERSIONS.md).
 
 *Cyber Strategy Institute reference implementation for governed agent-to-agent, agent-to-tool, and agent-to-payment enforcement*
 
-[Framework Home](../README.md) | [Documentation Map](DOCUMENTATION.md) | [Cross-Pillar Governance](../00-cross-pillar/README.md) | [AISM](../AISM) | [MCP Profile](../00-cross-pillar/cp5_mcp_server_security.md) | [**Payments Profile**](payments/README.md) | [Dashboard](https://cyberstrategyinstitute.github.io/ai-safe2-framework/dashboard/)
+[Framework Home](../README.md) | [Documentation Map](DOCUMENTATION.md) | [Standards Contributions](standards/README.md) | [Cross-Pillar Governance](../00-cross-pillar/README.md) | [AISM](../AISM) | [MCP Profile](../00-cross-pillar/cp5_mcp_server_security.md) | [**Payments Profile**](payments/README.md) | [Dashboard](https://cyberstrategyinstitute.github.io/ai-safe2-framework/dashboard/)
 
 **Previous:** [← AISM](../AISM) | **Next:** [Gateway / Runtime Enforcement →](../gateway)
 
@@ -65,6 +65,14 @@ NEXUS demonstrates one way to enforce AI SAFE² requirements across:
 - **agent-to-payment traffic** *(new in v0.4)*: mandate integrity, runtime-bound authorization, aggregate economic containment, measured revocation, dispute-grade evidence.
 
 Organizations do not have to deploy NEXUS to claim AI SAFE² conformance. They must demonstrably satisfy the applicable AI SAFE² controls and produce the required independently reconstructable evidence.
+
+## Standards contributions
+
+The [standards package](standards/README.md) contains a proposed IETF
+Internet-Draft on execution-time authority, an ETA-1 through ETA-20 NEXUS
+implementation crosswalk, and submission planning material. These are draft
+contributions. They are not adopted standards, external approval, or proof that
+NEXUS satisfies every proposed requirement.
 
 ---
 

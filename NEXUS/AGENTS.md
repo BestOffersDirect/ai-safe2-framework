@@ -11,6 +11,7 @@ Read the repository-root `AGENTS.md` first; this file narrows it for NEXUS.
 4. Select the relevant plane: agent-to-agent, agent-to-tool, or agent-to-payment.
 5. For payments, read `payments/THREAT-MODEL.md` before controls or deployment claims.
 6. Resolve schemas from `schemas/`, policy from `opa/`, and observed behavior from tests.
+7. For standards claims, read `standards/README.md`, then resolve the machine crosswalk and cited evidence paths.
 
 ## Interpretation rules
 
@@ -26,6 +27,7 @@ Read the repository-root `AGENTS.md` first; this file narrows it for NEXUS.
 - Preserve the published protocol and schema identifiers; package and protocol
   versions are independent.
 - External reviews and agent explanations are evidence, not approval authority.
+- Standards drafts and mailing-list text are proposals, not adopted positions or authorization to submit.
 
 ## Change workflow
 

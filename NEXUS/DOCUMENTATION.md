@@ -15,6 +15,7 @@ discover the complete implementation from one boundary.
 | Decide whether a deployment is ready | [Deployment readiness](payments/DEPLOYMENT-READINESS.md) | [Sandbox readiness](payments/SANDBOX-READINESS.md) |
 | Review security or assurance claims | [Security policy](SECURITY.md) | [Threat model](payments/THREAT-MODEL.md) and [Challenge Lab](payments/CHALLENGE-LAB.md) |
 | Extend an adapter or payment rail | [Adapter guide](payments/ADAPTER-GUIDE.md) | [Hardening and extension](payments/HARDENING-AND-EXTENSION.md) |
+| Review or submit standards contributions | [Standards contributions](standards/README.md) | [ETA crosswalk](standards/EXECUTION-AUTHORITY-CROSSWALK.md) and [submission plan](standards/SUBMISSION-PLAN.md) |
 | Consume NEXUS with an agent | [Agent instructions](AGENTS.md) | [Machine manifest](nexus-docs.manifest.json) and [LLM index](llms.txt) |
 
 ## Status legend
@@ -55,6 +56,8 @@ meaning by itself.
 ## Protocol, policy, and assurance
 
 - [Architecture and protocol overview](README.md#architecture)
+- [Standards contributions](standards/README.md)
+- [Execution-Time Authority crosswalk](standards/EXECUTION-AUTHORITY-CROSSWALK.md)
 - [Compliance material](compliance/)
 - [OPA policies](opa/)
 - [Schemas](schemas/)

@@ -1,0 +1,198 @@
+{
+  "format": "nexus-execution-authority-crosswalk",
+  "format_version": "1.0.0",
+  "assessment_date": "2026-11-23",
+  "target": {
+    "component": "NEXUS",
+    "source_version": "0.6.0",
+    "independently_evaluated": false,
+    "production_evidence": false
+  },
+  "status_vocabulary": [
+    "implemented",
+    "partial",
+    "gap"
+  ],
+  "requirements": [
+    {
+      "id": "ETA-1",
+      "status": "implemented",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/coordinator.py",
+        "sdk/python/tests/test_payment_coordinator.py"
+      ],
+      "gap": null
+    },
+    {
+      "id": "ETA-2",
+      "status": "implemented",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/key_guardian.py",
+        "sdk/python/tests/test_payment_key_guardian.py"
+      ],
+      "gap": null
+    },
+    {
+      "id": "ETA-3",
+      "status": "partial",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/broker.py",
+        "payments/DEPLOYMENT-READINESS.md"
+      ],
+      "gap": "Production isolation and non-exportable key custody require a deployment binding."
+    },
+    {
+      "id": "ETA-4",
+      "status": "implemented",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/runtime_verifier.py",
+        "sdk/python/tests/test_payment_runtime_verifier.py"
+      ],
+      "gap": null
+    },
+    {
+      "id": "ETA-5",
+      "status": "gap",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/runtime_verifier.py"
+      ],
+      "gap": "Stale evidence is refused without a distinct not-established evaluation state."
+    },
+    {
+      "id": "ETA-6",
+      "status": "gap",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/runtime_verifier.py"
+      ],
+      "gap": "No monotonic freshness rule is enforced across reversibility classes."
+    },
+    {
+      "id": "ETA-7",
+      "status": "implemented",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/authority.py",
+        "sdk/python/tests/test_apay.py"
+      ],
+      "gap": null
+    },
+    {
+      "id": "ETA-8",
+      "status": "implemented",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/authority.py",
+        "sdk/python/nexus_sdk/payments/sqlite_state.py",
+        "sdk/python/tests/test_payment_sqlite_state.py"
+      ],
+      "gap": null
+    },
+    {
+      "id": "ETA-9",
+      "status": "gap",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/sqlite_state.py"
+      ],
+      "gap": "The reference store is single-host and does not share or pre-partition budgets across decision points."
+    },
+    {
+      "id": "ETA-10",
+      "status": "partial",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/authority.py",
+        "sdk/python/nexus_sdk/payments/sqlite_state.py"
+      ],
+      "gap": "Durable revocation epochs are principal-scoped rather than per-grant."
+    },
+    {
+      "id": "ETA-11",
+      "status": "implemented",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/broker.py",
+        "sdk/python/tests/test_apay.py"
+      ],
+      "gap": null
+    },
+    {
+      "id": "ETA-12",
+      "status": "partial",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/authority.py",
+        "payments/DEPLOYMENT-READINESS.md"
+      ],
+      "gap": "No deployment-wide propagation objective is measured or proven."
+    },
+    {
+      "id": "ETA-13",
+      "status": "partial",
+      "evidence": [
+        "sdk/python/nexus_sdk/aim.py",
+        "sdk/python/nexus_sdk/guardian.py"
+      ],
+      "gap": "Immutable registration and an independently operated stop path require deployment evidence."
+    },
+    {
+      "id": "ETA-14",
+      "status": "implemented",
+      "evidence": [
+        "sdk/python/nexus_sdk/aim.py",
+        "sdk/python/nexus_sdk/guardian.py",
+        "sdk/python/tests/test_guardian_aim_tier.py"
+      ],
+      "gap": null
+    },
+    {
+      "id": "ETA-15",
+      "status": "partial",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/human_intent.py",
+        "sdk/python/tests/test_payment_human_intent.py"
+      ],
+      "gap": "The out-of-band channel and its independence are deployment bindings."
+    },
+    {
+      "id": "ETA-16",
+      "status": "implemented",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/objects.py",
+        "sdk/python/nexus_sdk/payments/reconciliation.py",
+        "sdk/python/tests/test_payment_reconciliation.py"
+      ],
+      "gap": null
+    },
+    {
+      "id": "ETA-17",
+      "status": "partial",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/evidence.py",
+        "schemas/apay-ptr-v0.4.schema.json"
+      ],
+      "gap": "Not every denial carries a signed record with per-input evaluation provenance."
+    },
+    {
+      "id": "ETA-18",
+      "status": "partial",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/evidence.py",
+        "payments/DEPLOYMENT-READINESS.md"
+      ],
+      "gap": "Independent reconstruction depends on retained verification material and deployment trust roots."
+    },
+    {
+      "id": "ETA-19",
+      "status": "gap",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/evidence.py"
+      ],
+      "gap": "NEXUS does not emit RFC 9943 Signed Statements."
+    },
+    {
+      "id": "ETA-20",
+      "status": "partial",
+      "evidence": [
+        "sdk/python/nexus_sdk/payments/adapters.py",
+        "sdk/python/tests/test_apay_cross_adapter.py"
+      ],
+      "gap": "Assurance floors are not yet enforced across every NEXUS protocol boundary."
+    }
+  ]
+}
+

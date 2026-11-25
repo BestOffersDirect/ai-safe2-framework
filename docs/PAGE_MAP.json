@@ -486,6 +486,30 @@
       "kind": "document"
     },
     {
+      "path": "NEXUS/standards/EXECUTION-AUTHORITY-CROSSWALK.md",
+      "kind": "document"
+    },
+    {
+      "path": "NEXUS/standards/IETF-LIST-REVIEWS.md",
+      "kind": "document"
+    },
+    {
+      "path": "NEXUS/standards/README.md",
+      "kind": "document"
+    },
+    {
+      "path": "NEXUS/standards/STANDARDS-BODY-BRIEFS.md",
+      "kind": "document"
+    },
+    {
+      "path": "NEXUS/standards/SUBMISSION-PLAN.md",
+      "kind": "document"
+    },
+    {
+      "path": "NEXUS/standards/execution-authority-crosswalk.json",
+      "kind": "machine-data"
+    },
+    {
       "path": "QUICKSTART_5_MIN.md",
       "kind": "document"
     },

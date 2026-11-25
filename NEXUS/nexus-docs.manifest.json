@@ -25,5 +25,12 @@
     "adapter_guide": "payments/ADAPTER-GUIDE.md",
     "schemas": "schemas/",
     "policy": "opa/"
+  },
+  "standards": {
+    "status": "draft-contribution",
+    "entry_point": "standards/README.md",
+    "execution_authority_draft": "standards/ietf/draft-sullivan-wimse-execution-authority-00.xml",
+    "crosswalk": "standards/execution-authority-crosswalk.json",
+    "submission_plan": "standards/SUBMISSION-PLAN.md"
   }
 }

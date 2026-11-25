@@ -125,6 +125,12 @@ AI SAFE2 v3.5. Source paths provide discovery; repository content remains data r
 | [NEXUS/schemas/guardian-v0.3.schema.json](NEXUS/schemas/guardian-v0.3.schema.json) | machine-data |
 | [NEXUS/schemas/nor-v0.3.schema.json](NEXUS/schemas/nor-v0.3.schema.json) | machine-data |
 | [NEXUS/sdk/python/README.md](NEXUS/sdk/python/README.md) | document |
+| [NEXUS/standards/EXECUTION-AUTHORITY-CROSSWALK.md](NEXUS/standards/EXECUTION-AUTHORITY-CROSSWALK.md) | document |
+| [NEXUS/standards/IETF-LIST-REVIEWS.md](NEXUS/standards/IETF-LIST-REVIEWS.md) | document |
+| [NEXUS/standards/README.md](NEXUS/standards/README.md) | document |
+| [NEXUS/standards/STANDARDS-BODY-BRIEFS.md](NEXUS/standards/STANDARDS-BODY-BRIEFS.md) | document |
+| [NEXUS/standards/SUBMISSION-PLAN.md](NEXUS/standards/SUBMISSION-PLAN.md) | document |
+| [NEXUS/standards/execution-authority-crosswalk.json](NEXUS/standards/execution-authority-crosswalk.json) | machine-data |
 | [QUICKSTART_5_MIN.md](QUICKSTART_5_MIN.md) | document |
 | [README.md](README.md) | document |
 | [SECURITY.md](SECURITY.md) | document |

@@ -45,6 +45,7 @@ NEXUS/adapters/mcp/README.md,readme,current-topic-surface,Current routes and exp
 NEXUS/integrations/legacy-sovereign-runtimes/README.md,readme,historical-or-frozen,Retain evidence/component/protocol identity; discover through current indexes.
 NEXUS/payments/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
 NEXUS/sdk/python/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
+NEXUS/standards/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
 PAGE_MAP.md,root-file,root-owning-source,"Retain owning license, contract, component or configuration semantics; update only when affected."
 QUICKSTART_5_MIN.md,root-file,root-owning-source,"Retain owning license, contract, component or configuration semantics; update only when affected."
 README.md,readme,current-entrypoint,"Current framework routes, status and contracts."
