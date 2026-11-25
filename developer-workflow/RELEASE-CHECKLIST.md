@@ -28,6 +28,9 @@
 - [x] Optional planning, code-review, security-review, and runtime modules are
   separated by capability and status
 - [x] Repository-specific workflow explanation can be generated locally
+- [x] Documentation ownership and generated-mirror freshness are validated
+- [x] Setup plans distinguish the bundled game preview from planned profiles
+- [x] Release qualification preserves exact-revision evidence and human authority
 - [x] Starter CI publishes that explanation in its summary and as an artifact
 - [x] Starter CI verifies the pinned AI SAFE2 CLI and emits both CLI routing
   and human decision records for the exact revision

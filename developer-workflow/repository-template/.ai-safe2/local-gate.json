@@ -1,0 +1,15 @@
+{
+  "schema_version": "ai-safe2.local-gate.v1",
+  "checks": [
+    {
+      "id": "workflow-contracts",
+      "required": true,
+      "command": ["{python}", "scripts/validate_workflow.py", "--root", "."]
+    },
+    {
+      "id": "documentation-ownership",
+      "required": true,
+      "command": ["{python}", "scripts/validate_documentation_ownership.py", "--root", ".", "--manifest", ".ai-safe2/documentation-ownership.json", "--schema", ".ai-safe2/schemas/documentation-ownership-v1.schema.json"]
+    }
+  ]
+}

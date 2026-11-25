@@ -1,0 +1,10 @@
+{
+  "schema_version": "ai-safe2.documentation-ownership.v1",
+  "documents": [
+    {"path":"AGENTS.md","classification":"hand_authored","owner":"REPLACE-maintainer","canonical_sources":["repository policy and AI SAFE2 Developer Workflow pin"],"freshness":"manual_review","status":"template","notice":null},
+    {"path":"CLAUDE.md","classification":"hand_authored","owner":"REPLACE-maintainer","canonical_sources":["AGENTS.md","repository policy"],"freshness":"manual_review","status":"template","notice":null},
+    {"path":".github/PULL_REQUEST_TEMPLATE.md","classification":"hand_authored","owner":"REPLACE-maintainer","canonical_sources":[".ai-safe2/workflow.json","repository policy"],"freshness":"manual_review","status":"template","notice":null}
+  ],
+  "mirror_sets": [],
+  "coverage": {"markdown_roots":["AGENTS.md","CLAUDE.md",".github/PULL_REQUEST_TEMPLATE.md"],"exclude":[]}
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "ai-safe2.release-qualification.v1",
+  "candidate": {"version": "REPLACE-candidate-version", "revision": "REPLACE-candidate-revision"},
+  "required_capabilities": ["local-gate", "hosted-ci", "clean-game-canary", "security-review", "placeholder-resolution", "package-integrity"],
+  "evidence": [
+    {"capability":"local-gate","status":"not_requested","subject_revision":"REPLACE-candidate-revision","producer":"local-gate","evidence_ref":null,"limitations":["No local-gate evidence has been attached."]},
+    {"capability":"hosted-ci","status":"not_requested","subject_revision":"REPLACE-candidate-revision","producer":"hosted-ci","evidence_ref":null,"limitations":["No hosted-CI evidence has been attached."]},
+    {"capability":"clean-game-canary","status":"not_requested","subject_revision":"REPLACE-candidate-revision","producer":"external-canary","evidence_ref":null,"limitations":["No clean external game-repository canary has been attached."]},
+    {"capability":"security-review","status":"not_requested","subject_revision":"REPLACE-candidate-revision","producer":"security-reviewer","evidence_ref":null,"limitations":["No security-review evidence has been attached."]},
+    {"capability":"placeholder-resolution","status":"not_requested","subject_revision":"REPLACE-candidate-revision","producer":"package-validator","evidence_ref":null,"limitations":["Placeholder resolution has not been verified."]},
+    {"capability":"package-integrity","status":"not_requested","subject_revision":"REPLACE-candidate-revision","producer":"package-builder","evidence_ref":null,"limitations":["No package inventory or checksum evidence has been attached."]}
+  ],
+  "outcome": "hold",
+  "missing_capabilities": ["local-gate", "hosted-ci", "clean-game-canary", "security-review", "placeholder-resolution", "package-integrity"],
+  "human_authority": {"release_decision_recorded": false, "release_owner": null, "release_at": null, "rationale": null},
+  "limitations": ["This template does not qualify, authorize, tag, or publish a release."]
+}

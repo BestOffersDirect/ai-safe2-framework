@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyberstrategyinstitute.com/schemas/ai-safe2/repository-baseline-v1.schema.json",
+  "title": "AI SAFE2 Repository Baseline v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "subject", "inventory", "observations", "limits"],
+  "properties": {
+    "schema_version": {"const": "ai-safe2.repository-baseline.v1"},
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "revision", "scope", "worktree_dirty"],
+      "properties": {
+        "repository": {"type": "string", "minLength": 1},
+        "revision": {"type": ["string", "null"]},
+        "scope": {"const": "working_tree"},
+        "worktree_dirty": {"type": ["boolean", "null"]}
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["discovered_files", "python_files", "test_python_files", "markdown_files", "workflow_files"],
+      "properties": {
+        "discovered_files": {"type": "integer", "minimum": 0},
+        "python_files": {"type": "integer", "minimum": 0},
+        "test_python_files": {"type": "integer", "minimum": 0},
+        "markdown_files": {"type": "integer", "minimum": 0},
+        "workflow_files": {"type": "integer", "minimum": 0}
+      }
+    },
+    "observations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["codeowners", "local_pre_commit", "type_checking", "adversarial_testing", "human_review_enforcement"],
+      "properties": {
+        "codeowners": {"$ref": "#/$defs/observation"},
+        "local_pre_commit": {"$ref": "#/$defs/observation"},
+        "type_checking": {"$ref": "#/$defs/observation"},
+        "adversarial_testing": {"$ref": "#/$defs/observation"},
+        "human_review_enforcement": {"$ref": "#/$defs/observation"}
+      }
+    },
+    "limits": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1
+    }
+  },
+  "$defs": {
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence"],
+      "properties": {
+        "status": {"enum": ["observed", "not_observed", "unknown"]},
+        "evidence": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

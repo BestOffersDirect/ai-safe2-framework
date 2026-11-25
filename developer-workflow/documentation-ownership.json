@@ -1,0 +1,34 @@
+{
+  "schema_version": "ai-safe2.documentation-ownership.v1",
+  "documents": [
+    {"path":"README.md","classification":"canonical","owner":"Developer Workflow maintainers","canonical_sources":[],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"CHANGELOG.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["final diff and release evidence"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"RELEASE-CHECKLIST.md","classification":"hand_authored","owner":"Developer Workflow release owner","canonical_sources":["MANIFEST.json","VERSION"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/ADOPTION-GUIDE.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["README.md","repository-template/.ai-safe2/workflow.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/ADVERSARIAL-SOFTWARE-ASSURANCE.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["schemas/adversarial-assurance-receipt-v1.schema.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/ARCHITECTURE.md","classification":"canonical","owner":"Developer Workflow maintainers","canonical_sources":["schemas","adapters/manifests.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/BOUNDED-AGENT-EXECUTION.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["schemas/agent-execution-boundary-v1.schema.json","schemas/agent-handoff-v1.schema.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/CI-EXECUTION-EVIDENCE.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["schemas/ci-execution-receipt-v1.schema.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/CONTRACTS.md","classification":"canonical","owner":"Developer Workflow maintainers","canonical_sources":["schemas"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/CURRENT-STATE-AND-GAPS.md","classification":"hand_authored","owner":"Developer Workflow release owner","canonical_sources":["MANIFEST.json","README.md"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/DOCUMENTATION-OWNERSHIP.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["documentation-ownership.json","schemas/documentation-ownership-v1.schema.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/EVIDENCE-BRIDGE-AND-REVIEW-PROVENANCE.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["schemas/evidence-envelope-v1.schema.json","schemas/review-provenance-v1.schema.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/GAME-DEVELOPER-QUICKSTART.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["profiles/game.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/LOCAL-VALIDATION-AND-TYPES.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["local-gate.json",".pre-commit-config.yaml"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/PROJECT-DISCOVERY.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["schemas/project-map-v1.schema.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/RELEASE-PLAN.md","classification":"hand_authored","owner":"Developer Workflow release owner","canonical_sources":["MANIFEST.json","RELEASE-CHECKLIST.md"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/RELEASE-QUALIFICATION.md","classification":"hand_authored","owner":"Developer Workflow release owner","canonical_sources":["schemas/release-qualification-v1.schema.json","profiles/catalog.json","RELEASE-CHECKLIST.md"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/TOOL-SETUP-GUIDE.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["adapters/manifests.json","upstreams.lock.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/UPGRADE-BASELINE-AND-ACCEPTANCE.md","classification":"canonical","owner":"Developer Workflow release owner","canonical_sources":["evidence/repository-baseline.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/UPSTREAM-UPDATES.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["upstreams.lock.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/USER-GROUPS.md","classification":"hand_authored","owner":"Developer Workflow maintainers","canonical_sources":["README.md"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/integrations/AGENCY-CHECK.md","classification":"hand_authored","owner":"Agency Check integration owner","canonical_sources":["adapters/manifests.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"docs/integrations/MCP-PRO.md","classification":"hand_authored","owner":"MCP Pro integration owner","canonical_sources":["adapters/manifests.json"],"freshness":"manual_review","status":"current","notice":null},
+    {"path":"evidence/repository-baseline.json","classification":"historical_snapshot","owner":"Developer Workflow release owner","canonical_sources":["scripts/measure_repository_baseline.py"],"freshness":"regenerate","status":"historical","notice":"Generated evidence for its recorded subject and revision. Do not present it as the current working tree."}
+  ],
+  "mirror_sets": [
+    {"source_root":"scripts","target_root":"repository-template/scripts","pattern":"*.py","exclude":["classify_change.py","validate_workflow.py"],"comparison":"normalized_text","owner":"Developer Workflow maintainers","notice":"Generated export mirrors. Edit the source script, then refresh the matching template file."},
+    {"source_root":"schemas","target_root":"repository-template/.ai-safe2/schemas","pattern":"*.json","exclude":[],"comparison":"semantic_json","owner":"Developer Workflow maintainers","notice":"Generated export mirrors. Edit the source schema, then refresh the matching template file."}
+  ],
+  "coverage": {"markdown_roots":["README.md","CHANGELOG.md","RELEASE-CHECKLIST.md","docs"],"exclude":[]}
+}

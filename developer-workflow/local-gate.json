@@ -1,0 +1,44 @@
+{
+  "schema_version": "ai-safe2.local-gate.v1",
+  "checks": [
+    {
+      "id": "workflow-contracts",
+      "required": true,
+      "command": ["{python}", "scripts/validate_workflow.py", "--root", "."]
+    },
+    {
+      "id": "contract-tests",
+      "required": true,
+      "command": ["{python}", "-m", "pytest", "tests", "-q", "--basetemp=.test-temp-local-gate"]
+    },
+    {
+      "id": "discovery-types",
+      "required": true,
+      "command": [
+        "{python}",
+        "-m",
+        "mypy",
+        "--strict",
+        "scripts/measure_repository_baseline.py",
+        "scripts/discover_project.py",
+        "scripts/run_local_gate.py",
+        "scripts/validate_agent_handoff.py",
+        "scripts/attach_evidence.py",
+        "scripts/evaluate_adversarial_assurance.py",
+        "scripts/validate_documentation_ownership.py",
+        "scripts/evaluate_release_qualification.py"
+      ]
+    },
+    {
+      "id": "documentation-ownership",
+      "required": true,
+      "command": [
+        "{python}",
+        "scripts/validate_documentation_ownership.py",
+        "--root", ".",
+        "--manifest", "documentation-ownership.json",
+        "--schema", "schemas/documentation-ownership-v1.schema.json"
+      ]
+    }
+  ]
+}

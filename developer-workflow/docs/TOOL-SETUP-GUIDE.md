@@ -71,12 +71,18 @@ For repeatable automation, select goals explicitly:
 
 ```console
 python scripts/setup_assistant.py \
+  --project-type game \
   --goals planning,deterministic-security,semantic-review \
   --output AI-SAFE2-SETUP-PLAN.md
 ```
 
 Supported goals are `planning`, `deterministic-security`, `semantic-review`,
 `security-review`, `strategic-review`, and `runtime`.
+
+Supported project types are `game`, `mobile`, `api-service`, `ai-agent`, and
+`infrastructure`. Only `game` has a bundled preview profile. The setup plan
+names the qualification gap for every planned profile instead of silently
+applying game paths to a different system.
 
 The assistant does not create accounts, install third-party software, add
 credentials, enable repository apps, or change branch protection. A human

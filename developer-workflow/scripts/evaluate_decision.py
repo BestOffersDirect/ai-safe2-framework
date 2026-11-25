@@ -18,7 +18,7 @@ def evaluate(record: dict) -> dict:
     missing = sorted(set(record["required_evidence"]) - produced)
     result = dict(record)
     result["outcome"] = "hold" if missing else "ready_for_human_decision"
-    result["risks"] = (
+    result["risks"] = list(record["risks"]) + (
         [{"status": "unknown", "reason": f"Missing produced evidence: {capability}"} for capability in missing]
         if missing
         else []
@@ -32,7 +32,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     record = json.loads(args.record.read_text(encoding="utf-8"))
-    if record["outcome"] in {"approved", "rejected"}:
+    if record["outcome"] in {"approved", "rejected", "deferred"}:
         raise SystemExit("Refusing to overwrite a completed human decision.")
     result = evaluate(record)
     args.output.parent.mkdir(parents=True, exist_ok=True)

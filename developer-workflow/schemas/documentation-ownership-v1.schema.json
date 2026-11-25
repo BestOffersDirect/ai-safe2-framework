@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyberstrategyinstitute.com/schemas/ai-safe2/documentation-ownership-v1.schema.json",
+  "title": "AI SAFE2 Documentation Ownership v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "documents", "mirror_sets", "coverage"],
+  "properties": {
+    "schema_version": {"const": "ai-safe2.documentation-ownership.v1"},
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "classification", "owner", "canonical_sources", "freshness", "status", "notice"],
+        "properties": {
+          "path": {"$ref": "#/$defs/path"},
+          "classification": {"enum": ["canonical", "hand_authored", "generated", "historical_snapshot", "vendored"]},
+          "owner": {"type": "string", "minLength": 1, "maxLength": 200},
+          "canonical_sources": {"type": "array", "maxItems": 20, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+          "freshness": {"enum": ["manual_review", "regenerate", "not_applicable"]},
+          "status": {"enum": ["current", "historical", "template"]},
+          "notice": {"type": ["string", "null"], "maxLength": 1000}
+        }
+      }
+    },
+    "mirror_sets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_root", "target_root", "pattern", "exclude", "comparison", "owner", "notice"],
+        "properties": {
+          "source_root": {"$ref": "#/$defs/path"},
+          "target_root": {"$ref": "#/$defs/path"},
+          "pattern": {"type": "string", "minLength": 1, "maxLength": 100},
+          "exclude": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 200}},
+          "comparison": {"enum": ["normalized_text", "semantic_json"]},
+          "owner": {"type": "string", "minLength": 1, "maxLength": 200},
+          "notice": {"type": "string", "minLength": 1, "maxLength": 1000}
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["markdown_roots", "exclude"],
+      "properties": {
+        "markdown_roots": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/path"}},
+        "exclude": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/path"}}
+      }
+    }
+  },
+  "$defs": {
+    "path": {"type": "string", "minLength": 1, "maxLength": 500, "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"}
+  }
+}

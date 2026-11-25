@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyberstrategyinstitute.com/schemas/ai-safe2/agent-execution-boundary-v1.schema.json",
+  "title": "AI SAFE2 Agent Execution Boundary v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "boundary_id", "plan_ref", "subject", "ownership", "scope", "isolation", "tools", "skills", "budgets", "stop_conditions", "authority", "human_authorization", "limitations"],
+  "properties": {
+    "schema_version": {"const": "ai-safe2.agent-execution-boundary.v1"},
+    "boundary_id": {"$ref": "#/$defs/id"},
+    "plan_ref": {"type": "string", "minLength": 1, "maxLength": 500},
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task_id", "base_revision"],
+      "properties": {
+        "task_id": {"$ref": "#/$defs/id"},
+        "base_revision": {"$ref": "#/$defs/id"}
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accountable_human", "executor_id", "executor_type"],
+      "properties": {
+        "accountable_human": {"$ref": "#/$defs/id"},
+        "executor_id": {"$ref": "#/$defs/id"},
+        "executor_type": {"enum": ["human", "agent", "system"]}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["include", "exclude", "concurrent_write_policy"],
+      "properties": {
+        "include": {"$ref": "#/$defs/paths"},
+        "exclude": {"$ref": "#/$defs/paths_optional"},
+        "concurrent_write_policy": {"enum": ["isolated_worktree", "non_overlapping_paths", "writes_prohibited"]}
+      }
+    },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy", "reference"],
+      "properties": {
+        "strategy": {"enum": ["worktree", "branch", "read_only"]},
+        "reference": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    },
+    "tools": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tool_id", "permissions", "data_boundary", "secrets_required", "rationale"],
+        "properties": {
+          "tool_id": {"$ref": "#/$defs/id"},
+          "permissions": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"enum": ["read", "write", "execute", "network"]}
+          },
+          "data_boundary": {"enum": ["local", "hosted", "hybrid"]},
+          "secrets_required": {"type": "boolean"},
+          "rationale": {"$ref": "#/$defs/text"}
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["skill_id", "source", "pin", "license", "trust_gate", "external_review", "admission", "decision_owner"],
+        "properties": {
+          "skill_id": {"$ref": "#/$defs/id"},
+          "source": {"type": "string", "minLength": 1, "maxLength": 500},
+          "pin": {"type": "string", "minLength": 1, "maxLength": 200},
+          "license": {"type": ["string", "null"], "maxLength": 100},
+          "trust_gate": {"$ref": "#/$defs/evidence_status"},
+          "external_review": {"$ref": "#/$defs/evidence_status"},
+          "admission": {"enum": ["admit", "hold", "reject"]},
+          "decision_owner": {"type": ["string", "null"], "maxLength": 160}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"admission": {"const": "admit"}}},
+            "then": {
+              "properties": {
+                "trust_gate": {"properties": {"status": {"const": "produced"}}},
+                "decision_owner": {"type": "string", "minLength": 1}
+              }
+            }
+          }
+        ]
+      }
+    },
+    "budgets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_parallel_workers", "max_subagent_depth", "max_elapsed_minutes", "max_tool_calls"],
+      "properties": {
+        "max_parallel_workers": {"type": "integer", "minimum": 1, "maximum": 16},
+        "max_subagent_depth": {"type": "integer", "minimum": 0, "maximum": 4},
+        "max_elapsed_minutes": {"type": "integer", "minimum": 1, "maximum": 1440},
+        "max_tool_calls": {"type": ["integer", "null"], "minimum": 1, "maximum": 10000}
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "trigger", "action"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "trigger": {"$ref": "#/$defs/text"},
+          "action": {"enum": ["stop", "escalate"]}
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["modify_scoped_files", "merge", "release", "deploy", "policy_change", "exception", "risk_acceptance"],
+      "properties": {
+        "modify_scoped_files": {"type": "boolean"},
+        "merge": {"const": false},
+        "release": {"const": false},
+        "deploy": {"const": false},
+        "policy_change": {"const": false},
+        "exception": {"const": false},
+        "risk_acceptance": {"const": false}
+      }
+    },
+    "human_authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "owner", "authorized_at"],
+      "properties": {
+        "status": {"enum": ["draft", "authorized"]},
+        "owner": {"type": ["string", "null"], "maxLength": 160},
+        "authorized_at": {"type": ["string", "null"], "format": "date-time"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "authorized"}}},
+          "then": {
+            "properties": {
+              "owner": {"type": "string", "minLength": 1},
+              "authorized_at": {"type": "string", "format": "date-time"}
+            }
+          }
+        }
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {"$ref": "#/$defs/text"}
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 1, "maxLength": 160, "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"},
+    "text": {"type": "string", "minLength": 1, "maxLength": 4000},
+    "paths": {"type": "array", "minItems": 1, "maxItems": 100, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+    "paths_optional": {"type": "array", "maxItems": 100, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+    "evidence_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence_ref"],
+      "properties": {
+        "status": {"enum": ["not_requested", "unavailable", "failed", "produced"]},
+        "evidence_ref": {"type": ["string", "null"], "maxLength": 500}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "produced"}}},
+          "then": {"properties": {"evidence_ref": {"type": "string", "minLength": 1}}}
+        }
+      ]
+    }
+  }
+}

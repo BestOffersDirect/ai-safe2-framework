@@ -6,6 +6,7 @@ path,kind,disposition,reason
 .markdownlint-cli2.yaml,root-file,root-owning-source,"Retain owning license, contract, component or configuration semantics; update only when affected."
 .markdownlint.yaml,root-file,root-owning-source,"Retain owning license, contract, component or configuration semantics; update only when affected."
 .pr_agent.toml,root-file,root-owning-source,"Retain owning license, contract, component or configuration semantics; update only when affected."
+.pre-commit-config.yaml,root-file,root-owning-source,"Retain owning license, contract, component or configuration semantics; update only when affected."
 00-cross-pillar/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
 00-cross-pillar/unbiased-ai/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.
 01-sanitize-isolate/README.md,readme,current-topic-surface,Current routes and explicit component/evidence boundaries; implementation claims remain scoped.

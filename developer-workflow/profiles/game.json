@@ -2,6 +2,8 @@
   "schema_version": "ai-safe2.product-profile.v1",
   "profile_id": "game",
   "name": "Game development",
+  "maturity": "preview",
+  "canary": {"status": "local_fixture", "evidence_ref": "tests/test_contracts.py::test_change_classification_routes_by_risk"},
   "lenses": [
     "deterministic-simulation",
     "save-integrity-and-migration",
@@ -35,6 +37,10 @@
     "**/ui/**",
     "**/assets/**"
   ],
-  "required_human_roles_for_critical": ["maintainer", "security-or-platform-owner"]
+  "required_human_roles_for_critical": ["maintainer", "security-or-platform-owner"],
+  "limitations": [
+    "Local route fixtures have passed; a clean external game-repository canary has not been recorded.",
+    "Repository owners must adapt paths, roles, platform signing, privacy, economy, multiplayer, and rollback boundaries."
+  ]
 }
 

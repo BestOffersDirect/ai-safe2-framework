@@ -57,6 +57,8 @@ accept risk.
 
 - **Workflow:** `{workflow["workflow_id"]}`
 - **Profile:** `{profile["profile_id"]}` ({profile["name"]})
+- **Profile maturity:** `{profile.get("maturity", "not declared")}`
+- **Profile canary:** `{profile.get("canary", {}).get("status", "not declared")}`
 - **Decision owner:** `{workflow["decision_owner"]}`
 - **Minimum AI SAFE2 CLI:** `{workflow["minimum_cli_version"]}`
 
@@ -102,9 +104,10 @@ flowchart LR
 The installed contract preview classifies changes and creates a replayable
 route artifact, a CLI decision-routing result, a human decision record, and
 this explanation. The human record starts at `hold`. The preview does not
-automatically convert every repository CI result into evidence unless this
-repository adds an evidence bridge. Without complete evidence, `hold` is the
-correct result.
+automatically collect or map every repository CI and review result. The bundled
+bridge validates and attaches evidence envelopes after repository-specific
+automation creates them. Without complete evidence, `hold` is the correct
+result.
 
 ## CI execution evidence boundary
 

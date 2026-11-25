@@ -81,16 +81,47 @@ MODULES = {
     },
 }
 
+PROJECT_TYPES = {
+    "game": {
+        "profile": "game",
+        "status": "bundled preview",
+        "next_gate": "Adapt the game paths and run a clean canary in this repository.",
+    },
+    "mobile": {
+        "profile": "not bundled",
+        "status": "planned",
+        "next_gate": "Define mobile signing, permissions, privacy, storage, telemetry, API, and store-release boundaries before use.",
+    },
+    "api-service": {
+        "profile": "not bundled",
+        "status": "planned",
+        "next_gate": "Define identity, authorization, tenancy, schema, migration, infrastructure, and rollback boundaries before use.",
+    },
+    "ai-agent": {
+        "profile": "not bundled",
+        "status": "planned",
+        "next_gate": "Define model, tool, delegation, memory, MCP, data, interruption, and consequential-action boundaries before use.",
+    },
+    "infrastructure": {
+        "profile": "not bundled",
+        "status": "planned",
+        "next_gate": "Define state, privilege, secrets, plan/apply, drift, recovery, and production-change boundaries before use.",
+    },
+}
+
 
 def ask(prompt: str, *, default: bool = False) -> bool:
     answer = input(prompt + (" [Y/n] " if default else " [y/N] ")).strip().lower()
     return default if not answer else answer in {"y", "yes"}
 
 
-def render_plan(selected: set[str]) -> str:
+def render_plan(selected: set[str], project_type: str = "game") -> str:
     unknown = selected - set(MODULES)
     if unknown:
         raise ValueError("unknown setup goals: " + ", ".join(sorted(unknown)))
+    if project_type not in PROJECT_TYPES:
+        raise ValueError("unknown project type: " + project_type)
+    project = PROJECT_TYPES[project_type]
     rows = []
     sections = []
     for goal, module in MODULES.items():
@@ -119,6 +150,17 @@ authorize merge or release.
 5. Open a setup PR and verify documentation, code, and critical-path routes.
 6. Confirm CLI and human decision records bind to the exact revision.
 7. Keep `hold` until every required capability has truthful evidence.
+
+## Project profile
+
+- **Project type:** `{project_type}`
+- **Bundled profile:** `{project["profile"]}`
+- **Qualification status:** `{project["status"]}`
+- **Next gate:** {project["next_gate"]}
+
+Do not substitute the game profile for another project type. A planned profile
+must be authored from that repository's trust boundaries and pass a clean
+canary before it is presented as qualified.
 
 ## Selected outcomes
 
@@ -153,6 +195,7 @@ See `developer-workflow/docs/TOOL-SETUP-GUIDE.md` for detailed setup and verific
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--goals", help="Comma-separated goals: " + ",".join(MODULES))
+    parser.add_argument("--project-type", choices=PROJECT_TYPES, default="game")
     parser.add_argument("--interactive", action="store_true")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -167,7 +210,7 @@ def main() -> int:
     else:
         selected = {item.strip() for item in (args.goals or "").split(",") if item.strip()}
     try:
-        content = render_plan(selected)
+        content = render_plan(selected, args.project_type)
     except ValueError as error:
         parser.error(str(error))
     args.output.parent.mkdir(parents=True, exist_ok=True)

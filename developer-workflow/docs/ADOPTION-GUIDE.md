@@ -67,9 +67,10 @@ builds, and smoke tests into evidence envelopes. These are the strongest
 candidates for required merge gates because their completion criteria are
 defined and repeatable.
 
-The general-purpose CI evidence bridge is not bundled in v0.1.0. Until it is
-implemented, evidence must be attached by repository-specific automation or a
-human and the decision remains `hold`.
+The bundled evidence bridge validates and attaches evidence envelopes for the
+same subject and revision. Repository-specific automation must still collect
+native results and map them into those envelopes. Missing required evidence
+keeps the decision at `hold`.
 
 Use the bundled CI execution receipt to make that repository-specific
 automation truthful. Record environment preflight, build, test,
@@ -138,7 +139,8 @@ the intended modular structure, not delivered files.
 6. Add hostile fixtures for timeout, stale revision, empty success, malformed
    output, and provider unavailability.
 7. Pin the dependency and update it in an isolated pull request.
-8. Keep authorization with a named human.
+8. Add new documentation to the ownership map and name its canonical sources.
+9. Keep authorization with a named human.
 
 ## What good adoption evidence looks like
 

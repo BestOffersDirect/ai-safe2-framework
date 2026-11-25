@@ -176,6 +176,7 @@ The receipt is an artifact for a deterministic-check evidence envelope:
 - failure class and phase remain observations, not authorization or risk
   acceptance.
 
-This helper is not a general-purpose CI evidence bridge. Repositories still
-need bounded automation that collects their native results and maps the receipt
-to the appropriate capability.
+This helper does not collect native CI results or map its receipt into an
+evidence envelope. Repositories still need bounded automation for those steps.
+After mapping, use the bundled evidence bridge to validate and attach the
+envelope to the same-revision decision record.

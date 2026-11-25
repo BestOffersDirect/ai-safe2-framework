@@ -14,6 +14,12 @@ alongside Claude and Codex.
 
 ## 0.2.0 reference integrations
 
+The current development candidate includes revision-bound evidence attachment,
+review provenance, bounded agent execution, adversarial-assurance reporting,
+documentation ownership, and release qualification. Provider execution and
+the external canary remain outside the candidate until their evidence is
+recorded.
+
 - CI execution receipts and deterministic failure attribution
 - Codex semantic review adapter
 - Claude semantic review adapter

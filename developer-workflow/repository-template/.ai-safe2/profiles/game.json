@@ -2,6 +2,8 @@
   "schema_version": "ai-safe2.product-profile.v1",
   "profile_id": "game",
   "name": "Game development",
+  "maturity": "preview",
+  "canary": {"status": "local_fixture", "evidence_ref": "AI SAFE2 Developer Workflow package contract tests"},
   "lenses": [
     "deterministic-simulation",
     "save-integrity-and-migration",
@@ -35,5 +37,9 @@
     "**/ui/**",
     "**/assets/**"
   ],
-  "required_human_roles_for_critical": ["maintainer", "security-or-platform-owner"]
+  "required_human_roles_for_critical": ["maintainer", "security-or-platform-owner"],
+  "limitations": [
+    "The upstream package passed local route fixtures; this repository still needs its own clean canary.",
+    "Replace generic paths and roles with this game's platform signing, privacy, economy, multiplayer, and rollback boundaries."
+  ]
 }

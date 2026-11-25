@@ -173,6 +173,7 @@ The [synthetic local fixture](examples/v35-authority/README.md) demonstrates exa
 | [MCP profile](00-cross-pillar/cp5_mcp_v35.md) | MCP-1 through MCP-19, child requirements and protocol-independent authority |
 | [CLI reference](safe2/docs/README.md) | Commands, JSON contracts, receipts, adapters and troubleshooting |
 | [Developer adoption guide](developer-workflow/docs/ADOPTION-GUIDE.md) | Installation, tool selection and evidence routing |
+| [Developer Workflow testing and qualification](developer-workflow/docs/RELEASE-QUALIFICATION.md) | Local checks, GitHub canary and release evidence |
 | [Dashboard source](dashboard/README.md) | Searchable control explorer and branch/deployment distinction |
 | [Security advisories](docs/advisories/README.md) | Known limitations and response guidance |
 | [Migration](MIGRATION.md) and [evolution](EVOLUTION.md) | Version changes and preserved version history |

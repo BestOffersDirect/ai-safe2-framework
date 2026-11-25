@@ -1,5 +1,9 @@
 # Game Developer Quickstart
 
+Profile status: bundled preview with local routing fixtures. A clean external
+game-repository canary remains required before the profile is described as
+qualified.
+
 ## What the developer receives
 
 The starter adds policy and evidence files. It does not replace the engine,
@@ -9,8 +13,17 @@ build system, Claude configuration, Codex configuration, or repository tests.
 
 1. Copy `repository-template/` to the game repository.
 2. Copy `profiles/game.json` to `.ai-safe2/profiles/game.json`.
-3. Replace the owner placeholders in `.ai-safe2/workflow.json`.
-4. Enter the actual build, test, lint, and packaging commands.
+3. Set the workflow ID and decision owner in `.ai-safe2/workflow.json`.
+   Set the document owners in `.ai-safe2/documentation-ownership.json`.
+   Fill in candidate values in the release qualification template when
+   evaluating a release.
+4. Enter the actual build, test, lint, and packaging commands. Install the
+   same CLI and JSON Schema validator used by the starter CI:
+
+   ```console
+   python -m pip install "ai-safe2[all]==1.0.1" "jsonschema==4.25.1"
+   safe2 self-check --strict
+   ```
 5. Validate the package and generate the repository-specific explanation:
 
    ```bash
@@ -24,6 +37,10 @@ build system, Claude configuration, Codex configuration, or repository tests.
 6. Read `AI-SAFE2-DEVELOPER-WORKFLOW.md` and confirm the routes, trust
    boundaries, owner, review options, and limitations match the game.
 7. Commit the setup through a normal pull request.
+
+You can do this on a test branch before deploying the game. Keep the PR head
+and Actions run link. Check the route and decision artifacts for that head,
+including that the human decision record starts at `hold`.
 
 The starter GitHub workflow verifies the pinned CLI, creates the deterministic
 route, runs CLI decision routing, initializes the revision-bound human decision

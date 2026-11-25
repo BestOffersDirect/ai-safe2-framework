@@ -706,7 +706,15 @@
       "kind": "document"
     },
     {
+      "path": "developer-workflow/docs/ADVERSARIAL-SOFTWARE-ASSURANCE.md",
+      "kind": "document"
+    },
+    {
       "path": "developer-workflow/docs/ARCHITECTURE.md",
+      "kind": "document"
+    },
+    {
+      "path": "developer-workflow/docs/BOUNDED-AGENT-EXECUTION.md",
       "kind": "document"
     },
     {
@@ -722,7 +730,23 @@
       "kind": "document"
     },
     {
+      "path": "developer-workflow/docs/DOCUMENTATION-OWNERSHIP.md",
+      "kind": "document"
+    },
+    {
+      "path": "developer-workflow/docs/EVIDENCE-BRIDGE-AND-REVIEW-PROVENANCE.md",
+      "kind": "document"
+    },
+    {
       "path": "developer-workflow/docs/GAME-DEVELOPER-QUICKSTART.md",
+      "kind": "document"
+    },
+    {
+      "path": "developer-workflow/docs/LOCAL-VALIDATION-AND-TYPES.md",
+      "kind": "document"
+    },
+    {
+      "path": "developer-workflow/docs/PROJECT-DISCOVERY.md",
       "kind": "document"
     },
     {
@@ -730,7 +754,15 @@
       "kind": "document"
     },
     {
+      "path": "developer-workflow/docs/RELEASE-QUALIFICATION.md",
+      "kind": "document"
+    },
+    {
       "path": "developer-workflow/docs/TOOL-SETUP-GUIDE.md",
+      "kind": "document"
+    },
+    {
+      "path": "developer-workflow/docs/UPGRADE-BASELINE-AND-ACCEPTANCE.md",
       "kind": "document"
     },
     {
@@ -750,11 +782,55 @@
       "kind": "document"
     },
     {
+      "path": "developer-workflow/documentation-ownership.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/evidence/repository-baseline.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/local-gate.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/profiles/catalog.json",
+      "kind": "machine-data"
+    },
+    {
       "path": "developer-workflow/profiles/game.json",
       "kind": "machine-data"
     },
     {
+      "path": "developer-workflow/release-qualification.template.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/documentation-ownership.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/local-gate.json",
+      "kind": "machine-data"
+    },
+    {
       "path": "developer-workflow/repository-template/.ai-safe2/profiles/game.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/release-qualification.template.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/schemas/adversarial-assurance-receipt-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/schemas/agent-execution-boundary-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/schemas/agent-handoff-v1.schema.json",
       "kind": "machine-data"
     },
     {
@@ -763,6 +839,30 @@
     },
     {
       "path": "developer-workflow/repository-template/.ai-safe2/schemas/decision-record-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/schemas/documentation-ownership-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/schemas/evidence-envelope-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/schemas/local-gate-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/schemas/product-profile-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/schemas/release-qualification-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/repository-template/.ai-safe2/schemas/review-provenance-v1.schema.json",
       "kind": "machine-data"
     },
     {
@@ -786,6 +886,18 @@
       "kind": "machine-data"
     },
     {
+      "path": "developer-workflow/schemas/adversarial-assurance-receipt-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/schemas/agent-execution-boundary-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/schemas/agent-handoff-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
       "path": "developer-workflow/schemas/ci-execution-receipt-v1.schema.json",
       "kind": "machine-data"
     },
@@ -794,7 +906,35 @@
       "kind": "machine-data"
     },
     {
+      "path": "developer-workflow/schemas/documentation-ownership-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
       "path": "developer-workflow/schemas/evidence-envelope-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/schemas/local-gate-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/schemas/product-profile-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/schemas/project-map-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/schemas/release-qualification-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/schemas/repository-baseline-v1.schema.json",
+      "kind": "machine-data"
+    },
+    {
+      "path": "developer-workflow/schemas/review-provenance-v1.schema.json",
       "kind": "machine-data"
     },
     {

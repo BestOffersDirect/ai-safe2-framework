@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyberstrategyinstitute.com/schemas/ai-safe2/local-gate-v1.schema.json",
+  "title": "AI SAFE2 Local Gate v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "checks"],
+  "properties": {
+    "schema_version": {"const": "ai-safe2.local-gate.v1"},
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "required", "command"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+          "required": {"type": "boolean"},
+          "command": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    }
+  }
+}

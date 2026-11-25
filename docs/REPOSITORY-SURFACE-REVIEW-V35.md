@@ -4,7 +4,7 @@
 
 ## Scope and interpretation
 
-Inventory: **90 README files, 13 HTML files and 35 other root files**. README/HTML counts are distinct categories; a root README is counted as a README. This is structural/documentation review, not runtime conformance or independent incident verification.
+Inventory: **90 README files, 13 HTML files and 36 other root files**. README/HTML counts are distinct categories; a root README is counted as a README. This is structural/documentation review, not runtime conformance or independent incident verification.
 
 Every surfaced path has a disposition. Current topic READMEs share a navigation rail; module-specific headings, quickstarts and evidence boundaries remain local. Frozen challenges, dated assessments, release records, adversarial fixtures and separate policy material retain their meanings. Uniform navigation does not require identical bodies or images on fixtures.
 
@@ -14,7 +14,7 @@ Every surfaced path has a disposition. Current topic READMEs share a navigation 
 | current-topic-surface | 67 |
 | generator-template | 1 |
 | historical-or-frozen | 23 |
-| root-owning-source | 31 |
+| root-owning-source | 32 |
 | separate-policy-material | 9 |
 | test-fixture | 2 |
 

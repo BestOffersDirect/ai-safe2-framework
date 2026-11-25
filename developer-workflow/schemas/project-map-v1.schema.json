@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyberstrategyinstitute.com/schemas/ai-safe2/project-map-v1.schema.json",
+  "title": "AI SAFE2 Project Map v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "subject", "languages", "ecosystems", "automation", "instructions", "documentation", "review_candidates", "unknowns", "limits"],
+  "properties": {
+    "schema_version": {"const": "ai-safe2.project-map.v1"},
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "revision", "scope", "worktree_dirty"],
+      "properties": {
+        "repository": {"type": "string", "minLength": 1},
+        "revision": {"type": ["string", "null"]},
+        "scope": {"const": "working_tree"},
+        "worktree_dirty": {"type": ["boolean", "null"]}
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "file_count"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "file_count": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "ecosystems": {"$ref": "#/$defs/evidence_items"},
+    "automation": {"$ref": "#/$defs/paths"},
+    "instructions": {"$ref": "#/$defs/paths"},
+    "documentation": {"$ref": "#/$defs/paths"},
+    "review_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "signals"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "signals": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "limits": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "$defs": {
+    "paths": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "evidence_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "evidence"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "evidence": {"$ref": "#/$defs/paths"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "ai-safe2.product-profile-catalog.v1",
+  "profiles": [
+    {"profile_id":"game","availability":"bundled_preview","path":"profiles/game.json","qualification":"local_fixture","next_gate":"clean external game-repository canary"},
+    {"profile_id":"mobile","availability":"planned","path":null,"qualification":"not_run","next_gate":"define signing, permissions, privacy, storage, telemetry, API, and store-release boundaries; then run an external canary"},
+    {"profile_id":"api-service","availability":"planned","path":null,"qualification":"not_run","next_gate":"define identity, authorization, tenancy, schema, migration, data, infrastructure, and rollback boundaries; then run an external canary"},
+    {"profile_id":"ai-agent","availability":"planned","path":null,"qualification":"not_run","next_gate":"define model, tool, delegation, memory, MCP, data, interruption, and consequential-action boundaries; then run an external canary"},
+    {"profile_id":"infrastructure","availability":"planned","path":null,"qualification":"not_run","next_gate":"define state, privilege, secrets, plan/apply, drift, recovery, and production-change boundaries; then run an external canary"}
+  ]
+}

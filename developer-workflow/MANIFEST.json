@@ -13,7 +13,14 @@
     "ai-safe2.developer-workflow.v1"
   ],
   "candidate_contracts": [
-    "ai-safe2.ci-execution-receipt.v1"
+    "ai-safe2.ci-execution-receipt.v1",
+    "ai-safe2.agent-execution-boundary.v1",
+    "ai-safe2.agent-handoff.v1",
+    "ai-safe2.review-provenance.v1",
+    "ai-safe2.adversarial-assurance-receipt.v1",
+    "ai-safe2.documentation-ownership.v1",
+    "ai-safe2.product-profile.v1",
+    "ai-safe2.release-qualification.v1"
   ],
   "supported_coding_providers": ["codex", "claude"],
   "authority": {
@@ -25,9 +32,9 @@
     "everyday_action": false
   },
   "validation": {
-    "contract_tests": 19,
+    "contract_tests": 49,
     "schema_validation": "passed",
-    "validated_on": "2026-10-15"
+    "validated_on": "2026-11-23"
   }
 }
 

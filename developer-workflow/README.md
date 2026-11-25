@@ -70,9 +70,10 @@ Plans, reviews and receipts support decisions. They do not authorize deployment.
 | Switching providers changes the process | Claude, Codex, scanners, and later adapters can change behind stable contracts |
 | Review history explains what ran, not why | The route, evidence requirements, limitations, and human decision can be replayed |
 
-This preview establishes that structure. Automatic collection of every CI and
-review result is follow-on work; until an evidence bridge is configured,
-decision records correctly remain at `hold`.
+This preview establishes that structure and includes a deterministic bridge
+for attaching validated evidence envelopes. Repository-specific automation
+must still collect native CI and reviewer results and map them into envelopes.
+Missing required evidence keeps the decision record at `hold`.
 
 ## The workflow at a glance
 
@@ -119,6 +120,44 @@ The workflow may prepare a decision. It cannot authorize one.
 
 AI SAFE2 CLI decision routing and the human decision record are required core
 capabilities. External reviewer and scanner execution remains opt-in.
+
+The next release is governed by a measured
+[upgrade baseline and acceptance contract](docs/UPGRADE-BASELINE-AND-ACCEPTANCE.md).
+It distinguishes repository configuration from observed execution and does not
+infer human-review enforcement from `CODEOWNERS` alone.
+
+Use [project discovery](docs/PROJECT-DISCOVERY.md) to create a read-only map of
+observed languages, ecosystems, automation, instructions, documentation entry
+points, and paths that require human boundary review. Planning and receipts
+remain owned by the AI SAFE2 CLI contracts.
+
+Use the [local validation and type boundary](docs/LOCAL-VALIDATION-AND-TYPES.md)
+to catch Developer Workflow contract, test, and strict-type failures before a
+push. A local pass does not replace hosted revision-bound evidence.
+
+Use [bounded agent execution](docs/BOUNDED-AGENT-EXECUTION.md) to name task
+ownership, scope, allowed tools, admitted skills, budgets, stop conditions, and
+the structured handoff expected from an agent. Existing CLI plans, skill-gate
+evidence, task receipts, and development receipts remain the owning evidence.
+
+Use the [evidence bridge and review-provenance
+contract](docs/EVIDENCE-BRIDGE-AND-REVIEW-PROVENANCE.md) to attach validated,
+same-revision evidence to a decision record and record known reviewer
+dependence. Attachment does not run, evaluate, or authenticate a provider.
+
+Use [adversarial software assurance](docs/ADVERSARIAL-SOFTWARE-ASSURANCE.md)
+to report property, mutation, and fuzz campaigns without hiding findings,
+skips, timeouts, failures, or unavailable tools. The evaluator reports the
+campaigns; it does not run the tools or accept residual risk.
+
+Use [documentation ownership and freshness](docs/DOCUMENTATION-OWNERSHIP.md)
+to identify canonical, hand-authored, generated, historical, and vendored
+surfaces. The local gate detects unowned Markdown and stale export mirrors.
+
+Use [release qualification](docs/RELEASE-QUALIFICATION.md) to separate a built
+candidate from a qualified release. Local, hosted, canary, security,
+placeholder, and package-integrity evidence must match the candidate revision
+before a named human makes the release decision.
 Installing this pack does not call an external model, add credentials, or
 change Claude or Codex settings.
 

@@ -1,15 +1,15 @@
 # Current State and Release Gap
 
-Reviewed: 2026-10-08
+Reviewed: 2026-11-23
 
 ## What exists now
 
 | Area | Current capability | Release status |
 | --- | --- | --- |
-| AI SAFE2 CLI | Consolidated scanning, gates, evidence, decisions, MCP controls, acceptance and self-check | Available; pin 1.0.1 |
+| AI SAFE2 CLI | Consolidated scanning, gates, evidence, decisions, MCP controls, acceptance and self-check | Available; Developer Workflow minimum remains 1.0.1 pending release qualification |
 | NEXUS | Runtime/distributed trust and enforcement option | Adapter manifest included; deployment-specific integration remains separate |
 | Skills | Agent-facing governance and development methods | Supported surface; individual harness installation remains separate |
-| Developer Workflow | Provider-neutral risk routing, evidence contracts, PR templates, adoption guide, and generated repository explanation | Contract preview available; repository-specific evidence bridge remains to be implemented |
+| Developer Workflow | Provider-neutral risk routing, evidence contracts, validated envelope attachment, documentation ownership, PR templates, adoption guide, and generated repository explanation | Contract preview available; native-result collection and envelope mapping remain repository-specific |
 | MCP Pro | Public professional MCP product for coding tools | External product surface; adapter contract included |
 | Agency Check | Public everyday decision experience and Decision Card model | Deployment in progress; adapter contract included |
 | Codex and Claude | Both can continue coding and reviewing | Optional adapters; no configuration takeover |
@@ -47,14 +47,20 @@ profile, routes, critical paths, review options, authority boundary, preview
 limitations, and safe extension points. The starter workflow places this
 report in the GitHub Actions summary and retains it as an artifact.
 
-This closes the discoverability gap. It does not close the evidence-bridge or
-provider-execution gaps above.
+This closes the discoverability gap. The attachment bridge now verifies
+envelope schema, digest, subject, and revision. It does not close native-result
+collection, envelope mapping, authenticity, or provider-execution gaps.
 
 The bundled CI execution receipt closes a narrower attribution gap: adopting
 repositories can now distinguish environment, transport, harness, assertion,
 post-processing, and publication outcomes before mapping a deterministic check
-into an evidence envelope. It does not collect provider results automatically
-and is not the general-purpose evidence bridge.
+into an evidence envelope. It does not perform that mapping or collect provider
+results.
+
+The documentation ownership map names canonical, hand-authored, generated,
+historical, and vendored surfaces. The local gate detects unowned Markdown and
+stale exported scripts or schemas. It does not verify the truth of manually
+maintained prose, external links, or rendered layouts.
 
 ## 0.1 exit criteria
 

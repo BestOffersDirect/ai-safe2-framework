@@ -1,0 +1,51 @@
+{
+  "schema_version": "ai-safe2.repository-baseline.v1",
+  "subject": {
+    "repository": "ai-safe2-framework",
+    "revision": "78bd1e6c02eb66aa68e73fc16f6c55f2782cc896",
+    "scope": "working_tree",
+    "worktree_dirty": false
+  },
+  "inventory": {
+    "discovered_files": 1477,
+    "python_files": 463,
+    "test_python_files": 145,
+    "markdown_files": 497,
+    "workflow_files": 18
+  },
+  "observations": {
+    "codeowners": {
+      "status": "observed",
+      "evidence": [
+        ".github/CODEOWNERS",
+        "CODEOWNERS"
+      ]
+    },
+    "local_pre_commit": {
+      "status": "not_observed",
+      "evidence": []
+    },
+    "type_checking": {
+      "status": "observed",
+      "evidence": [
+        "NEXUS/pyproject.toml",
+        "pyproject.toml",
+        "skills/mcp/pyproject.toml"
+      ]
+    },
+    "adversarial_testing": {
+      "status": "not_observed",
+      "evidence": []
+    },
+    "human_review_enforcement": {
+      "status": "unknown",
+      "evidence": []
+    }
+  },
+  "limits": [
+    "File presence does not prove that a check ran or passed.",
+    "Repository contents do not prove branch protection or reviewer identity.",
+    "A revision identifies the base commit; worktree_dirty states whether uncommitted content was also measured.",
+    "Counts exclude common dependency, cache, virtual-environment, and Git directories."
+  ]
+}
