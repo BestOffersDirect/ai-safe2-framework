@@ -28,6 +28,7 @@ __all__ = [
 
 DEFAULT_DEPLOYMENT_CONTROLS = frozenset({
     "execution_plane_ready",
+    "shared_budget_authority_ready",
     "policy_parity_live",
     "key_guardian_isolated",
     "runtime_verifier_independent",

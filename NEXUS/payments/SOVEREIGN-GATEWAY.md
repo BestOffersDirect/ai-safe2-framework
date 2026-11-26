@@ -127,6 +127,35 @@ the configured receipt issuer. Key Guardian additionally requires a non-empty
 policy snapshot digest pinned by policy identifier, so a policy label cannot
 silently stand in for different rules or configuration.
 
+## Shared Budget Authority
+
+`BudgetPartitionIssuer` is the **Shared Budget Authority**. It atomically
+divides one parent ceiling into signed partitions before independent decision
+points receive spending authority. The allocator pins the parent scope,
+currency, and original ceiling on its first allocation. It refuses duplicate
+holders, changed parent ceilings, and allocations whose sum would exceed the
+parent budget.
+
+Each `BudgetPartition` binds its holder, currency, exclusive ceiling, parent
+ceiling, allocation sequence, cumulative allocated amount, validity window,
+and issuer. `PartitionBudgetLedger` then enforces reservation, replay,
+commitment, release, and expiry within that partition. Two hosts with distinct
+partitions can operate without a shared runtime counter because neither can
+spend the other's allocation.
+
+`PartitionedCoordinatorStateStore` connects that partition to the Sovereign
+Payment Coordinator. It rejects caller-supplied ceilings that differ from the
+signed partition, reserves partition exposure before gateway state advances,
+commits exposure before settlement is recorded, and releases it only after an
+authoritative non-settlement. A state conflict may retain capacity, but cannot
+restore spendable authority or create an overspend path.
+
+The included allocator and HMAC proof backend provide reference and adversarial
+test behavior. Production use requires a durable atomic allocation store, a
+protected signing backend, and one authoritative ledger for each partition.
+Cloning the same holder identity or partition ledger across hosts violates this
+deployment contract and must fail readiness review.
+
 ## Runtime Verifier
 
 `IndependentRuntimeVerifier` is the independent **Runtime Verifier**. It checks

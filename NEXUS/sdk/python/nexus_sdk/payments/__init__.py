@@ -143,6 +143,20 @@ from nexus_sdk.payments.runtime_verifier import (
     RuntimeVerificationDecision,
     RuntimeVerifierProfile,
 )
+from nexus_sdk.payments.shared_budget import (
+    AtomicPartitionStore,
+    BudgetPartition,
+    BudgetPartitionAuthenticator,
+    BudgetPartitionConflictError,
+    BudgetPartitionIssuer,
+    BudgetPartitionUnavailableError,
+    InMemoryAtomicPartitionStore,
+    InProcessHMACTestBudgetAuthenticator,
+    PartitionAllocation,
+    PartitionBudgetLedger,
+    PartitionedCoordinatorStateStore,
+    PartitionReservation,
+)
 from nexus_sdk.payments.human_intent import (
     HumanApprovalEvidence,
     HumanApprovalEvidenceVerifier,
@@ -291,6 +305,13 @@ __all__ = [
     # Independent runtime attestation verification
     "FinalityFreshnessPolicy", "IndependentRuntimeVerifier", "RuntimeReceiptIssuer",
     "RuntimeVerificationDecision", "RuntimeVerifierProfile",
+    # Shared or pre-partitioned authority budgets
+    "AtomicPartitionStore", "BudgetPartition", "BudgetPartitionAuthenticator",
+    "BudgetPartitionConflictError", "BudgetPartitionIssuer",
+    "BudgetPartitionUnavailableError", "InMemoryAtomicPartitionStore",
+    "InProcessHMACTestBudgetAuthenticator", "PartitionAllocation",
+    "PartitionBudgetLedger", "PartitionedCoordinatorStateStore",
+    "PartitionReservation",
     # Trusted human intent and exact approval
     "HumanApprovalEvidence", "HumanApprovalEvidenceVerifier",
     "HumanIntentAuthorityProfile", "InMemoryTestApprovalChallengeStore",

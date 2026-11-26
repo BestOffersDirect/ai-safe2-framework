@@ -91,11 +91,13 @@
     },
     {
       "id": "ETA-9",
-      "status": "gap",
+      "status": "implemented",
       "evidence": [
-        "sdk/python/nexus_sdk/payments/sqlite_state.py"
+        "sdk/python/nexus_sdk/payments/shared_budget.py",
+        "sdk/python/tests/test_shared_budget.py",
+        "payments/SOVEREIGN-GATEWAY.md"
       ],
-      "gap": "The reference store is single-host and does not share or pre-partition budgets across decision points."
+      "gap": null
     },
     {
       "id": "ETA-10",

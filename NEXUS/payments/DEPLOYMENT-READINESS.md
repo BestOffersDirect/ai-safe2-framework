@@ -45,11 +45,12 @@ with a stricter governed set, but must not silently remove controls from a
 previously approved profile. Profile changes create a new profile digest and
 invalidate old evidence.
 
-The baseline covers execution readiness, live policy parity, Key Guardian
-isolation, independent runtime verification, state and evidence recovery,
-evidence completeness, revocation and ambiguous-state drills, sandbox
-readiness, network bypass prevention, monitoring and escalation, evidence
-export/deletion/legal hold, data residency, and accountable ownership.
+The baseline covers execution readiness, a deployment-assured Shared Budget
+Authority, live policy parity, Key Guardian isolation, independent runtime
+verification, state and evidence recovery, evidence completeness, revocation
+and ambiguous-state drills, sandbox readiness, network bypass prevention,
+monitoring and escalation, evidence export/deletion/legal hold, data residency,
+and accountable ownership.
 
 ## Verification flow
 

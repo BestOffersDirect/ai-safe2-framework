@@ -11,6 +11,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Implements ETA-9 with the human-readable Shared Budget Authority
+  (`BudgetPartitionIssuer`). It atomically pre-partitions a pinned parent
+  ceiling into signed, holder-bound budgets, while independent ledgers enforce
+  reservation, replay, commitment, release, expiry, and fail-closed behavior.
 - Implements ETA-6 with the human-readable Reversibility-Aware Freshness Policy
   (`FinalityFreshnessPolicy`). Runtime evidence ceilings tighten from reversible
   to mediated to irreversible settlement, and authenticated runtime receipts
@@ -29,8 +33,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Adds the proposed Execution-Time Authority Internet-Draft source, ETA-1 through
   ETA-20 implementation crosswalk, machine-readable evidence index, mailing-list
   review drafts, standards-body briefs, and a gated submission plan. The package
-  records ten implemented requirements, eight partial requirements, and two
-  gaps. It does not claim standards adoption, independent evaluation, or
+  records eleven implemented requirements, eight partial requirements, and one
+  gap. It does not claim standards adoption, independent evaluation, or
   production conformance.
 
 Found by the four-area battery in `tests/battery/`. Assessment record:

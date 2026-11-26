@@ -243,8 +243,9 @@ class NEXUSPaymentExecutionPlane:
     technical_name = "NEXUSPaymentExecutionPlane"
     profile_version = "CP.5.APAY/0.5-draft"
     required_components = (
-        "authority_store", "replay_store", "settlement_store", "policy_engine",
-        "credential_broker", "evidence_ledger", "attestation_verifier",
+        "authority_store", "shared_budget_authority", "replay_store",
+        "settlement_store", "policy_engine", "credential_broker",
+        "evidence_ledger", "attestation_verifier",
     )
 
     def __init__(self, **components: object) -> None:

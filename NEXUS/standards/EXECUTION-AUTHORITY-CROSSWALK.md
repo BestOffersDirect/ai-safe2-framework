@@ -12,9 +12,9 @@
 
 | Status | Count | Meaning |
 | --- | ---: | --- |
-| Implemented | 10 | The stated property exists in the reference implementation and has refusal-path tests |
+| Implemented | 11 | The stated property exists in the reference implementation and has refusal-path tests |
 | Partial | 8 | Some property or test exists, but the full requirement or deployment boundary is not met |
-| Gap | 2 | The requirement is not implemented as stated |
+| Gap | 1 | The requirement is not implemented as stated |
 
 ## Requirement mapping
 
@@ -28,7 +28,7 @@
 | ETA-6 | Tighten freshness as reversibility decreases | Implemented | `FinalityFreshnessPolicy` enforces positive monotonic ceilings for reversible, mediated, and irreversible settlement; the Runtime Verifier applies and records the effective ceiling |
 | ETA-7 | Prevent delegated authority from widening | Implemented | Authority graph checks attenuation across scope, duration, counterparties, depth, and consumable quantity |
 | ETA-8 | Charge consumption to every ancestor | Implemented | Subtree exposure and transactional reservations enforce ancestor ceilings |
-| ETA-9 | Share or pre-partition limits across decision points | Gap | SQLite demonstrates single-host atomicity; cross-host shared or partitioned budgets are not implemented |
+| ETA-9 | Share or pre-partition limits across decision points | Implemented | `BudgetPartitionIssuer` atomically pre-partitions a pinned parent ceiling into signed, holder-bound budgets; independent ledgers enforce each exclusive partition and fail closed on conflict, expiry, tampering, replay, or unavailability |
 | ETA-10 | Revoke a delegation subtree without enumeration | Partial | Chain and grant revocation exist, while the durable gateway epoch remains principal-scoped rather than per-grant |
 | ETA-11 | Recheck revocation at execution | Implemented | Credential release re-reads the current epoch and refuses stale authorization |
 | ETA-12 | Declare and enforce revocation propagation time | Partial | Freshness and fail-closed behavior exist, but the implementation does not prove a deployment-wide propagation objective |
@@ -45,5 +45,5 @@
 
 The standards contribution is the requirement set. NEXUS supplies running code, refusal-path tests, and documented failures. It does not establish that every ETA requirement is solved, that a deployment is safe, or that another implementation must use NEXUS.
 
-The two remaining gaps require distributed consumption authority and SCITT-compatible records.
+The remaining gap is SCITT-compatible Signed Statements under ETA-19.
 
