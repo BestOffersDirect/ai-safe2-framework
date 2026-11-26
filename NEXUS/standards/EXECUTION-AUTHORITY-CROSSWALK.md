@@ -12,9 +12,9 @@
 
 | Status | Count | Meaning |
 | --- | ---: | --- |
-| Implemented | 9 | The stated property exists in the reference implementation and has refusal-path tests |
+| Implemented | 10 | The stated property exists in the reference implementation and has refusal-path tests |
 | Partial | 8 | Some property or test exists, but the full requirement or deployment boundary is not met |
-| Gap | 3 | The requirement is not implemented as stated |
+| Gap | 2 | The requirement is not implemented as stated |
 
 ## Requirement mapping
 
@@ -25,7 +25,7 @@
 | ETA-3 | Keep decision and credential authority outside model reach | Partial | `NullCredentialBroker` refuses by default and Key Guardian exposes no raw-key return; production isolation is a deployment obligation |
 | ETA-4 | Apply a declared posture-freshness bound at use | Implemented | Independent runtime verifier rejects missing, stale, future, or mismatched evidence |
 | ETA-5 | Record unavailable or stale posture as not established | Implemented | `EvaluationState` preserves established, not-established, denied, and indeterminate states in runtime, policy, OPA, and receipt evidence; only established decisions carry execution authority |
-| ETA-6 | Tighten freshness as reversibility decreases | Gap | Profiles can set freshness, but no required monotonic relationship to reversibility class is enforced |
+| ETA-6 | Tighten freshness as reversibility decreases | Implemented | `FinalityFreshnessPolicy` enforces positive monotonic ceilings for reversible, mediated, and irreversible settlement; the Runtime Verifier applies and records the effective ceiling |
 | ETA-7 | Prevent delegated authority from widening | Implemented | Authority graph checks attenuation across scope, duration, counterparties, depth, and consumable quantity |
 | ETA-8 | Charge consumption to every ancestor | Implemented | Subtree exposure and transactional reservations enforce ancestor ceilings |
 | ETA-9 | Share or pre-partition limits across decision points | Gap | SQLite demonstrates single-host atomicity; cross-host shared or partitioned budgets are not implemented |
@@ -45,5 +45,5 @@
 
 The standards contribution is the requirement set. NEXUS supplies running code, refusal-path tests, and documented failures. It does not establish that every ETA requirement is solved, that a deployment is safe, or that another implementation must use NEXUS.
 
-The three remaining gaps require risk-class freshness policy, distributed consumption authority, and SCITT-compatible records.
+The two remaining gaps require distributed consumption authority and SCITT-compatible records.
 

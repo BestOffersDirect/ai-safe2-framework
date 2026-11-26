@@ -141,6 +141,14 @@ configuration. Key Guardian pins that profile digest by verifier identifier,
 preventing a familiar verifier name from silently using different trust roots
 or weaker evidence rules.
 
+The human-readable **Reversibility-Aware Freshness Policy**, technically
+`FinalityFreshnessPolicy`, makes the maximum evidence age shrink as settlement
+becomes harder to undo. The reference ceilings are 120 seconds for reversible,
+60 seconds for mediated, and 30 seconds for irreversible settlement. A profile
+may tighten those values, but cannot invert their order. The authenticated
+runtime receipt records the finality and effective ceiling used for the
+decision, so a user or investigator can verify the rule after the fact.
+
 The portable reference verifier cryptographically binds the runtime measurement
 identity, workload identity, attested status, attestation method, baseline,
 measurement time, freshness lifetime, and single-use verifier challenge into

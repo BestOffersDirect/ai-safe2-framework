@@ -137,6 +137,7 @@ from nexus_sdk.payments.policy_parity import (
     PolicyParityReport,
 )
 from nexus_sdk.payments.runtime_verifier import (
+    FinalityFreshnessPolicy,
     IndependentRuntimeVerifier,
     RuntimeReceiptIssuer,
     RuntimeVerificationDecision,
@@ -288,7 +289,7 @@ __all__ = [
     "PolicyEvaluationAuthenticator",
     "PolicyInputProvider", "PolicyParityProfile", "PolicyParityReport",
     # Independent runtime attestation verification
-    "IndependentRuntimeVerifier", "RuntimeReceiptIssuer",
+    "FinalityFreshnessPolicy", "IndependentRuntimeVerifier", "RuntimeReceiptIssuer",
     "RuntimeVerificationDecision", "RuntimeVerifierProfile",
     # Trusted human intent and exact approval
     "HumanApprovalEvidence", "HumanApprovalEvidenceVerifier",

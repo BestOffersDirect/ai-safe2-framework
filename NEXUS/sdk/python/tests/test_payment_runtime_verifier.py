@@ -5,6 +5,8 @@ import hmac
 from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 
+import pytest
+
 from nexus_sdk.payments.attestation import HMACTestAttestationVerifier
 from nexus_sdk.payments.key_guardian import InProcessHMACReceiptAuthenticator
 from nexus_sdk.payments.objects import (
@@ -13,8 +15,10 @@ from nexus_sdk.payments.objects import (
     Money,
     PaymentRail,
     RuntimeMeasurement,
+    SettlementFinality,
 )
 from nexus_sdk.payments.runtime_verifier import (
+    FinalityFreshnessPolicy,
     IndependentRuntimeVerifier,
     RuntimeVerifierProfile,
 )
@@ -94,6 +98,50 @@ def test_valid_evidence_issues_authenticated_bound_receipt():
     assert result.receipt.signing_digest == canonical().signing_digest()
     assert result.receipt.verifier_profile_digest == verifier.profile.profile_digest
     assert result.evaluation_state is EvaluationState.ESTABLISHED
+    assert result.receipt.settlement_finality == "reversible"
+    assert result.receipt.freshness_ceiling_seconds == 120
+
+
+def test_freshness_policy_must_tighten_with_lower_reversibility():
+    with pytest.raises(ValueError, match="must tighten"):
+        FinalityFreshnessPolicy(
+            reversible_seconds=30,
+            mediated_seconds=60,
+            irreversible_seconds=120,
+        )
+
+
+@pytest.mark.parametrize(
+    ("finality", "age_seconds", "authorized"),
+    [
+        (SettlementFinality.REVERSIBLE, 90, True),
+        (SettlementFinality.MEDIATED, 90, False),
+        (SettlementFinality.MEDIATED, 45, True),
+        (SettlementFinality.IRREVERSIBLE, 45, False),
+        (SettlementFinality.IRREVERSIBLE, 30, True),
+    ],
+)
+def test_freshness_tightens_as_reversibility_decreases(
+    finality, age_seconds, authorized
+):
+    value = measurement(measured_at=NOW - timedelta(seconds=age_seconds))
+    verifier, _, value = configured(value)
+    transaction = replace(canonical(), finality=finality)
+    result = verifier.verify(
+        transaction,
+        value,
+        expected_baseline=value.baseline_digest(),
+        now=NOW,
+    )
+    assert result.authorized is authorized
+    if authorized:
+        assert result.receipt is not None
+        assert result.receipt.settlement_finality == finality.value
+        assert result.receipt.freshness_ceiling_seconds == {
+            SettlementFinality.REVERSIBLE: 120,
+            SettlementFinality.MEDIATED: 60,
+            SettlementFinality.IRREVERSIBLE: 30,
+        }[finality]
 
 
 def test_runtime_identity_mismatch_never_issues_receipt():
@@ -217,4 +265,14 @@ def test_profile_digest_tampering_invalidates_receipt():
     )
     assert result.receipt is not None
     forged = replace(result.receipt, verifier_profile_digest="sha256:forged")
+    assert not authenticator.verify_runtime(forged)
+
+
+def test_freshness_evidence_tampering_invalidates_receipt():
+    verifier, authenticator, value = configured()
+    result = verifier.verify(
+        canonical(), value, expected_baseline=value.baseline_digest(), now=NOW
+    )
+    assert result.receipt is not None
+    forged = replace(result.receipt, freshness_ceiling_seconds=86_400)
     assert not authenticator.verify_runtime(forged)

@@ -13,16 +13,58 @@ from nexus_sdk.payments.objects import (
     CanonicalTransaction,
     EvaluationState,
     RuntimeMeasurement,
+    SettlementFinality,
     canonical_hash,
     utcnow,
 )
 
 __all__ = [
+    "FinalityFreshnessPolicy",
     "IndependentRuntimeVerifier",
     "RuntimeReceiptIssuer",
     "RuntimeVerificationDecision",
     "RuntimeVerifierProfile",
 ]
+
+
+@dataclass(frozen=True)
+class FinalityFreshnessPolicy:
+    """Reversibility-Aware Freshness Policy for runtime evidence.
+
+    Human name: Reversibility-Aware Freshness Policy.
+    Technical name: ``FinalityFreshnessPolicy``.
+    """
+
+    reversible_seconds: int = 120
+    mediated_seconds: int = 60
+    irreversible_seconds: int = 30
+
+    def __post_init__(self) -> None:
+        values = (
+            self.reversible_seconds,
+            self.mediated_seconds,
+            self.irreversible_seconds,
+        )
+        if any(value <= 0 for value in values):
+            raise ValueError("freshness ceilings must be positive")
+        if not self.reversible_seconds >= self.mediated_seconds >= self.irreversible_seconds:
+            raise ValueError(
+                "freshness must tighten as settlement becomes less reversible"
+            )
+
+    def ceiling_for(self, finality: SettlementFinality) -> int:
+        return {
+            SettlementFinality.REVERSIBLE: self.reversible_seconds,
+            SettlementFinality.MEDIATED: self.mediated_seconds,
+            SettlementFinality.IRREVERSIBLE: self.irreversible_seconds,
+        }[finality]
+
+    def to_dict(self) -> dict[str, int]:
+        return {
+            "reversible": self.reversible_seconds,
+            "mediated": self.mediated_seconds,
+            "irreversible": self.irreversible_seconds,
+        }
 
 
 @dataclass(frozen=True)
@@ -35,6 +77,7 @@ class RuntimeVerifierProfile:
     accepted_methods: frozenset[str]
     allowed_workload_ids: frozenset[str]
     max_measurement_age_seconds: int = 120
+    finality_freshness: FinalityFreshnessPolicy = FinalityFreshnessPolicy()
 
     @property
     def profile_digest(self) -> str:
@@ -45,6 +88,7 @@ class RuntimeVerifierProfile:
             "accepted_methods": sorted(self.accepted_methods),
             "allowed_workload_ids": sorted(self.allowed_workload_ids),
             "max_measurement_age_seconds": self.max_measurement_age_seconds,
+            "finality_freshness": self.finality_freshness.to_dict(),
         })
 
 
@@ -127,6 +171,8 @@ class IndependentRuntimeVerifier:
             authenticator_id=self.receipt_issuer.authenticator_id,
             proof="",
             verifier_profile_digest=self.profile.profile_digest,
+            settlement_finality=canonical.finality.value,
+            freshness_ceiling_seconds=self._freshness_ceiling(canonical, measurement),
         )
         receipt = replace(receipt, proof=self.receipt_issuer.seal_runtime(receipt))
         if not receipt.proof:
@@ -155,8 +201,8 @@ class IndependentRuntimeVerifier:
             reason = "workload identity is not permitted by the verifier profile"
         elif not measurement.verifier_challenge:
             reason = "fresh verifier challenge is required"
-        elif not 0 <= measurement.age_seconds(now) <= min(
-            measurement.max_age_seconds, self.profile.max_measurement_age_seconds
+        elif not 0 <= measurement.age_seconds(now) <= self._freshness_ceiling(
+            canonical, measurement
         ):
             reason = "runtime measurement is stale"
         elif measurement.policy_id and measurement.policy_id != canonical.policy_id:
@@ -164,3 +210,14 @@ class IndependentRuntimeVerifier:
         if reason:
             return AttestationResult(False, reason, self.profile.verifier_id)
         return None
+
+    def _freshness_ceiling(
+        self,
+        canonical: CanonicalTransaction,
+        measurement: RuntimeMeasurement,
+    ) -> int:
+        return min(
+            measurement.max_age_seconds,
+            self.profile.max_measurement_age_seconds,
+            self.profile.finality_freshness.ceiling_for(canonical.finality),
+        )

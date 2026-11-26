@@ -62,11 +62,13 @@
     },
     {
       "id": "ETA-6",
-      "status": "gap",
+      "status": "implemented",
       "evidence": [
-        "sdk/python/nexus_sdk/payments/runtime_verifier.py"
+        "sdk/python/nexus_sdk/payments/runtime_verifier.py",
+        "sdk/python/nexus_sdk/payments/key_guardian.py",
+        "sdk/python/tests/test_payment_runtime_verifier.py"
       ],
-      "gap": "No monotonic freshness rule is enforced across reversibility classes."
+      "gap": null
     },
     {
       "id": "ETA-7",

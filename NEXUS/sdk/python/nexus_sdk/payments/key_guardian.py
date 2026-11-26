@@ -93,6 +93,8 @@ class RuntimeAuthorizationReceipt:
     authenticator_id: str
     proof: str
     verifier_profile_digest: str = ""
+    settlement_finality: str = ""
+    freshness_ceiling_seconds: int = 0
 
 
 @dataclass(frozen=True)
@@ -403,7 +405,7 @@ class InProcessHMACReceiptAuthenticator:
 
     @staticmethod
     def _runtime_values(receipt: RuntimeAuthorizationReceipt) -> dict:
-        return {
+        values = {
             "runtime_measurement_id": receipt.runtime_measurement_id,
             "canonical_digest": receipt.canonical_digest,
             "signing_digest": receipt.signing_digest,
@@ -413,6 +415,12 @@ class InProcessHMACReceiptAuthenticator:
             "authenticator_id": receipt.authenticator_id,
             "verifier_profile_digest": receipt.verifier_profile_digest,
         }
+        # Preserve verification of receipts created before the freshness fields
+        # existed. New receipts authenticate both fields as part of the proof.
+        if receipt.settlement_finality or receipt.freshness_ceiling_seconds:
+            values["settlement_finality"] = receipt.settlement_finality
+            values["freshness_ceiling_seconds"] = receipt.freshness_ceiling_seconds
+        return values
 
     @staticmethod
     def _human_values(receipt: HumanIntentAuthorizationReceipt) -> dict:

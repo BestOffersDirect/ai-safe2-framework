@@ -11,6 +11,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Implements ETA-6 with the human-readable Reversibility-Aware Freshness Policy
+  (`FinalityFreshnessPolicy`). Runtime evidence ceilings tighten from reversible
+  to mediated to irreversible settlement, and authenticated runtime receipts
+  record the applied finality and ceiling.
 - Implements ETA-5 with the human-readable Execution Authority State contract
   (`EvaluationState`), preserving established, not-established, denied, and
   indeterminate outcomes in Python, OPA, and payment receipt evidence. Only an
@@ -25,7 +29,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Adds the proposed Execution-Time Authority Internet-Draft source, ETA-1 through
   ETA-20 implementation crosswalk, machine-readable evidence index, mailing-list
   review drafts, standards-body briefs, and a gated submission plan. The package
-  records nine implemented requirements, eight partial requirements, and three
+  records ten implemented requirements, eight partial requirements, and two
   gaps. It does not claim standards adoption, independent evaluation, or
   production conformance.
 
